@@ -1,139 +1,52 @@
-/* General Page Styling */
 body {
+    display: flex;
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background-color: #f5e6da;
+    margin: 0;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #3f3d56;
+    color: white;
+    padding: 20px;
+    height: 100vh;
+    position: fixed;
+}
+
+.sidebar h2 {
     text-align: center;
-    padding: 50px;
 }
 
-/* Header Section */
-h1 {
-    font-size: 2.5em;
-    color: #333;
-}
-
-/* Subheading */
-p {
-    font-size: 1.2em;
-    color: #555;
-}
-
-/* Section Styling */
-h2 {
-    margin-top: 30px;
-    color: #222;
-}
-
-/* Navigation Links */
-ul {
-    list-style: none;
+.sidebar ul {
+    list-style-type: none;
     padding: 0;
 }
 
-li {
-    display: inline-block;
-    margin: 15px;
+.sidebar ul li {
+    padding: 10px;
+    text-align: center;
 }
 
-a {
+.sidebar ul li a {
+    color: white;
     text-decoration: none;
-    font-size: 1.2em;
-    color: #007BFF;
-    font-weight: bold;
+    font-size: 18px;
 }
 
-a:hover {
-    color: #0056b3;
+.content {
+    margin-left: 270px;
+    padding: 20px;
 }
 
-/* Profile Image Styling */
-.profile-container {
-    position: relative;
-    display: inline-block;
+h1 {
+    color: #3f3d56;
 }
 
 .profile-pic {
-    width: 200px;  /* Adjust size */
-    height: 200px;
+    width: 150px;
     border-radius: 50%;
     display: block;
-    margin: 20px auto; /* Center the image */
-    border: 5px solid #007BFF;
-    transition: opacity 0.3s ease-in-out;
+    margin: 10px auto;
+    border: 5px solid #3f3d56;
 }
-
-/* Edit Overlay Button (Hidden by Default) */
-.edit-overlay {
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(0, 0, 0, 0.7);
-    color: white;
-    padding: 6px 12px;
-    font-size: 14px;
-    border-radius: 10px;
-    text-decoration: none;
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-    font-weight: bold;
-}
-
-/* Show Edit Button on Hover */
-.profile-container:hover .edit-overlay {
-    opacity: 1;
-}
-
-/* General Page Styling */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    text-align: center;
-    padding: 50px;
-}
-
-/* Header Section */
-h1 {
-    font-size: 2.5em;
-    color: #333;
-}
-
-/* Subheading */
-p {
-    font-size: 1.2em;
-    color: #555;
-}
-
-/* Section Styling */
-h2 {
-    margin-top: 30px;
-    color: #222;
-}
-
-/* Navigation Links */
-ul {
-    list-style: none;
-    padding: 0;
-}
-
-li {
-    display: inline-block;
-    margin: 15px;
-}
-
-a {
-    text-decoration: none;
-    font-size: 1.2em;
-    color: #007BFF;
-    font-weight: bold;
-}
-
-a:hover {
-    color: #0056b3;
-}
-
-
-/* CSS Styles (Other styles below this) */
-
-
-/* css styles */
