@@ -3,68 +3,132 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>John-Paul Adjadeh | Academic Profile</title>
+    <title>JP Adjadeh - Academic Profile</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            display: flex;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #F5E1DA;
+        }
+        .sidebar {
+            width: 250px;
+            background: #2C2F40;
+            color: white;
+            padding: 20px;
+            position: fixed;
+            height: 100vh;
+        }
+        .profile img {
+            width: 100px;
+            border-radius: 50%;
+            display: block;
+            margin: 0 auto;
+        }
+        .profile h2 {
+            text-align: center;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+        nav ul li {
+            padding: 15px 0;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        nav ul li a i {
+            margin-right: 10px;
+        }
+        .main-content {
+            margin-left: 270px;
+            padding: 40px;
+            flex-grow: 1;
+        }
+        .profile-intro {
+            text-align: center;
+            padding: 20px;
+        }
+        .profile-pic {
+            width: 150px;
+            border-radius: 50%;
+            display: block;
+            margin: 0 auto;
+        }
+        .btn {
+            display: inline-block;
+            background: #2C2F40;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+        footer {
+            background: #2C2F40;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .social-links a {
+            color: white;
+            margin: 0 10px;
+            font-size: 20px;
+        }
+    </style>
 </head>
 <body>
-    <nav class="sidebar">
+    <div class="sidebar">
         <div class="profile">
-            <img src="assets/profile.jpg" alt="JP Adjadeh" class="profile-pic">
-            <h2>John-Paul Adjadeh</h2>
-            <p>Ph.D. Candidate, UTD</p>
+            <img src="assets/profile.jpg" alt="JP Adjadeh">
+            <h2>JP Adjadeh</h2>
         </div>
-        <ul class="menu">
-            <li><a href="#about">About Me</a></li>
-            <li><a href="#cv">My CV</a></li>
-            <li><a href="#publications">Publications</a></li>
-            <li><a href="#research">Research</a></li>
-            <li><a href="#assignments">Assignments</a></li>
-            <li><a href="#campusgives">CampusGives Project</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
+        <nav>
+            <ul>
+                <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="about.html"><i class="fas fa-user"></i> About Me</a></li>
+                <li><a href="cv.html"><i class="fas fa-file-alt"></i> My CV</a></li>
+                <li><a href="publications.html"><i class="fas fa-book"></i> Publications</a></li>
+                <li><a href="research.html"><i class="fas fa-flask"></i> Research</a></li>
+                <li><a href="assignments.html"><i class="fas fa-folder"></i> Assignments</a></li>
+                <li><a href="campusgives.html"><i class="fas fa-gift"></i> CampusGives Project</a></li>
+                <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+            </ul>
+        </nav>
+    </div>
 
-    <main>
-        <section id="about">
-            <h1>About Me</h1>
+    <div class="main-content">
+        <header>
+            <h1>Welcome to My Academic Profile</h1>
+            <p>Bridging academia and policy through governance reforms and institutional development.</p>
+        </header>
+        
+        <section class="profile-intro">
+            <img src="assets/profile.jpg" alt="JP Adjadeh" class="profile-pic">
             <p>John-Paul Adjadeh is a Ph.D. candidate in Political Science at The University of Texas at Dallas, specializing in governance and political institutions...</p>
+            <a href="about.html" class="btn">Read More</a>
         </section>
-        
-        <section id="cv">
-            <h1>My CV</h1>
-            <iframe src="cv.pdf" width="100%" height="600px"></iframe>
-        </section>
-        
-        <section id="publications">
-            <h1>Publications</h1>
-            <p>Coming soon...</p>
-        </section>
-        
-        <section id="research">
-            <h1>Research</h1>
-            <p>Exploring governance, legal systems, and state repression.</p>
-        </section>
-        
-        <section id="assignments">
-            <h1>Assignments</h1>
-            <a href="https://github.com/jpadjadeh/jpadjadeh.github.io/tree/main/Assignment">View Assignments</a>
-        </section>
-        
-        <section id="campusgives">
-            <h1>CampusGives Project</h1>
-            <a href="https://github.com/jpadjadeh/campusgives">Visit CampusGives</a>
-        </section>
-        
-        <section id="contact">
-            <h1>Contact</h1>
-            <p>Email: <a href="mailto:john-paul.adjadeh@utdallas.edu">john-paul.adjadeh@utdallas.edu</a></p>
-            <p>Email: <a href="mailto:jpadjadeh@gmail.com">jpadjadeh@gmail.com</a></p>
-            <p>LinkedIn: <a href="https://www.linkedin.com/in/john-paul-adjadeh">John-Paul Adjadeh</a></p>
-            <p>Facebook: <a href="https://www.facebook.com/JPAdjadeh">JP Adjadeh</a></p>
-            <p>Instagram: <a href="https://www.instagram.com/JPAdjadeh">JP Adjadeh</a></p>
-            <p>YouTube: <a href="https://www.youtube.com/@JPAdjadeh">JP Adjadeh</a></p>
-            <p>X: <a href="https://twitter.com/JPAdjadeh">@JPAdjadeh</a></p>
-        </section>
-    </main>
+    </div>
+
+    <footer>
+        <div class="social-links">
+            <a href="mailto:john-paul.adjadeh@utdallas.edu"><i class="fas fa-envelope"></i></a>
+            <a href="https://www.linkedin.com/in/John-Paul-Adjadeh"><i class="fab fa-linkedin"></i></a>
+            <a href="https://www.facebook.com/JPAdjadeh"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.instagram.com/JPAdjadeh"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.youtube.com/JPAdjadeh"><i class="fab fa-youtube"></i></a>
+            <a href="https://twitter.com/JPAdjadeh"><i class="fab fa-twitter"></i></a>
+        </div>
+    </footer>
 </body>
 </html>
