@@ -1,52 +1,70 @@
-body {
-    display: flex;
-    font-family: Arial, sans-serif;
-    background-color: #f5e6da;
-    margin: 0;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>John-Paul Adjadeh | Academic Profile</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="sidebar">
+        <div class="profile">
+            <img src="assets/profile.jpg" alt="JP Adjadeh" class="profile-pic">
+            <h2>John-Paul Adjadeh</h2>
+            <p>Ph.D. Candidate, UTD</p>
+        </div>
+        <ul class="menu">
+            <li><a href="#about">About Me</a></li>
+            <li><a href="#cv">My CV</a></li>
+            <li><a href="#publications">Publications</a></li>
+            <li><a href="#research">Research</a></li>
+            <li><a href="#assignments">Assignments</a></li>
+            <li><a href="#campusgives">CampusGives Project</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
 
-.sidebar {
-    width: 250px;
-    background-color: #3f3d56;
-    color: white;
-    padding: 20px;
-    height: 100vh;
-    position: fixed;
-}
-
-.sidebar h2 {
-    text-align: center;
-}
-
-.sidebar ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.sidebar ul li {
-    padding: 10px;
-    text-align: center;
-}
-
-.sidebar ul li a {
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
-}
-
-.content {
-    margin-left: 270px;
-    padding: 20px;
-}
-
-h1 {
-    color: #3f3d56;
-}
-
-.profile-pic {
-    width: 150px;
-    border-radius: 50%;
-    display: block;
-    margin: 10px auto;
-    border: 5px solid #3f3d56;
-}
+    <main>
+        <section id="about">
+            <h1>About Me</h1>
+            <p>John-Paul Adjadeh is a Ph.D. candidate in Political Science at The University of Texas at Dallas, specializing in governance and political institutions...</p>
+        </section>
+        
+        <section id="cv">
+            <h1>My CV</h1>
+            <iframe src="cv.pdf" width="100%" height="600px"></iframe>
+        </section>
+        
+        <section id="publications">
+            <h1>Publications</h1>
+            <p>Coming soon...</p>
+        </section>
+        
+        <section id="research">
+            <h1>Research</h1>
+            <p>Exploring governance, legal systems, and state repression.</p>
+        </section>
+        
+        <section id="assignments">
+            <h1>Assignments</h1>
+            <a href="https://github.com/jpadjadeh/jpadjadeh.github.io/tree/main/Assignment">View Assignments</a>
+        </section>
+        
+        <section id="campusgives">
+            <h1>CampusGives Project</h1>
+            <a href="https://github.com/jpadjadeh/campusgives">Visit CampusGives</a>
+        </section>
+        
+        <section id="contact">
+            <h1>Contact</h1>
+            <p>Email: <a href="mailto:john-paul.adjadeh@utdallas.edu">john-paul.adjadeh@utdallas.edu</a></p>
+            <p>Email: <a href="mailto:jpadjadeh@gmail.com">jpadjadeh@gmail.com</a></p>
+            <p>LinkedIn: <a href="https://www.linkedin.com/in/john-paul-adjadeh">John-Paul Adjadeh</a></p>
+            <p>Facebook: <a href="https://www.facebook.com/JPAdjadeh">JP Adjadeh</a></p>
+            <p>Instagram: <a href="https://www.instagram.com/JPAdjadeh">JP Adjadeh</a></p>
+            <p>YouTube: <a href="https://www.youtube.com/@JPAdjadeh">JP Adjadeh</a></p>
+            <p>X: <a href="https://twitter.com/JPAdjadeh">@JPAdjadeh</a></p>
+        </section>
+    </main>
+</body>
+</html>
