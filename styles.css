@@ -1,50 +1,47 @@
-/* General Page Styling */
+/* General Styling */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    display: flex;
-    background-color: #f4e6da; /* Nude shade */
+    background-color: #f5e8df; /* Nude theme */
 }
 
-/* Sidebar */
+/* Sidebar Styling */
 .sidebar {
     width: 260px;
-    background-color: #2d2b40;
+    background-color: #292841;
     color: white;
     position: fixed;
     height: 100%;
-    padding: 20px;
+    padding-top: 20px;
     text-align: center;
 }
 
-/* Profile Image */
 .sidebar .profile img {
-    width: 140px;
-    height: 140px;
+    width: 130px;
+    height: 130px;
     border-radius: 50%;
     border: 3px solid white;
-}
-
-/* Profile Name */
-.sidebar h2 {
-    font-size: 22px;
     margin-top: 10px;
-    font-weight: bold;
 }
 
-/* Email */
-.sidebar .email {
+.sidebar h2 {
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+/* Email Placement */
+.sidebar .emails {
     font-size: 14px;
-    color: #dcdcdc;
     margin-top: 5px;
+    line-height: 1.4;
 }
 
-/* Sidebar Menu */
+/* Sidebar Navigation */
 .sidebar ul {
     list-style: none;
     padding: 0;
-    margin-top: 20px;
+    margin-top: 15px;
 }
 
 .sidebar ul li {
@@ -53,20 +50,19 @@ body {
 }
 
 .sidebar ul li a {
-    text-decoration: none;
     color: white;
+    text-decoration: none;
     font-size: 16px;
     display: flex;
     align-items: center;
-    transition: color 0.3s;
 }
 
 .sidebar ul li a:hover {
-    color: #ffdd57;
+    color: #f5c396;
 }
 
 /* Social Media Icons */
-.social-media {
+.social-icons {
     position: absolute;
     bottom: 20px;
     left: 50%;
@@ -75,59 +71,54 @@ body {
     gap: 15px;
 }
 
-.social-media img {
-    width: 24px;
-    height: 24px;
+.social-icons a img {
+    width: 30px;
+    height: 30px;
     transition: transform 0.2s;
 }
 
-.social-media img:hover {
-    transform: scale(1.2);
+.social-icons a img:hover {
+    transform: scale(1.1);
+}
+
+/* Banner Styling */
+.banner {
+    width: 100%;
+    background-color: #292841;
+    color: white;
+    text-align: center;
+    padding: 30px 0;
+    font-size: 28px;
+    font-weight: bold;
 }
 
 /* Main Content */
-.main-content {
-    margin-left: 280px;
-    padding: 30px;
-    flex: 1;
-}
-
-/* Banner */
-.banner {
-    background-color: #2d2b40;
-    color: white;
-    text-align: center;
-    padding: 25px;
-    font-size: 28px;
-    font-weight: bold;
-    letter-spacing: 1px;
-}
-
-/* Intro Text */
-.intro-text {
-    text-align: center;
-    font-size: 18px;
-    margin-top: 20px;
-    color: #4a4a4a;
-}
-
-/* Content Sections */
-.content-section {
-    background: white;
+.content {
+    margin-left: 260px;
     padding: 20px;
-    margin: 20px auto;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    max-width: 800px;
 }
 
-.content-section h2 {
-    font-size: 20px;
-    color: #2d2b40;
+.content h2 {
+    font-size: 24px;
+    color: #292841;
+}
+
+/* Cards (for About Me, Publications, Research) */
+.card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+/* Fixing CampusGives & Assignments Links */
+#campusGives, #assignments {
     font-weight: bold;
+    color: #292841;
 }
 
-.content-section p {
-    font-size: 16px;
-    color: #444;
+#campusGives:hover, #assignments:hover {
+    color: #f5c396;
 }
+
