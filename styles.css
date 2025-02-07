@@ -128,3 +128,52 @@ footer .social-links {
 .social-links a:hover {
     color: #FFD700;  /* Gold hover effect */
 }
+/* About Me Page Styling */
+.about-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    background-color: #f5ebe0;
+    padding: 20px;
+}
+
+.about-card {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 800px;
+    text-align: left;
+    line-height: 1.6;
+}
+
+.about-card h1, .about-card h2 {
+    text-align: center;
+    color: #2D2D4D;
+}
+
+.about-card p {
+    color: #333;
+}
+
+.about-card strong {
+    color: #2D2D4D;
+}
+
+/* Back Button */
+.back-button {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    padding: 10px 15px;
+    background: #2D2D4D;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.back-button:hover {
+    background: #FFD700; /* Gold hover effect */
+    color: black;
+}
