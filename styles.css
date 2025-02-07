@@ -107,12 +107,28 @@ footer {
     width: 100%;
 }
 
-footer .social-links img {
-    width: 30px;
-    margin: 0 10px;
+/* Social Media Icons */
+footer .social-links {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 10px;
 }
 
-footer p {
-    margin-top: 10px;
-    font-size: 14px;
+footer .social-links a {
+    color: white;
+    font-size: 24px;
+    background: #444;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+footer .social-links a:hover {
+    background: #555;
 }
