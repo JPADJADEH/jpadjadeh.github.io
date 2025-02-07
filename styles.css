@@ -1,47 +1,33 @@
-/* General Page Styling */
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    display: flex;
-    background-color: #F5E8DD; /* Mild Nude Color */
-    color: #333;
+    background-color: #f5e6da; /* Mild nude background */
 }
 
-/* Sidebar Navigation */
 .sidebar {
     width: 250px;
-    background-color: #2C2C54; /* Dark navy */
-    color: white;
+    background-color: #2C2C54;
     position: fixed;
-    height: 100vh;
+    height: 100%;
     padding-top: 20px;
-    transition: width 0.3s;
-    overflow: hidden;
-}
-
-.sidebar:hover {
-    width: 270px;
-}
-
-.sidebar .profile {
     text-align: center;
-    margin-bottom: 20px;
 }
 
 .sidebar .profile img {
-    width: 120px;
-    height: 120px;
+    width: 140px;
+    height: 140px;
     border-radius: 50%;
     border: 3px solid white;
+    margin-bottom: 10px;
 }
 
 .sidebar h2 {
-    font-size: 20px;
-    margin: 10px 0;
+    color: white;
+    font-size: 22px;
+    margin-bottom: 20px;
 }
 
-/* Sidebar Menu */
 .sidebar ul {
     list-style: none;
     padding: 0;
@@ -56,65 +42,42 @@ body {
     color: white;
     text-decoration: none;
     font-size: 16px;
-    display: flex;
-    align-items: center;
-    transition: 0.3s;
+    display: block;
 }
 
-.sidebar ul li a i {
-    margin-right: 10px;
+.sidebar ul li a:hover {
+    color: #FFD700;
 }
 
-.sidebar ul li:hover {
-    background-color: #444;
-}
-
-/* Main Content */
-.main-content {
-    margin-left: 250px;
-    padding: 40px;
-    max-width: 800px;
-}
-
-.main-content h1 {
-    font-size: 28px;
+.content {
+    margin-left: 270px;
+    padding: 50px;
     text-align: center;
-    color: #2C2C54;
 }
 
-.main-content section {
-    background: white;
-    padding: 15px;
-    border-radius: 10px;
-    margin: 20px 0;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-/* Footer */
-footer {
-    width: 100%;
-    background: #E0C9A6; /* Nude shade */
-    text-align: center;
-    padding: 10px 0;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-}
-
-footer p {
-    margin: 5px 0;
-    font-size: 14px;
+h1 {
+    font-size: 32px;
     color: #333;
 }
 
-footer a {
-    color: #2C2C54;
-    margin: 0 10px;
-    font-size: 20px;
-    text-decoration: none;
-    transition: 0.3s;
+h2 {
+    font-size: 24px;
+    margin-top: 20px;
 }
 
-footer a:hover {
-    color: #444;
+footer {
+    background-color: #b89e89;
+    padding: 15px;
+    text-align: center;
+}
+
+.social-icons a {
+    margin: 0 10px;
+    color: #2C2C54;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.social-icons a:hover {
+    color: #FFD700;
 }
