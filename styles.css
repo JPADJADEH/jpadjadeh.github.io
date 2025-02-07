@@ -54,6 +54,23 @@ a:hover {
     display: block;
     margin: 20px auto; /* Center the image */
     border: 5px solid #007BFF;
+}  /* 👈 Closing } for profile-pic */
+
+/* Edit Button Styling */
+.edit-button {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    font-size: 14px;
+    color: #007BFF;
+    text-decoration: none;
 }
+
+.edit-button:hover {
+    text-decoration: underline;
+}
+
+/* CSS Styles (Other styles below this) */
+
 
 /* css styles */
