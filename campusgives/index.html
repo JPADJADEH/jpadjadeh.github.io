@@ -1,1 +1,1454 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>CampusGives Database – CampusGives</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">CampusGives</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="./index.html" aria-current="page"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#welcome-to-campusgives" id="toc-welcome-to-campusgives" class="nav-link active" data-scroll-target="#welcome-to-campusgives">Welcome to CampusGives</a></li>
+  <li><a href="#what-is-campusgives" id="toc-what-is-campusgives" class="nav-link" data-scroll-target="#what-is-campusgives">What is CampusGives?</a></li>
+  <li><a href="#available-categories" id="toc-available-categories" class="nav-link" data-scroll-target="#available-categories">Available Categories</a></li>
+  <li><a href="#available-academic-materials" id="toc-available-academic-materials" class="nav-link" data-scroll-target="#available-academic-materials">Available Academic Materials</a></li>
+  <li><a href="#available-electronic-accessories" id="toc-available-electronic-accessories" class="nav-link" data-scroll-target="#available-electronic-accessories">Available Electronic Accessories</a></li>
+  <li><a href="#available-furniture-dorm-essentials" id="toc-available-furniture-dorm-essentials" class="nav-link" data-scroll-target="#available-furniture-dorm-essentials">Available Furniture &amp; Dorm Essentials</a></li>
+  <li><a href="#available-clothing-personal-items" id="toc-available-clothing-personal-items" class="nav-link" data-scroll-target="#available-clothing-personal-items">Available Clothing &amp; Personal Items</a></li>
+  <li><a href="#available-transport-ride-sharing" id="toc-available-transport-ride-sharing" class="nav-link" data-scroll-target="#available-transport-ride-sharing">Available Transport &amp; Ride-Sharing</a></li>
+  <li><a href="#available-kitchen-food-supplies" id="toc-available-kitchen-food-supplies" class="nav-link" data-scroll-target="#available-kitchen-food-supplies">Available Kitchen &amp; Food Supplies</a></li>
+  <li><a href="#available-entertainment-hobby-items" id="toc-available-entertainment-hobby-items" class="nav-link" data-scroll-target="#available-entertainment-hobby-items">Available Entertainment &amp; Hobby Items</a></li>
+  <li><a href="#available-health-wellness-items" id="toc-available-health-wellness-items" class="nav-link" data-scroll-target="#available-health-wellness-items">Available Health &amp; Wellness Items</a></li>
+  <li><a href="#available-tools-miscellaneous" id="toc-available-tools-miscellaneous" class="nav-link" data-scroll-target="#available-tools-miscellaneous">Available Tools &amp; Miscellaneous</a></li>
+  <li><a href="#search-available-items" id="toc-search-available-items" class="nav-link" data-scroll-target="#search-available-items">Search Available Items</a></li>
+  <li><a href="#filter-items" id="toc-filter-items" class="nav-link" data-scroll-target="#filter-items">Filter Items</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">CampusGives Database</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="welcome-to-campusgives" class="level2">
+<h2 class="anchored" data-anchor-id="welcome-to-campusgives">Welcome to CampusGives</h2>
+<ul>
+<li><p>A platform for students to <strong>give &amp; receive free items</strong><br>
+</p></li>
+<li><p>Built by <strong>JP Adjadeh</strong></p></li>
+</ul>
+<hr>
+</section>
+<section id="what-is-campusgives" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-campusgives">What is CampusGives?</h2>
+<ul>
+<li>A <strong>student-driven</strong> platform for <strong>sharing</strong> items.<br>
+</li>
+<li>Allows students to <strong>list items they no longer need</strong>.<br>
+</li>
+<li>Helps students <strong>find free items</strong> from others.</li>
+</ul>
+</section>
+<section id="available-categories" class="level2">
+<h2 class="anchored" data-anchor-id="available-categories">Available Categories</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:400px; overflow-x: scroll; width:100%; ">
+<table class="table table-striped table-hover table-bordered caption-top table-sm small" data-quarto-postprocess="true">
+<caption>Available Categories</caption>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">category_id</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">category_name</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">description</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">total_items</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: left; width: 30%; font-weight: bold; color: blue !important;">Academic &amp; Study Materials</td>
+<td style="text-align: left; width: 40%;">Textbooks, notebooks, stationery, and study aids.</td>
+<td style="text-align: right; width: 15%;">120</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: left; width: 30%; font-weight: bold; color: blue !important;">Electronic &amp; Computer Accessories</td>
+<td style="text-align: left; width: 40%;">Laptops, keyboards, headphones, and cables.</td>
+<td style="text-align: right; width: 15%;">95</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: left; width: 30%; font-weight: bold; color: blue !important;">Furniture &amp; Dorm Essentials</td>
+<td style="text-align: left; width: 40%;">Desks, chairs, shelves, and lamps.</td>
+<td style="text-align: right; width: 15%;">85</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: left; width: 30%; font-weight: bold; color: blue !important;">Clothing &amp; Personal Items</td>
+<td style="text-align: left; width: 40%;">Clothes, shoes, bags, and accessories.</td>
+<td style="text-align: right; width: 15%;">110</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td style="text-align: left; width: 30%; font-weight: bold; color: blue !important;">Transport &amp; Ride-sharing</td>
+<td style="text-align: left; width: 40%;">Carpooling, bikes, skateboards, and ride services.</td>
+<td style="text-align: right; width: 15%;">60</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6</td>
+<td style="text-align: left; width: 30%; font-weight: bold; color: blue !important;">Arts &amp; Creative Supplies</td>
+<td style="text-align: left; width: 40%;">Paints, brushes, sketchbooks, and crafts.</td>
+<td style="text-align: right; width: 15%;">75</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">7</td>
+<td style="text-align: left; width: 30%; font-weight: bold; color: blue !important;">Kitchen &amp; Food Supplies</td>
+<td style="text-align: left; width: 40%;">Cookware, utensils, small appliances, and pantry items.</td>
+<td style="text-align: right; width: 15%;">100</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">8</td>
+<td style="text-align: left; width: 30%; font-weight: bold; color: blue !important;">Entertainment &amp; Hobby Items</td>
+<td style="text-align: left; width: 40%;">Board games, books, instruments, and sports gear.</td>
+<td style="text-align: right; width: 15%;">90</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">9</td>
+<td style="text-align: left; width: 30%; font-weight: bold; color: blue !important;">Health &amp; Wellness</td>
+<td style="text-align: left; width: 40%;">Fitness equipment, supplements, and medical aids.</td>
+<td style="text-align: right; width: 15%;">70</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">10</td>
+<td style="text-align: left; width: 30%; font-weight: bold; color: blue !important;">Tools &amp; Miscellaneous</td>
+<td style="text-align: left; width: 40%;">Toolkits, batteries, chargers, and home improvement items.</td>
+<td style="text-align: right; width: 15%;">80</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">11</td>
+<td style="text-align: left; width: 30%; font-weight: bold; color: blue !important;">Accommodation</td>
+<td style="text-align: left; width: 40%;">Listings for shared apartments, dorm swaps, and temporary stays.</td>
+<td style="text-align: right; width: 15%;">50</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+</div>
+</div>
+</section>
+<section id="available-academic-materials" class="level2">
+<h2 class="anchored" data-anchor-id="available-academic-materials">Available Academic Materials</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:700px; overflow-x: scroll; width:100%; ">
+<table class="table table-striped table-hover caption-top table-sm small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">Item ID</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Title</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Description</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">Quantity</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Condition</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Pickup Location</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: left; font-weight: bold; color: blue !important;">Calculus Textbook</td>
+<td style="text-align: left;">Advanced Calculus for Engineers</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Like New</td>
+<td style="text-align: left;">Main Library</td>
+<td style="text-align: left;">Available</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: left; font-weight: bold; color: blue !important;">Notebook Set</td>
+<td style="text-align: left;">Set of 5 ruled notebooks</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">New</td>
+<td style="text-align: left;">Student Center</td>
+<td style="text-align: left;">Available</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: left; font-weight: bold; color: blue !important;">Casio Calculator</td>
+<td style="text-align: left;">Casio FX-991EX Scientific Calculator</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Used</td>
+<td style="text-align: left;">Math Building</td>
+<td style="text-align: left;">Available</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: left; font-weight: bold; color: blue !important;">Whiteboard</td>
+<td style="text-align: left;">Assorted whiteboards for study rooms</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: left;">New</td>
+<td style="text-align: left;">Library</td>
+<td style="text-align: left;">Available</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td style="text-align: left; font-weight: bold; color: blue !important;">Highlighter Set</td>
+<td style="text-align: left;">Pack of 6 fluorescent highlighters</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: left;">Like New</td>
+<td style="text-align: left;">Bookstore</td>
+<td style="text-align: left;">Available</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+</div>
+</div>
+</section>
+<section id="available-electronic-accessories" class="level2">
+<h2 class="anchored" data-anchor-id="available-electronic-accessories">Available Electronic Accessories</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:700px; overflow-x: scroll; width:100%; ">
+<table class="table table-striped table-hover caption-top table-sm small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">Item ID</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Title</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Description</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">Quantity</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Condition</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Pickup Location</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: left; font-weight: bold; color: blue !important;">MacBook Pro</td>
+<td style="text-align: left;">Apple MacBook Pro 13-inch, 2020 model</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Like New</td>
+<td style="text-align: left;">Library Tech Center</td>
+<td style="text-align: left;">Available</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: left; font-weight: bold; color: blue !important;">Dell XPS Laptop</td>
+<td style="text-align: left;">Dell XPS 15, 16GB RAM, 512GB SSD</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Used</td>
+<td style="text-align: left;">Student Lounge</td>
+<td style="text-align: left;">Available</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: left; font-weight: bold; color: blue !important;">Mechanical Keyboard</td>
+<td style="text-align: left;">RGB Mechanical Keyboard - Red Switches</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">New</td>
+<td style="text-align: left;">Computer Lab</td>
+<td style="text-align: left;">Available</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: left; font-weight: bold; color: blue !important;">Wireless Mouse</td>
+<td style="text-align: left;">Logitech MX Master 3 Wireless Mouse</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">Like New</td>
+<td style="text-align: left;">Main Library</td>
+<td style="text-align: left;">Available</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td style="text-align: left; font-weight: bold; color: blue !important;">24-inch Monitor</td>
+<td style="text-align: left;">Full HD Dell 24-inch Monitor</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">Used</td>
+<td style="text-align: left;">Tech Lab</td>
+<td style="text-align: left;">Available</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6</td>
+<td style="text-align: left; font-weight: bold; color: blue !important;">USB-C Charger</td>
+<td style="text-align: left;">60W USB-C Power Adapter</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">New</td>
+<td style="text-align: left;">Library Checkout</td>
+<td style="text-align: left;">Available</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">7</td>
+<td style="text-align: left; font-weight: bold; color: blue !important;">Noise-Cancelling Headphones</td>
+<td style="text-align: left;">Sony WH-1000XM4</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Like New</td>
+<td style="text-align: left;">Library Study Room</td>
+<td style="text-align: left;">Available</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">8</td>
+<td style="text-align: left; font-weight: bold; color: blue !important;">External SSD</td>
+<td style="text-align: left;">Samsung T7 1TB Portable SSD</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">New</td>
+<td style="text-align: left;">Computer Center</td>
+<td style="text-align: left;">Available</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+</div>
+</div>
+</section>
+<section id="available-furniture-dorm-essentials" class="level2">
+<h2 class="anchored" data-anchor-id="available-furniture-dorm-essentials">Available Furniture &amp; Dorm Essentials</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:700px; overflow-x: scroll; width:100%; ">
+<table class="table table-striped table-hover caption-top table-sm small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">Item ID</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Title</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Description</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">Quantity</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Condition</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Pickup Location</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: left; font-weight: bold; color: blue !important;">Study Desk</td>
+<td style="text-align: left;">Wooden study desk with drawers</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">Like New</td>
+<td style="text-align: left;">Dormitory Block A</td>
+<td style="text-align: left;">Available</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: left; font-weight: bold; color: blue !important;">Ergonomic Chair</td>
+<td style="text-align: left;">Adjustable office chair with lumbar support</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Used</td>
+<td style="text-align: left;">Student Center</td>
+<td style="text-align: left;">Available</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: left; font-weight: bold; color: blue !important;">Bookshelf</td>
+<td style="text-align: left;">5-tier wooden bookshelf</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">New</td>
+<td style="text-align: left;">Library Storage</td>
+<td style="text-align: left;">Available</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: left; font-weight: bold; color: blue !important;">Plastic Storage Bins</td>
+<td style="text-align: left;">Set of 4 stackable bins</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">New</td>
+<td style="text-align: left;">Common Room</td>
+<td style="text-align: left;">Available</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td style="text-align: left; font-weight: bold; color: blue !important;">Desk Lamp</td>
+<td style="text-align: left;">LED desk lamp with adjustable brightness</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">Like New</td>
+<td style="text-align: left;">Main Library</td>
+<td style="text-align: left;">Available</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6</td>
+<td style="text-align: left; font-weight: bold; color: blue !important;">Memory Foam Pillow</td>
+<td style="text-align: left;">Soft memory foam pillow for dorm beds</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: left;">New</td>
+<td style="text-align: left;">Dormitory Block C</td>
+<td style="text-align: left;">Available</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">7</td>
+<td style="text-align: left; font-weight: bold; color: blue !important;">Curtains</td>
+<td style="text-align: left;">Set of 2 blackout curtains</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">Used</td>
+<td style="text-align: left;">Housing Office</td>
+<td style="text-align: left;">Available</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+</div>
+</div>
+</section>
+<section id="available-clothing-personal-items" class="level2">
+<h2 class="anchored" data-anchor-id="available-clothing-personal-items">Available Clothing &amp; Personal Items</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:700px; overflow-x: scroll; width:100%; ">
+<table class="table table-striped table-hover caption-top table-sm small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">Item ID</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Title</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Description</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Size</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">Quantity</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Condition</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Pickup Location</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: left; font-weight: bold; color: blue !important;">Hoodie</td>
+<td style="text-align: left;">Black oversized hoodie</td>
+<td style="text-align: left;">M</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">Like New</td>
+<td style="text-align: left;">Student Center</td>
+<td style="text-align: left;">Available</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: left; font-weight: bold; color: blue !important;">Sneakers</td>
+<td style="text-align: left;">Nike Air Max running shoes</td>
+<td style="text-align: left;">42</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Used</td>
+<td style="text-align: left;">Dormitory Block B</td>
+<td style="text-align: left;">Available</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: left; font-weight: bold; color: blue !important;">Backpack</td>
+<td style="text-align: left;">Laptop backpack with multiple compartments</td>
+<td style="text-align: left;">One Size</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">New</td>
+<td style="text-align: left;">Library</td>
+<td style="text-align: left;">Available</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: left; font-weight: bold; color: blue !important;">Winter Gloves</td>
+<td style="text-align: left;">Set of 2 wool gloves</td>
+<td style="text-align: left;">L</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">New</td>
+<td style="text-align: left;">Housing Office</td>
+<td style="text-align: left;">Available</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td style="text-align: left; font-weight: bold; color: blue !important;">Wristwatch</td>
+<td style="text-align: left;">Casio digital watch</td>
+<td style="text-align: left;">One Size</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">Used</td>
+<td style="text-align: left;">Bookstore</td>
+<td style="text-align: left;">Available</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6</td>
+<td style="text-align: left; font-weight: bold; color: blue !important;">Perfume</td>
+<td style="text-align: left;">100ml bottle of Dior Sauvage</td>
+<td style="text-align: left;">N/A</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">New</td>
+<td style="text-align: left;">Student Union</td>
+<td style="text-align: left;">Available</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">7</td>
+<td style="text-align: left; font-weight: bold; color: blue !important;">Belt</td>
+<td style="text-align: left;">Leather formal belt</td>
+<td style="text-align: left;">L</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">New</td>
+<td style="text-align: left;">Career Center</td>
+<td style="text-align: left;">Available</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+</div>
+</div>
+</section>
+<section id="available-transport-ride-sharing" class="level2">
+<h2 class="anchored" data-anchor-id="available-transport-ride-sharing">Available Transport &amp; Ride-Sharing</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:700px; overflow-x: scroll; width:100%; ">
+<table class="table table-striped table-hover caption-top table-sm small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">Item ID</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Title</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Description</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Type</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Availability</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Pickup Location</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: left; font-weight: bold; color: blue !important;">Mountain Bike</td>
+<td style="text-align: left;">26-inch Trek mountain bike with gears</td>
+<td style="text-align: left;">Bicycle</td>
+<td style="text-align: left;">Anytime</td>
+<td style="text-align: left;">Student Parking Lot A</td>
+<td style="text-align: left;">Available</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: left; font-weight: bold; color: blue !important;">Electric Scooter</td>
+<td style="text-align: left;">Xiaomi Mi electric scooter</td>
+<td style="text-align: left;">Scooter</td>
+<td style="text-align: left;">Weekends only</td>
+<td style="text-align: left;">Dormitory Block C</td>
+<td style="text-align: left;">Available</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: left; font-weight: bold; color: blue !important;">Carpool Seat</td>
+<td style="text-align: left;">Morning ride to campus from Downtown</td>
+<td style="text-align: left;">Carpool</td>
+<td style="text-align: left;">Weekdays 7AM</td>
+<td style="text-align: left;">Bus Stop A</td>
+<td style="text-align: left;">Available</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: left; font-weight: bold; color: blue !important;">Skateboard</td>
+<td style="text-align: left;">Longboard, perfect for campus rides</td>
+<td style="text-align: left;">Skateboard</td>
+<td style="text-align: left;">Anytime</td>
+<td style="text-align: left;">Library Entrance</td>
+<td style="text-align: left;">Available</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td style="text-align: left; font-weight: bold; color: blue !important;">Bus Pass</td>
+<td style="text-align: left;">Monthly student bus pass (Metro Transit)</td>
+<td style="text-align: left;">Bus Pass</td>
+<td style="text-align: left;">Available for exchange</td>
+<td style="text-align: left;">Student Union Office</td>
+<td style="text-align: left;">Available</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6</td>
+<td style="text-align: left; font-weight: bold; color: blue !important;">Parking Permit</td>
+<td style="text-align: left;">Valid parking permit for Lot B, valid until May</td>
+<td style="text-align: left;">Parking Permit</td>
+<td style="text-align: left;">Expires in May</td>
+<td style="text-align: left;">Security Office</td>
+<td style="text-align: left;">Available</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+</div>
+</div>
+</section>
+<section id="available-kitchen-food-supplies" class="level2">
+<h2 class="anchored" data-anchor-id="available-kitchen-food-supplies">Available Kitchen &amp; Food Supplies</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:700px; overflow-x: scroll; width:100%; ">
+<table class="table table-striped table-hover caption-top table-sm small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">Item ID</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Title</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Description</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">Quantity</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Condition</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Pickup Location</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: left; font-weight: bold; color: blue !important;">Microwave</td>
+<td style="text-align: left;">Compact dorm-size microwave</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Like New</td>
+<td style="text-align: left;">Dorm Block A</td>
+<td style="text-align: left;">Available</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: left; font-weight: bold; color: blue !important;">Cooking Pot Set</td>
+<td style="text-align: left;">Stainless steel cookware set with lids</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">New</td>
+<td style="text-align: left;">Student Center Kitchen</td>
+<td style="text-align: left;">Available</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: left; font-weight: bold; color: blue !important;">Reusable Water Bottles</td>
+<td style="text-align: left;">Set of 5 BPA-free reusable bottles</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">New</td>
+<td style="text-align: left;">Campus Gym</td>
+<td style="text-align: left;">Available</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: left; font-weight: bold; color: blue !important;">Canned Food Pack</td>
+<td style="text-align: left;">Assorted non-perishable food items</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: left;">New</td>
+<td style="text-align: left;">Food Bank Room</td>
+<td style="text-align: left;">Available</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td style="text-align: left; font-weight: bold; color: blue !important;">Mini Fridge</td>
+<td style="text-align: left;">Small dorm refrigerator for food storage</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Used</td>
+<td style="text-align: left;">Housing Office</td>
+<td style="text-align: left;">Available</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6</td>
+<td style="text-align: left; font-weight: bold; color: blue !important;">Coffee Maker</td>
+<td style="text-align: left;">Single-serve Keurig coffee machine</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Like New</td>
+<td style="text-align: left;">Library Lounge</td>
+<td style="text-align: left;">Available</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+</div>
+</div>
+</section>
+<section id="available-entertainment-hobby-items" class="level2">
+<h2 class="anchored" data-anchor-id="available-entertainment-hobby-items">Available Entertainment &amp; Hobby Items</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:700px; overflow-x: scroll; width:100%; ">
+<table class="table table-striped table-hover caption-top table-sm small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">Item ID</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Title</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Description</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">Quantity</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Condition</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Pickup Location</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: left; font-weight: bold; color: blue !important;">Chess Set</td>
+<td style="text-align: left;">Classic wooden chessboard with pieces</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">Like New</td>
+<td style="text-align: left;">Student Lounge</td>
+<td style="text-align: left;">Available</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: left; font-weight: bold; color: blue !important;">Acoustic Guitar</td>
+<td style="text-align: left;">Yamaha F310 acoustic guitar</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Used</td>
+<td style="text-align: left;">Music Room</td>
+<td style="text-align: left;">Available</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: left; font-weight: bold; color: blue !important;">Basketball</td>
+<td style="text-align: left;">Official NBA-size basketball</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">New</td>
+<td style="text-align: left;">Sports Center</td>
+<td style="text-align: left;">Available</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: left; font-weight: bold; color: blue !important;">PlayStation 4</td>
+<td style="text-align: left;">PS4 console with two controllers</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Like New</td>
+<td style="text-align: left;">Gaming Hub</td>
+<td style="text-align: left;">Available</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td style="text-align: left; font-weight: bold; color: blue !important;">Comic Book Set</td>
+<td style="text-align: left;">Marvel and DC comics collection</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">New</td>
+<td style="text-align: left;">Library Reading Room</td>
+<td style="text-align: left;">Available</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6</td>
+<td style="text-align: left; font-weight: bold; color: blue !important;">Digital Camera</td>
+<td style="text-align: left;">Canon EOS 200D DSLR camera</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Used</td>
+<td style="text-align: left;">Media Lab</td>
+<td style="text-align: left;">Available</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">7</td>
+<td style="text-align: left; font-weight: bold; color: blue !important;">Painting Set</td>
+<td style="text-align: left;">Acrylic paints, brushes, and sketchbook</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">New</td>
+<td style="text-align: left;">Art Studio</td>
+<td style="text-align: left;">Available</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+</div>
+</div>
+</section>
+<section id="available-health-wellness-items" class="level2">
+<h2 class="anchored" data-anchor-id="available-health-wellness-items">Available Health &amp; Wellness Items</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:700px; overflow-x: scroll; width:100%; ">
+<table class="table table-striped table-hover caption-top table-sm small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">Item ID</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Title</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Description</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">Quantity</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Condition</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Pickup Location</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: left; font-weight: bold; color: blue !important;">Yoga Mat</td>
+<td style="text-align: left;">Non-slip yoga mat for exercise</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: left;">New</td>
+<td style="text-align: left;">Gym</td>
+<td style="text-align: left;">Available</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: left; font-weight: bold; color: blue !important;">Dumbbell Set</td>
+<td style="text-align: left;">Pair of 5kg dumbbells</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">Used</td>
+<td style="text-align: left;">Fitness Center</td>
+<td style="text-align: left;">Available</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: left; font-weight: bold; color: blue !important;">First Aid Kit</td>
+<td style="text-align: left;">Comprehensive first aid kit</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: left;">New</td>
+<td style="text-align: left;">Health Center</td>
+<td style="text-align: left;">Available</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: left; font-weight: bold; color: blue !important;">Vitamin C Supplements</td>
+<td style="text-align: left;">500mg tablets, 100 count</td>
+<td style="text-align: right;">15</td>
+<td style="text-align: left;">New</td>
+<td style="text-align: left;">Pharmacy</td>
+<td style="text-align: left;">Available</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td style="text-align: left; font-weight: bold; color: blue !important;">Face Masks</td>
+<td style="text-align: left;">Pack of 50 disposable masks</td>
+<td style="text-align: right;">30</td>
+<td style="text-align: left;">New</td>
+<td style="text-align: left;">Student Clinic</td>
+<td style="text-align: left;">Available</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6</td>
+<td style="text-align: left; font-weight: bold; color: blue !important;">Toiletry Set</td>
+<td style="text-align: left;">Shampoo, conditioner, soap, toothpaste</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: left;">New</td>
+<td style="text-align: left;">Dorm Reception</td>
+<td style="text-align: left;">Available</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+</div>
+</div>
+</section>
+<section id="available-tools-miscellaneous" class="level2">
+<h2 class="anchored" data-anchor-id="available-tools-miscellaneous">Available Tools &amp; Miscellaneous</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:700px; overflow-x: scroll; width:100%; ">
+<table class="table table-striped table-hover caption-top table-sm small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">Item ID</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Title</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Description</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">Quantity</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Condition</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Pickup Location</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: left; font-weight: bold; color: blue !important;">Toolbox Set</td>
+<td style="text-align: left;">Complete set of wrenches, screwdrivers, and pliers</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">Like New</td>
+<td style="text-align: left;">Workshop</td>
+<td style="text-align: left;">Available</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: left; font-weight: bold; color: blue !important;">Rechargeable Batteries</td>
+<td style="text-align: left;">Pack of 4 AA rechargeable batteries</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: left;">New</td>
+<td style="text-align: left;">Electronics Lab</td>
+<td style="text-align: left;">Available</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: left; font-weight: bold; color: blue !important;">Extension Cord</td>
+<td style="text-align: left;">6-outlet power strip with surge protection</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">New</td>
+<td style="text-align: left;">Student Union</td>
+<td style="text-align: left;">Available</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: left; font-weight: bold; color: blue !important;">Bike Repair Kit</td>
+<td style="text-align: left;">Patch kit, tire levers, mini pump</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: left;">New</td>
+<td style="text-align: left;">Bike Rack Area</td>
+<td style="text-align: left;">Available</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td style="text-align: left; font-weight: bold; color: blue !important;">LED Light Bulbs</td>
+<td style="text-align: left;">Energy-saving LED bulbs (Pack of 4)</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: left;">New</td>
+<td style="text-align: left;">Housing Office</td>
+<td style="text-align: left;">Available</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6</td>
+<td style="text-align: left; font-weight: bold; color: blue !important;">Phone Charger</td>
+<td style="text-align: left;">USB-C fast charger</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: left;">Like New</td>
+<td style="text-align: left;">Library Charging Station</td>
+<td style="text-align: left;">Available</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+</div>
+</div>
+</section>
+<section id="search-available-items" class="level2">
+<h2 class="anchored" data-anchor-id="search-available-items">Search Available Items</h2>
+</section>
+<section id="filter-items" class="level2">
+<h2 class="anchored" data-anchor-id="filter-items">Filter Items</h2>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
