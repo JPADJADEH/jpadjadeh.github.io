@@ -225,3 +225,34 @@ footer .social-links {
 .back-button:hover {
     background: #1a1a33;
 }
+@media (max-width: 900px) {  
+    .sidebar {
+        width: 100%;  /* Make sidebar full width on smaller screens */
+        height: auto;
+        position: relative;  /* Prevents it from hiding content */
+        padding-bottom: 20px;  
+    }
+
+    .sidebar ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;  
+        padding: 0;
+    }
+
+    .sidebar ul li {
+        padding: 10px;  
+        font-size: 14px;  
+    }
+
+    .sidebar ul li a {
+        font-size: 14px;
+        padding: 8px;
+        text-align: center;
+    }
+
+    .main-content {
+        margin-left: 0;  /* Ensures content is fully visible */
+        padding: 15px;
+    }
+}
