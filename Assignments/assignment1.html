@@ -4,16 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Assignment 1</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+    <style>
+        #pdf-viewer {
+            width: 100%;
+            height: 600px;
+            border: 1px solid #ccc;
+        }
+    </style>
 </head>
 <body>
     <h2>Assignment 1</h2>
-    
-    <!-- Embed PDF using Google Docs Viewer -->
-    <iframe 
-        src="https://docs.google.com/gview?url=https://raw.githubusercontent.com/JPADJADEH/jpadjadeh.github.io/main/Assignments/ADJADEH_ASSIGNMENT_1.pdf&embedded=true" 
-        width="100%" 
-        height="600px">
-    </iframe>
-    
+    <canvas id="pdf-viewer"></canvas>
+
+    <script>
+        const url = "https://raw.githubusercontent.com/JPADJADEH/jpadjadeh.github.io/main/Assignments/ADJADEH_ASSIGNMENT_1.pdf";
+
+        let pdfjsLib = window['pdfjs-dist/build/pdf'];
+        pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js";
+
+        pdfjsLib.getDocument(url).promise.then(pdf => {
+            pdf.getPage(1).then(page => {
+                let scale = 1.5;
+                let viewport = page.getViewport({ scale });
+
+                let canvas = document.getElementById('pdf-viewer');
+                let context = canvas.getContext('2d');
+                canvas.height = viewport.height;
+                canvas.width = viewport.width;
+
+                let renderContext = {
+                    canvasContext: context,
+                    viewport: viewport
+                };
+                page.render(renderContext);
+            });
+        });
+    </script>
 </body>
 </html>
