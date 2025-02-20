@@ -294,3 +294,36 @@ footer .social-links {
 .dropdown:hover .dropdown-menu {
     display: block;
 }
+/* Ensure dropdown menu is properly positioned and scrollable */
+.dropdown-menu {
+    display: none; /* Hide by default */
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+    z-index: 1000;
+    max-height: 300px; /* Limits height to prevent overflow */
+    overflow-y: auto; /* Enables scrolling */
+}
+
+/* Show dropdown when hovered */
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+/* Style dropdown items */
+.dropdown-menu li {
+    padding: 10px;
+    display: block;
+    white-space: nowrap;
+}
+
+.dropdown-menu li a {
+    text-decoration: none;
+    color: #333;
+    display: block;
+}
+
+.dropdown-menu li:hover {
+    background-color: #ddd;
+}
