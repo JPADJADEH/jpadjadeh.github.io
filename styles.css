@@ -16,6 +16,7 @@ body {
     left: 0;
     top: 0;
     padding-top: 20px;
+    overflow-y: auto; /* Allows scrolling in case of many assignments */
 }
 
 .sidebar .profile {
@@ -117,145 +118,18 @@ footer .social-links {
 
 /* Footer Social Media Links */
 .social-links a {
-    color: white;  /* Icons are now visible */
-    font-size: 28px;  /* Slightly larger for better visibility */
-    margin: 0 12px;   /* Space between icons */
+    color: white;
+    font-size: 28px;
+    margin: 0 12px;
     text-decoration: none;
     transition: color 0.3s ease-in-out;
 }
 
 /* Brighter hover effect */
 .social-links a:hover {
-    color: #FFD700;  /* Gold hover effect */
-}
-/* About Me Page Styling */
-.about-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 80vh;
-    background-color: #f5ebe0;
-    padding: 20px;
+    color: #FFD700;
 }
 
-.about-card {
-    background: white;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    max-width: 800px;
-    text-align: left;
-    line-height: 1.6;
-}
-
-.about-card h1, .about-card h2 {
-    text-align: center;
-    color: #2D2D4D;
-}
-
-.about-card p {
-    color: #333;
-}
-
-.about-card strong {
-    color: #2D2D4D;
-}
-
-/* Back Button */
-.back-button {
-    display: block;
-    text-align: center;
-    margin-top: 20px;
-    padding: 10px 15px;
-    background: #2D2D4D;
-    color: white;
-    border-radius: 5px;
-    text-decoration: none;
-}
-
-.back-button:hover {
-    background: #FFD700; /* Gold hover effect */
-    color: black;
-}
-.container {
-    max-width: 800px;
-    margin: 40px auto;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.section-title {
-    text-align: center;
-    font-size: 24px;
-    font-weight: bold;
-}
-
-.cv-section {
-    background: white;
-    padding: 15px;
-    margin: 10px 0;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.cv-section h3 {
-    font-size: 18px;
-    font-weight: bold;
-}
-
-.cv-section p {
-    font-size: 16px;
-    line-height: 1.5;
-}
-
-.back-button {
-    display: block;
-    text-align: center;
-    margin-top: 20px;
-    padding: 10px;
-    background: #2D2D4D;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    font-size: 16px;
-}
-
-.back-button:hover {
-    background: #1a1a33;
-}
-@media (max-width: 900px) {  
-    .sidebar {
-        width: 100%;  /* Make sidebar full width on smaller screens */
-        height: auto;
-        position: relative;  /* Prevents it from hiding content */
-        padding-bottom: 20px;  
-    }
-
-    .sidebar ul {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;  
-        padding: 0;
-    }
-
-    .sidebar ul li {
-        padding: 10px;  
-        font-size: 14px;  
-    }
-
-    .sidebar ul li a {
-        font-size: 14px;
-        padding: 8px;
-        text-align: center;
-    }
-
-    .main-content {
-        margin-left: 0;  /* Ensures content is fully visible */
-        padding: 15px;
-    }
-}
 /* Dropdown Menu Styling */
 .dropdown {
     position: relative;
@@ -272,8 +146,15 @@ footer .social-links {
     left: 0;
     border-radius: 5px;
     width: 200px;
+    z-index: 1000; /* Ensures it appears above other content */
 }
 
+/* Ensures dropdown remains visible when hovered */
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+/* Styling for dropdown items */
 .dropdown-menu li {
     padding: 10px;
 }
@@ -283,47 +164,52 @@ footer .social-links {
     text-decoration: none;
     color: white;
     padding: 10px;
+    white-space: nowrap; /* Prevents text from breaking */
 }
 
+/* Hover effect for dropdown items */
 .dropdown-menu a:hover {
-    background-color: #FFD700; /* Gold hover effect */
+    background-color: #FFD700;
     color: #2D2D4D;
 }
 
-/* Show dropdown on hover */
-.dropdown:hover .dropdown-menu {
-    display: block;
-}
-/* Ensure dropdown menu is properly positioned and scrollable */
-.dropdown-menu {
-    display: none; /* Hide by default */
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 200px;
-    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
-    z-index: 1000;
-    max-height: 300px; /* Limits height to prevent overflow */
-    overflow-y: auto; /* Enables scrolling */
-}
+/* Responsive Design for Smaller Screens */
+@media (max-width: 900px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        padding-bottom: 20px;
+    }
 
-/* Show dropdown when hovered */
-.dropdown:hover .dropdown-menu {
-    display: block;
-}
+    .sidebar ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 0;
+    }
 
-/* Style dropdown items */
-.dropdown-menu li {
-    padding: 10px;
-    display: block;
-    white-space: nowrap;
-}
+    .sidebar ul li {
+        padding: 10px;
+        font-size: 14px;
+    }
 
-.dropdown-menu li a {
-    text-decoration: none;
-    color: #333;
-    display: block;
-}
+    .sidebar ul li a {
+        font-size: 14px;
+        padding: 8px;
+        text-align: center;
+    }
 
-.dropdown-menu li:hover {
-    background-color: #ddd;
+    .main-content {
+        margin-left: 0;
+        padding: 15px;
+    }
+
+    /* Make dropdown menu fully visible on smaller screens */
+    .dropdown-menu {
+        position: relative;
+        width: 100%;
+        max-height: none;
+        overflow-y: visible;
+    }
 }
