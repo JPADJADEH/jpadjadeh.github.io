@@ -2,48 +2,20 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>JP Adjadeh – Student Portfolio</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #f9f9f9;
-      padding: 2em;
-      color: #333;
-    }
-    .container {
-      max-width: 800px;
-      margin: auto;
-      background: white;
-      padding: 2em;
-      border-radius: 10px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.05);
-    }
-    h1 {
-      color: #003366;
-    }
-    ul {
-      list-style-type: none;
-      padding-left: 0;
-    }
-    li {
-      margin: 10px 0;
-    }
-    a {
-      color: #007acc;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JPADJADEH – Portfolio</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://kit.fontawesome.com/a2e0e6ad66.js" crossorigin="anonymous"></script>
 </head>
 <body>
-  <div class="container">
-    <h1>JP Adjadeh – Student Portfolio</h1>
-    <p>Welcome! This site hosts my coursework, research proposals, and projects like CampusGives. Browse below:</p>
 
-    <h2>📄 Assignments</h2>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="profile">
+      <img src="assets/profile_new.jpg" alt="Profile Photo" />
+      <h2>JPADJADEH</h2>
+    </div>
+    <div class="email">jpadjadeh@email.com</div>
     <ul>
       <li><a href="assignment1.html">Assignment 1</a></li>
       <li><a href="assignment2.html">Assignment 2</a></li>
@@ -51,15 +23,33 @@
       <li><a href="assignment4.html">Assignment 4</a></li>
       <li><a href="assignment5.html">Assignment 5</a></li>
       <li><a href="assignment6.html">Assignment 6</a></li>
-    </ul>
-
-    <h2>📚 Projects</h2>
-    <ul>
-      <li><a href="proposal.html">Research Proposal</a></li>
+      <li><a href="proposal.html">Proposal</a></li>
       <li><a href="proposal_presentation.html">Proposal Presentation</a></li>
-      <li><a href="cv.html">Curriculum Vitae</a></li>
-      <li><a href="campusgives.html">🌱 CampusGives – Student Donation App</a></li>
+      <li><a href="campusgives/index.html">🌐 CampusGives App</a></li>
     </ul>
   </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <div class="banner">Welcome to My Portfolio</div>
+    <div class="subtitle">Explore my academic work and community projects</div>
+
+    <div class="content-box">
+      <p>Hello and welcome! I'm JPADJADEH, a student passionate about learning, sharing knowledge, and building tools that make a difference. This page links to my assignments, research proposals, and CampusGives—my student-driven donation platform.</p>
+
+      <p>Feel free to browse around and connect with me!</p>
+    </div>
+  </div>
+
+  <!-- Footer with Social Media -->
+  <footer>
+    <div class="social-links">
+      <a href="https://linkedin.com/in/yourprofile" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <a href="https://twitter.com/yourhandle" target="_blank"><i class="fab fa-twitter"></i></a>
+      <a href="mailto:jpadjadeh@email.com"><i class="fas fa-envelope"></i></a>
+    </div>
+    <p>© 2025 JPADJADEH</p>
+  </footer>
+
 </body>
 </html>
