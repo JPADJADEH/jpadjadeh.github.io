@@ -13,6 +13,7 @@
       color: #333;
       line-height: 1.6;
     }
+
     .container {
       max-width: 800px;
       margin: auto;
@@ -21,17 +22,21 @@
       border-radius: 8px;
       box-shadow: 0 0 20px rgba(0,0,0,0.1);
     }
-    img {
-      max-width: 100%;
-      height: auto;
+
+    .container img {
+      width: 100%;
+      max-height: 320px;
+      object-fit: cover;
       border-radius: 8px;
       margin-bottom: 1.5em;
     }
+
     h1 {
       color: #0066cc;
-      margin-top: 0.5em;
+      margin-bottom: 1em;
     }
-    a.button {
+
+    .button {
       display: inline-block;
       padding: 12px 24px;
       background-color: #28a745;
@@ -39,11 +44,21 @@
       border-radius: 6px;
       text-decoration: none;
       font-size: 16px;
-      margin-top: 1em;
+      margin-top: 1.5em;
       margin-bottom: 2em;
     }
-    a.button:hover {
+
+    .button:hover {
       background-color: #218838;
+    }
+
+    .button-wrap {
+      text-align: center;
+      margin-top: 2em;
+    }
+
+    .second-image {
+      margin-top: 2em;
     }
   </style>
 </head>
@@ -52,19 +67,24 @@
     <img src="pexels-julia-m-cameron-6994963.jpg" alt="Students holding a donation box" />
 
     <h1>CampusGives – Free Academic Essentials for Students</h1>
+
     <p>
       Higher education is often seen as a pathway to opportunity, yet many students face significant barriers due to financial insecurity. While tuition and housing are major expenses, the hidden costs of textbooks, electronics, study materials, and dorm essentials often go unnoticed.
     </p>
+
     <p>
       <strong>CampusGives</strong> is a student-driven donation app built to bridge this gap. It allows students to list items they no longer need and for others to access these resources at no cost—reducing financial stress and helping create a more equitable academic environment.
     </p>
+
     <p>
       From laptops and calculators to lamps and kitchenware, this platform connects students in need with generous peers looking to give back.
     </p>
 
-    <a class="button" href="https://jpadjadeh.shinyapps.io/CampusGives/" target="_blank">🌐 Launch CampusGives App</a>
+    <div class="button-wrap">
+      <a class="button" href="https://jpadjadeh.shinyapps.io/CampusGives/" target="_blank">🌐 Launch CampusGives App</a>
+    </div>
 
-    <img src="pexels-rdne-7464498.jpg" alt="Students organizing donated goods" />
+    <img class="second-image" src="pexels-rdne-7464498.jpg" alt="Students organizing donated goods" />
   </div>
 </body>
 </html>
