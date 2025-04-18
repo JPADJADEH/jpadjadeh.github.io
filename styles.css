@@ -1,22 +1,24 @@
 /* General Styling */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', sans-serif;
     margin: 0;
     padding: 0;
     background-color: #F4EDE4;
+    color: #2D2D4D;
 }
 
 /* Sidebar Styling */
 .sidebar {
     width: 250px;
     height: 100vh;
-    background-color: #2D2D4D;
+    background: linear-gradient(to bottom, #2D2D4D, #3E4A89);
     color: white;
     position: fixed;
     left: 0;
     top: 0;
     padding-top: 20px;
-    overflow-y: auto; /* Allows scrolling in case of many assignments */
+    overflow-y: auto;
+    box-shadow: 2px 0 12px rgba(0, 0, 0, 0.1);
 }
 
 .sidebar .profile {
@@ -32,15 +34,16 @@ body {
 }
 
 .sidebar .profile h2 {
-    font-size: 20px;
-    margin: 10px 0;
+    font-size: 22px;
+    margin: 12px 0;
+    letter-spacing: 1px;
 }
 
 .sidebar .email {
-    font-size: 14px;
+    font-size: 13px;
     text-align: center;
-    color: #CFCFCF;
-    margin-bottom: 10px;
+    color: #CCCCCC;
+    margin-bottom: 15px;
 }
 
 .sidebar ul {
@@ -49,8 +52,7 @@ body {
 }
 
 .sidebar ul li {
-    padding: 12px;
-    text-align: left;
+    padding: 12px 20px;
 }
 
 .sidebar ul li a {
@@ -58,43 +60,48 @@ body {
     color: white;
     font-size: 16px;
     display: block;
+    transition: all 0.3s ease;
 }
 
 .sidebar ul li a:hover {
     background-color: #FFD700;
     color: #2D2D4D;
     font-weight: bold;
+    border-radius: 4px;
 }
 
 /* Main Content */
 .main-content {
     margin-left: 270px;
-    padding: 20px;
+    padding: 30px 40px;
 }
 
 .banner {
-    width: 100%;
-    background-color: #2D2D4D;
+    background: linear-gradient(to right, #2D2D4D, #3E4A89);
     color: white;
     text-align: center;
-    padding: 20px;
-    font-size: 26px;
+    padding: 40px 20px;
+    font-size: 30px;
     font-weight: bold;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    border-radius: 0 0 10px 10px;
 }
 
 .subtitle {
     text-align: center;
     font-size: 18px;
-    color: #555;
-    margin-top: 10px;
+    color: #666;
+    margin-top: 15px;
 }
 
 .content-box {
     background: white;
-    padding: 20px;
-    margin: 20px 0;
-    border-radius: 8px;
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+    margin: 30px auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
 }
 
 /* Footer */
@@ -106,9 +113,9 @@ footer {
     position: fixed;
     bottom: 0;
     width: 100%;
+    font-size: 14px;
 }
 
-/* Social Media Icons */
 footer .social-links {
     display: flex;
     justify-content: center;
@@ -116,18 +123,17 @@ footer .social-links {
     margin-bottom: 10px;
 }
 
-/* Footer Social Media Links */
 .social-links a {
     color: white;
     font-size: 28px;
     margin: 0 12px;
     text-decoration: none;
-    transition: color 0.3s ease-in-out;
+    transition: color 0.3s ease-in-out, transform 0.2s;
 }
 
-/* Brighter hover effect */
 .social-links a:hover {
     color: #FFD700;
+    transform: scale(1.1);
 }
 
 /* Dropdown Menu Styling */
@@ -146,15 +152,14 @@ footer .social-links {
     left: 0;
     border-radius: 5px;
     width: 200px;
-    z-index: 1000; /* Ensures it appears above other content */
+    z-index: 1000;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
 }
 
-/* Ensures dropdown remains visible when hovered */
 .dropdown:hover .dropdown-menu {
     display: block;
 }
 
-/* Styling for dropdown items */
 .dropdown-menu li {
     padding: 10px;
 }
@@ -164,16 +169,15 @@ footer .social-links {
     text-decoration: none;
     color: white;
     padding: 10px;
-    white-space: nowrap; /* Prevents text from breaking */
+    white-space: nowrap;
 }
 
-/* Hover effect for dropdown items */
 .dropdown-menu a:hover {
     background-color: #FFD700;
     color: #2D2D4D;
 }
 
-/* Responsive Design for Smaller Screens */
+/* Responsive Design */
 @media (max-width: 900px) {
     .sidebar {
         width: 100%;
@@ -186,7 +190,6 @@ footer .social-links {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        padding: 0;
     }
 
     .sidebar ul li {
@@ -202,10 +205,9 @@ footer .social-links {
 
     .main-content {
         margin-left: 0;
-        padding: 15px;
+        padding: 20px;
     }
 
-    /* Make dropdown menu fully visible on smaller screens */
     .dropdown-menu {
         position: relative;
         width: 100%;
