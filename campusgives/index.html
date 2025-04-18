@@ -25,10 +25,10 @@
 
     .container img {
       width: 100%;
-      max-height: 320px;
-      object-fit: cover;
+      height: auto; /* allow full natural height */
       border-radius: 8px;
       margin-bottom: 1.5em;
+      object-fit: contain; /* ensure image scales without cropping */
     }
 
     h1 {
@@ -64,7 +64,7 @@
 </head>
 <body>
   <div class="container">
-    <img src="pexels-julia-m-cameron-6994963.jpeg" alt="Students holding a donation box" />
+    <img src="pexels-julia-m-cameron-6994963.jpg" alt="Students holding a donation box" />
 
     <h1>CampusGives – Free Academic Essentials for Students</h1>
 
@@ -84,7 +84,7 @@
       <a class="button" href="https://jpadjadeh.shinyapps.io/CampusGives/" target="_blank">🌐 Launch CampusGives App</a>
     </div>
 
-    <img class="second-image" src="pexels-rdne-7464498.jpeg" alt="Students organizing donated goods" />
+    <img class="second-image" src="pexels-rdne-7464498.jpg" alt="Students organizing donated goods" />
   </div>
 </body>
 </html>
