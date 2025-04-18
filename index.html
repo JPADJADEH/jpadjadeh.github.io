@@ -3,53 +3,59 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>JPADJADEH – Portfolio</title>
-  <link rel="stylesheet" href="styles.css" />
-  <script src="https://kit.fontawesome.com/a2e0e6ad66.js" crossorigin="anonymous"></script>
+  <title>JPADJADEH | Portfolio Hub</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
-
-  <!-- Sidebar -->
   <div class="sidebar">
     <div class="profile">
-      <img src="assets/profile_new.jpg" alt="Profile Photo" />
+      <img src="assets/profile_new.jpg" alt="Profile Picture">
       <h2>JPADJADEH</h2>
+      <div class="email">jpadjadeh@example.com</div>
     </div>
-    <div class="email">jpadjadeh@email.com</div>
     <ul>
-      <li><a href="assignment1.html">Assignment 1</a></li>
-      <li><a href="assignment2.html">Assignment 2</a></li>
-      <li><a href="assignment3.html">Assignment 3</a></li>
-      <li><a href="assignment4.html">Assignment 4</a></li>
-      <li><a href="assignment5.html">Assignment 5</a></li>
-      <li><a href="assignment6.html">Assignment 6</a></li>
-      <li><a href="proposal.html">Proposal</a></li>
-      <li><a href="proposal_presentation.html">Proposal Presentation</a></li>
-      <li><a href="campusgives/index.html">🌐 CampusGives App</a></li>
+      <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+      <li><a href="about.html"><i class="fas fa-user"></i> About Me</a></li>
+      <li><a href="cv.html"><i class="fas fa-file"></i> My CV</a></li>
+      <li class="dropdown">
+        <a href="#"><i class="fas fa-book"></i> Assignments ▾</a>
+        <ul class="dropdown-menu">
+          <li><a href="Assignments/ADJADEH_ASSIGNMENT_1.pdf" target="_blank">Assignment 1</a></li>
+          <li><a href="Assignments/ADJADEH_ASSIGNMENT_2.pdf" target="_blank">Assignment 2</a></li>
+          <li><a href="Assignments/ADJADEH_ASSIGNMENT_3.pdf" target="_blank">Assignment 3</a></li>
+          <li><a href="Assignments/ADJADEH_ASSIGNMENT_4.pdf" target="_blank">Assignment 4</a></li>
+          <li><a href="Assignments/ADJADEH_ASSIGNMENT_5.pdf" target="_blank">Assignment 5</a></li>
+          <li><a href="Assignments/ADJADEH_ASSIGNMENT_6.pdf" target="_blank">Assignment 6</a></li>
+        </ul>
+      </li>
+      <li><a href="Assignments/ADJADEH_PROPOSAL.pdf" target="_blank"><i class="fas fa-lightbulb"></i> Proposal</a></li>
+      <li><a href="Assignments/PROPOSAL_PRESENTATION.pdf" target="_blank"><i class="fas fa-chalkboard"></i> Presentation</a></li>
+      <li><a href="campusgives/index.html" target="_blank"><i class="fas fa-hand-holding-heart"></i> CampusGives</a></li>
     </ul>
   </div>
 
-  <!-- Main Content -->
   <div class="main-content">
-    <div class="banner">Welcome to My Portfolio</div>
-    <div class="subtitle">Explore my academic work and community projects</div>
-
+    <div class="banner">
+      Welcome to JPADJADEH Portfolio Hub
+    </div>
+    <div class="subtitle">
+      Explore my assignments, projects, and student initiatives.
+    </div>
     <div class="content-box">
-      <p>Hello and welcome! I'm JPADJADEH, a student passionate about learning, sharing knowledge, and building tools that make a difference. This page links to my assignments, research proposals, and CampusGives—my student-driven donation platform.</p>
-
-      <p>Feel free to browse around and connect with me!</p>
+      <h3><i class="fas fa-rocket"></i> Highlight: CampusGives</h3>
+      <p><strong>CampusGives</strong> is a donation platform for students. Check out how students are supporting each other by clicking below:</p>
+      <a class="button" href="campusgives/index.html" target="_blank">🚀 Launch CampusGives</a>
     </div>
   </div>
 
-  <!-- Footer with Social Media -->
   <footer>
     <div class="social-links">
-      <a href="https://linkedin.com/in/yourprofile" target="_blank"><i class="fab fa-linkedin"></i></a>
-      <a href="https://twitter.com/yourhandle" target="_blank"><i class="fab fa-twitter"></i></a>
-      <a href="mailto:jpadjadeh@email.com"><i class="fas fa-envelope"></i></a>
+      <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+      <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <a href="https://github.com/jpadjadeh" target="_blank"><i class="fab fa-github"></i></a>
     </div>
-    <p>© 2025 JPADJADEH</p>
+    <p>&copy; 2025 JPADJADEH. All Rights Reserved.</p>
   </footer>
-
 </body>
 </html>
