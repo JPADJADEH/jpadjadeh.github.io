@@ -267,3 +267,54 @@ footer .social-links {
 a { color: inherit; }
 .content-box a { color: #3E4A89; text-decoration: underline; }
 .content-box a:hover, .content-box a:focus { color: #2D2D4D; outline: none; }
+/* ===== Fix fly-out submenu visibility (Podcast Reviews) ===== */
+
+/* Let fly-outs extend beyond the sidebar */
+.sidebar {
+  overflow-y: auto;
+  overflow-x: visible;
+  z-index: 3000;         /* keep sidebar above page content */
+}
+
+/* Level-1 dropdown panel */
+.sidebar .dropdown-menu {
+  position: absolute;
+  overflow: visible;
+  z-index: 3500;
+}
+
+/* The parent li of the fly-out needs a positioning context */
+.dropdown-menu li.dropdown {
+  position: relative;
+}
+
+/* Level-2 fly-out submenu (Podcast Reviews list) */
+.dropdown-submenu {
+  position: absolute;
+  top: 0;
+  left: 100%;
+  margin-left: -2px;     /* remove tiny gap so hover doesn't "drop" */
+  min-width: 220px;
+  padding: 6px 0;
+  background-color: #2D2D4D;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  list-style: none;
+  display: none;
+  z-index: 3600;         /* above the level-1 menu */
+}
+
+/* Keep fly-out open while hovering the parent OR the submenu itself */
+.dropdown-menu li.dropdown:hover > .dropdown-submenu,
+.dropdown-menu li.dropdown:focus-within > .dropdown-submenu,
+.dropdown-submenu:hover {
+  display: block;
+}
+
+/* Optional: caret on triggers inside dropdowns */
+.dropdown-menu li.dropdown > a::after {
+  content: '▸';
+  margin-left: 8px;
+  opacity: 0.8;
+}
+
