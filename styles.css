@@ -17,9 +17,11 @@ body {
   left: 0;
   top: 0;
   padding-top: 20px;
-  overflow-y: auto;
   box-shadow: 2px 0 12px rgba(0, 0, 0, 0.1);
-  z-index: 1050; /* keeps fly-outs above content */
+  /* allow fly-outs to extend outside the sidebar */
+  overflow-y: auto;
+  overflow-x: visible;
+  z-index: 3000;
 }
 
 .sidebar .profile {
@@ -54,9 +56,7 @@ body {
   margin: 0;
 }
 
-.sidebar ul li {
-  padding: 12px 20px;
-}
+.sidebar ul li { padding: 12px 20px; }
 
 .sidebar ul li a {
   text-decoration: none;
@@ -65,7 +65,7 @@ body {
   display: block;
   line-height: 1.2;
   border-radius: 4px;
-  transition: background-color 0.25s ease, color 0.25s ease, transform 0.06s;
+  transition: background-color .25s ease, color .25s ease, transform .06s;
 }
 
 .sidebar ul li a:hover,
@@ -76,7 +76,7 @@ body {
   outline: none;
 }
 
-/* Make dropdown triggers align chevrons neatly */
+/* align dropdown text + caret */
 .sidebar ul li.dropdown > a {
   display: flex;
   align-items: center;
@@ -141,7 +141,7 @@ footer .social-links {
   color: #fff;
   font-size: 28px;
   text-decoration: none;
-  transition: color 0.25s ease, transform 0.15s;
+  transition: color .25s ease, transform .15s;
 }
 
 .social-links a:hover,
@@ -157,32 +157,32 @@ footer .social-links {
 .dropdown-menu {
   display: none;
   position: absolute;
-  background-color: #2D2D4D;
-  list-style: none;
-  padding: 6px 0;
-  margin: 0;
   top: 100%;
   left: 0;
-  border-radius: 8px;
   width: 220px;
-  z-index: 1100;
+  padding: 6px 0;
+  margin: 0;
+  list-style: none;
+  background-color: #2D2D4D;
+  border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  z-index: 3500;         /* above content */
+  overflow: visible;     /* so fly-out can extend */
 }
 
 .dropdown:hover > .dropdown-menu,
 .dropdown:focus-within > .dropdown-menu {
-  display: block; /* opens on hover and keyboard focus */
+  display: block;        /* open on hover or keyboard focus */
 }
 
 .dropdown-menu li { padding: 0; }
 
 .dropdown-menu a {
   display: block;
-  text-decoration: none;
   color: #fff;
   padding: 10px 14px;
   white-space: nowrap;
-  border-radius: 0;
+  text-decoration: none;
 }
 
 .dropdown-menu a:hover,
@@ -192,27 +192,50 @@ footer .social-links {
   outline: none;
 }
 
-/* ========== Dropdowns (level 2 fly-out) ========== */
-.dropdown-menu li.dropdown { position: relative; }
+/* caret for items that have a fly-out */
+.dropdown-menu li.dropdown > a::after {
+  content: '▸';
+  margin-left: 8px;
+  opacity: .8;
+}
 
-.dropdown-submenu {
-  display: none;
+/* ========== Dropdowns (level 2 fly-out) ========== */
+.dropdown-menu li.dropdown { position: relative; } /* positioning context */
+
+.dropdown-submenu{
   position: absolute;
   top: 0;
-  left: 100%;              /* fly out to the right */
+  left: 100%;             /* fly out to the right */
+  margin-left: -2px;      /* remove tiny gap to keep hover alive */
   min-width: 220px;
+  padding: 6px 0;
   background-color: #2D2D4D;
   border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-  z-index: 1110;
-  padding: 6px 0;
-  margin: 0;
   list-style: none;
+  display: none;
+  z-index: 3600;          /* above level-1 menu */
 }
 
 .dropdown-menu li.dropdown:hover > .dropdown-submenu,
-.dropdown-menu li.dropdown:focus-within > .dropdown-submenu {
+.dropdown-menu li.dropdown:focus-within > .dropdown-submenu,
+.dropdown-submenu:hover {
   display: block;
+}
+
+.dropdown-submenu a{
+  display: block;
+  color: #fff;
+  padding: 10px 14px;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.dropdown-submenu a:hover,
+.dropdown-submenu a:focus{
+  background: #FFD700;
+  color: #2D2D4D;
+  outline: none;
 }
 
 /* ========== Responsive ========== */
@@ -246,7 +269,7 @@ footer .social-links {
     padding: 20px;
   }
 
-  /* Stack dropdowns instead of absolute positioning on mobile */
+  /* On mobile, stack menus instead of absolute fly-outs */
   .dropdown-menu,
   .dropdown-submenu {
     position: relative;
@@ -256,65 +279,10 @@ footer .social-links {
     box-shadow: none;
     border-radius: 8px;
   }
-
-  .dropdown-menu { display: none; }
-  .dropdown:hover > .dropdown-menu,
-  .dropdown:focus-within > .dropdown-menu {
-    display: block;
-  }
 }
 
+/* ========== Links inside content ========== */
 a { color: inherit; }
 .content-box a { color: #3E4A89; text-decoration: underline; }
-.content-box a:hover, .content-box a:focus { color: #2D2D4D; outline: none; }
-/* ===== Fix fly-out submenu visibility (Podcast Reviews) ===== */
-
-/* Let fly-outs extend beyond the sidebar */
-.sidebar {
-  overflow-y: auto;
-  overflow-x: visible;
-  z-index: 3000;         /* keep sidebar above page content */
-}
-
-/* Level-1 dropdown panel */
-.sidebar .dropdown-menu {
-  position: absolute;
-  overflow: visible;
-  z-index: 3500;
-}
-
-/* The parent li of the fly-out needs a positioning context */
-.dropdown-menu li.dropdown {
-  position: relative;
-}
-
-/* Level-2 fly-out submenu (Podcast Reviews list) */
-.dropdown-submenu {
-  position: absolute;
-  top: 0;
-  left: 100%;
-  margin-left: -2px;     /* remove tiny gap so hover doesn't "drop" */
-  min-width: 220px;
-  padding: 6px 0;
-  background-color: #2D2D4D;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-  list-style: none;
-  display: none;
-  z-index: 3600;         /* above the level-1 menu */
-}
-
-/* Keep fly-out open while hovering the parent OR the submenu itself */
-.dropdown-menu li.dropdown:hover > .dropdown-submenu,
-.dropdown-menu li.dropdown:focus-within > .dropdown-submenu,
-.dropdown-submenu:hover {
-  display: block;
-}
-
-/* Optional: caret on triggers inside dropdowns */
-.dropdown-menu li.dropdown > a::after {
-  content: '▸';
-  margin-left: 8px;
-  opacity: 0.8;
-}
-
+.content-box a:hover,
+.content-box a:focus { color: #2D2D4D; outline: none; }
