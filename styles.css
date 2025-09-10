@@ -1,269 +1,46 @@
-/* ========== General ========== */
-body {
-  font-family: 'Segoe UI', sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #F4EDE4;
-  color: #2D2D4D;
-}
-
-/* ========== Sidebar ========== */
+/* ---- Make sure fly-outs can spill outside the sidebar ---- */
 .sidebar {
-  width: 250px;
-  height: 100vh;
-  background: linear-gradient(to bottom, #2D2D4D, #3E4A89);
-  color: #fff;
-  position: fixed;
-  left: 0;
-  top: 0;
-  padding-top: 20px;
+  /* keep vertical scroll but allow fly-outs to extend horizontally */
   overflow-y: auto;
-  box-shadow: 2px 0 12px rgba(0, 0, 0, 0.1);
-  z-index: 1050; /* keeps fly-outs above content */
+  overflow-x: visible;
+  z-index: 1050; /* you already had this; keep it high */
 }
 
-.sidebar .profile {
-  text-align: center;
-  padding: 10px;
+/* ---- Level-1 dropdown (already present, just ensuring no clipping) ---- */
+.sidebar .dropdown-menu {
+  overflow: visible;     /* allow nested menu to be visible */
+  position: absolute;    /* required for the fly-out to anchor correctly */
+  z-index: 1800;         /* above content */
 }
 
-.sidebar .profile img {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  border: 3px solid #fff;
-  object-fit: cover;
-}
-
-.sidebar .profile h2 {
-  font-size: 22px;
-  margin: 12px 0;
-  letter-spacing: 1px;
-}
-
-.sidebar .email {
-  font-size: 13px;
-  text-align: center;
-  color: #CCCCCC;
-  margin-bottom: 15px;
-}
-
-.sidebar ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.sidebar ul li {
-  padding: 12px 20px;
-}
-
-.sidebar ul li a {
-  text-decoration: none;
-  color: #fff;
-  font-size: 16px;
-  display: block;
-  line-height: 1.2;
-  border-radius: 4px;
-  transition: background-color 0.25s ease, color 0.25s ease, transform 0.06s;
-}
-
-.sidebar ul li a:hover,
-.sidebar ul li a:focus {
-  background-color: #FFD700;
-  color: #2D2D4D;
-  font-weight: bold;
-  outline: none;
-}
-
-/* Make dropdown triggers align chevrons neatly */
-.sidebar ul li.dropdown > a {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-}
-
-/* ========== Main Content ========== */
-.main-content {
-  margin-left: 270px;
-  padding: 30px 40px;
-}
-
-.banner {
-  background: linear-gradient(to right, #2D2D4D, #3E4A89);
-  color: #fff;
-  text-align: center;
-  padding: 40px 20px;
-  font-size: 30px;
-  font-weight: bold;
-  letter-spacing: 1px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-  border-radius: 0 0 10px 10px;
-}
-
-.subtitle {
-  text-align: center;
-  font-size: 18px;
-  color: #666;
-  margin-top: 15px;
-}
-
-.content-box {
-  background: #fff;
-  padding: 25px;
-  margin: 30px auto;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  max-width: 800px;
-}
-
-/* ========== Footer ========== */
-footer {
-  text-align: center;
-  padding: 15px;
-  background-color: #2D2D4D;
-  color: #fff;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  font-size: 14px;
-}
-
-footer .social-links {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  margin-bottom: 10px;
-}
-
-.social-links a {
-  color: #fff;
-  font-size: 28px;
-  text-decoration: none;
-  transition: color 0.25s ease, transform 0.15s;
-}
-
-.social-links a:hover,
-.social-links a:focus {
-  color: #FFD700;
-  transform: scale(1.1);
-  outline: none;
-}
-
-/* ========== Dropdowns (level 1) ========== */
-.dropdown { position: relative; }
-
-.dropdown-menu {
-  display: none;
-  position: absolute;
-  background-color: #2D2D4D;
-  list-style: none;
-  padding: 6px 0;
-  margin: 0;
-  top: 100%;
-  left: 0;
-  border-radius: 8px;
-  width: 220px;
-  z-index: 1100;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-}
-
-.dropdown:hover > .dropdown-menu,
-.dropdown:focus-within > .dropdown-menu {
-  display: block; /* opens on hover and keyboard focus */
-}
-
-.dropdown-menu li { padding: 0; }
-
-.dropdown-menu a {
-  display: block;
-  text-decoration: none;
-  color: #fff;
-  padding: 10px 14px;
-  white-space: nowrap;
-  border-radius: 0;
-}
-
-.dropdown-menu a:hover,
-.dropdown-menu a:focus {
-  background-color: #FFD700;
-  color: #2D2D4D;
-  outline: none;
-}
-
-/* ========== Dropdowns (level 2 fly-out) ========== */
-.dropdown-menu li.dropdown { position: relative; }
-
+/* ---- Level-2 fly-out submenu (the Podcast Reviews list) ---- */
 .dropdown-submenu {
-  display: none;
   position: absolute;
   top: 0;
-  left: 100%;              /* fly out to the right */
+  left: 100%;            /* fly out to the right of the first menu */
+  margin-left: 8px;
   min-width: 220px;
+  padding: 6px 0;
   background-color: #2D2D4D;
   border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-  z-index: 1110;
-  padding: 6px 0;
-  margin: 0;
   list-style: none;
+  display: none;         /* hidden until hovered */
+  z-index: 2000;         /* above everything else */
 }
 
+/* Show the fly-out when the parent LI is hovered/focused */
 .dropdown-menu li.dropdown:hover > .dropdown-submenu,
 .dropdown-menu li.dropdown:focus-within > .dropdown-submenu {
   display: block;
 }
 
-/* ========== Responsive ========== */
-@media (max-width: 900px) {
-  .sidebar {
-    width: 100%;
-    height: auto;
-    position: relative;
-    padding-bottom: 20px;
-  }
-
-  .sidebar ul {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .sidebar ul li {
-    padding: 10px;
-    font-size: 14px;
-  }
-
-  .sidebar ul li a {
-    font-size: 14px;
-    padding: 8px 10px;
-    text-align: center;
-  }
-
-  .main-content {
-    margin-left: 0;
-    padding: 20px;
-  }
-
-  /* Stack dropdowns instead of absolute positioning on mobile */
-  .dropdown-menu,
-  .dropdown-submenu {
-    position: relative;
-    left: 0;
-    top: 0;
-    width: 100%;
-    box-shadow: none;
-    border-radius: 8px;
-  }
-
-  .dropdown-menu { display: none; }
-  .dropdown:hover > .dropdown-menu,
-  .dropdown:focus-within > .dropdown-menu {
-    display: block;
-  }
+/* Optional: show a small caret on the trigger row */
+.dropdown > a::after {
+  content: '';
 }
-
-a { color: inherit; }
-.content-box a { color: #3E4A89; text-decoration: underline; }
-.content-box a:hover, .content-box a:focus { color: #2D2D4D; outline: none; }
+.dropdown-menu li.dropdown > a::after {
+  content: '▸';
+  margin-left: 8px;
+  opacity: 0.8;
+}
