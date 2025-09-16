@@ -193,22 +193,22 @@ footer .social-links {
   outline: none;
 }
 
-/* ========== Nested dropdown (Podcast Reviews INSIDE sidebar) ========== */
+/* ========== Nested dropdowns (e.g., Podcast Reviews, Assignments) ========== */
 /* parent in the level-1 menu that holds the nested list */
 .dropdown-menu li.dropdown { position: relative; }
 
-/* nested list drops DOWN (not fly-out) and stays inside blue panel */
+/* nested list drops DOWN and stays inside blue panel */
 .dropdown-submenu {
   display: none;
-  position: relative;     /* no absolute/fly-out */
-  left: 0;
+  position: absolute;     /* positioned relative to parent dropdown */
+  left: 100%;             /* fly-out to the right */
   top: 0;
   margin: 0;
   padding: 0;
-  width: 100%;
+  width: 220px;           /* match parent width */
   background-color: #2D2D4D;
-  border-radius: 0;
-  box-shadow: none;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
 }
 
 .dropdown-menu li.dropdown:hover > .dropdown-submenu,
@@ -216,12 +216,12 @@ footer .social-links {
   display: block;
 }
 
-/* smaller text for sub-items */
+/* smaller text and padding for sub-items */
 .dropdown-submenu a {
   display: block;
   color: #fff;
   font-size: 14px;        /* smaller font */
-  padding: 8px 20px;      /* align with parent items */
+  padding: 8px 14px;      /* align with parent items */
   text-decoration: none;
   white-space: nowrap;
 }
@@ -235,7 +235,7 @@ footer .social-links {
 
 /* caret indicator for nested triggers */
 .dropdown-menu li.dropdown > a::after {
-  content: '▼';           /* shows it drops down */
+  content: '▸';           /* right arrow for fly-out */
   margin-left: 8px;
   font-size: 10px;
   opacity: 0.9;
@@ -275,18 +275,22 @@ footer .social-links {
   /* stack menus on mobile, still contained in the sidebar block */
   .dropdown-menu,
   .dropdown-submenu {
-    position: relative;
-    left: 0;
-    top: 0;
+    position: static;     /* stack vertically */
     width: 100%;
     box-shadow: none;
-    border-radius: 8px;
+    border-radius: 0;
   }
 
   .dropdown-menu { display: none; }
   .dropdown:hover > .dropdown-menu,
   .dropdown:focus-within > .dropdown-menu {
     display: block;
+  }
+
+  /* Adjust submenu to stack below parent on mobile */
+  .dropdown-submenu {
+    left: 0;              /* align with parent */
+    top: 100%;            /* drop down below */
   }
 }
 
