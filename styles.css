@@ -9,7 +9,7 @@ body {
 
 /* ========== Sidebar ========== */
 .sidebar {
-  width: 280px;  /* Slightly wider for nested content */
+  width: 250px;
   height: 100vh;
   background: linear-gradient(to bottom, #2D2D4D, #3E4A89);
   color: #fff;
@@ -87,7 +87,7 @@ body {
 
 /* ========== Main Content ========== */
 .main-content {
-  margin-left: 300px;  /* Adjusted for wider sidebar */
+  margin-left: 270px;
   padding: 30px 40px;
 }
 
@@ -129,7 +129,6 @@ footer {
   bottom: 0;
   width: 100%;
   font-size: 14px;
-  z-index: 1000;  /* Lower than sidebar to avoid overlap */
 }
 
 footer .social-links {
@@ -194,23 +193,22 @@ footer .social-links {
   outline: none;
 }
 
-/* ========== Nested dropdowns (e.g., Podcast Reviews, Assignments INSIDE sidebar) ========== */
+/* ========== Nested dropdowns (e.g., Podcast Reviews, Assignments) ========== */
 /* parent in the level-1 menu that holds the nested list */
 .dropdown-menu li.dropdown { position: relative; }
 
-/* nested list drops DOWN (not fly-out) and stays inside blue panel */
+/* nested list drops DOWN and stays inside blue panel */
 .dropdown-submenu {
   display: none;
-  position: relative;     /* no absolute/fly-out - stacks inside parent */
+  position: relative;     /* no absolute/fly-out, stays within sidebar */
   left: 0;
   top: 0;
   margin: 0;
   padding: 0;
-  width: 100%;            /* full width of parent */
+  width: 100%;            /* full width of parent menu */
   background-color: #2D2D4D;
   border-radius: 0;
   box-shadow: none;
-  z-index: 1100;          /* Match parent z-index */
 }
 
 .dropdown-menu li.dropdown:hover > .dropdown-submenu,
@@ -218,12 +216,12 @@ footer .social-links {
   display: block;
 }
 
-/* smaller text for sub-items */
+/* smaller text and padding for sub-items */
 .dropdown-submenu a {
   display: block;
   color: #fff;
   font-size: 14px;        /* smaller font */
-  padding: 8px 20px;      /* align with parent items */
+  padding: 8px 14px;      /* align with parent items */
   text-decoration: none;
   white-space: nowrap;
 }
@@ -237,7 +235,7 @@ footer .social-links {
 
 /* caret indicator for nested triggers */
 .dropdown-menu li.dropdown > a::after {
-  content: '▼';           /* down arrow since it drops down inside */
+  content: '▼';           /* down arrow for drop-down */
   margin-left: 8px;
   font-size: 10px;
   opacity: 0.9;
@@ -277,12 +275,10 @@ footer .social-links {
   /* stack menus on mobile, still contained in the sidebar block */
   .dropdown-menu,
   .dropdown-submenu {
-    position: relative;
-    left: 0;
-    top: 0;
+    position: static;     /* stack vertically */
     width: 100%;
     box-shadow: none;
-    border-radius: 8px;
+    border-radius: 0;
   }
 
   .dropdown-menu { display: none; }
