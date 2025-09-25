@@ -27,7 +27,7 @@
         <ul class="dropdown-menu">
           <li class="dropdown">
             <a href="#"><i class="fas fa-book"></i> Assignments ▸</a>
-            <ul class="dropdown-submenu">
+            <ul class="dropdown-menu">
               <li><a href="Assignments/assignment1.html">Assignment 1</a></li>
               <li><a href="Assignments/assignment2.html">Assignment 2</a></li>
               <li><a href="Assignments/assignment3.html">Assignment 3</a></li>
@@ -47,22 +47,22 @@
       <li class="dropdown">
         <a href="#"><i class="fas fa-clipboard-list"></i> Data Collection ▾</a>
         <ul class="dropdown-menu">
-          <li><a href="data-collection/assignments.html">Assignments</a></li>
+          <li><a href="Data_Collection/assignments.html">Assignments</a></li>
 
-          <!-- Podcast Reviews (fly-out) -->
+          <!-- Podcast Reviews -->
           <li class="dropdown">
             <a href="#">Podcast Reviews ▸</a>
-            <ul class="dropdown-submenu">
+            <ul class="dropdown-menu">
               <li><a href="Data_Collection/Podcast%20Review%201.pdf" target="_blank" rel="noopener">Podcast Review 1</a></li>
               <li><a href="Data_Collection/Podcast%20Review%202.pdf" target="_blank" rel="noopener">Podcast Review 2</a></li>
               <li><a href="Data_Collection/Podcast%20Review%203.pdf" target="_blank" rel="noopener">Podcast Review 3</a></li>
             </ul>
           </li>
 
-          <!-- Assignments (new sub-dropdown) -->
+          <!-- Assignments (PDFs) -->
           <li class="dropdown">
             <a href="#">Assignments ▸</a>
-            <ul class="dropdown-submenu">
+            <ul class="dropdown-menu">
               <li><a href="Data_Collection/Assignment1.pdf" target="_blank" rel="noopener">Assignment 1</a></li>
               <li><a href="Data_Collection/Assignment2.pdf" target="_blank" rel="noopener">Assignment 2</a></li>
               <li><a href="Data_Collection/Assignment3.pdf" target="_blank" rel="noopener">Assignment 3</a></li>
@@ -73,9 +73,9 @@
             </ul>
           </li>
 
-          <li><a href="data-collection/surveys.html">Surveys</a></li>
-          <li><a href="data-collection/apis.html">APIs &amp; Scraping</a></li>
-          <li><a href="data-collection/cleaning.html">Cleaning &amp; QA</a></li>
+          <li><a href="Data_Collection/surveys.html">Surveys</a></li>
+          <li><a href="Data_Collection/apis.html">APIs &amp; Scraping</a></li>
+          <li><a href="Data_Collection/cleaning.html">Cleaning &amp; QA</a></li>
         </ul>
       </li>
 
@@ -84,24 +84,18 @@
         <a href="#"><i class="fas fa-chart-bar"></i> Data Visualization ▾</a>
         <ul class="dropdown-menu">
 
-          <!-- Assignments -->
+          <!-- Assignments (ONLY A1 for now) -->
           <li class="dropdown">
             <a href="#">Assignments ▸</a>
-            <ul class="dropdown-submenu">
+            <ul class="dropdown-menu">
               <li><a href="Data_Visualization/Assignments/Assignment1.html">Assignment 1</a></li>
-              <li><a href="Data_Visualization/Assignments/Assignment2.html">Assignment 2</a></li>
-              <li><a href="Data_Visualization/Assignments/Assignment3.html">Assignment 3</a></li>
-              <li><a href="Data_Visualization/Assignments/Assignment4.html">Assignment 4</a></li>
-              <li><a href="Data_Visualization/Assignments/Assignment5.html">Assignment 5</a></li>
-              <li><a href="Data_Visualization/Assignments/Assignment6.html">Assignment 6</a></li>
-              <li><a href="Data_Visualization/Assignments/Assignment7.html">Assignment 7</a></li>
             </ul>
           </li>
 
           <!-- Podcast Reviews -->
           <li class="dropdown">
             <a href="#">Podcast Reviews ▸</a>
-            <ul class="dropdown-submenu">
+            <ul class="dropdown-menu">
               <li><a href="Data_Visualization/Podcast_Reviews/Podcast_Review_1.html">Review 1</a></li>
               <li><a href="Data_Visualization/Podcast_Reviews/Podcast_Review_2.html">Review 2</a></li>
               <li><a href="Data_Visualization/Podcast_Reviews/Podcast_Review_3.html">Review 3</a></li>
@@ -139,5 +133,15 @@
     </div>
     <p>© 2025 JP ADJADEH. All Rights Reserved.</p>
   </footer>
+
+  <!-- Sidebar dropdown toggle -->
+  <script>
+    document.querySelectorAll('.sidebar .dropdown > a').forEach(a=>{
+      a.addEventListener('click', e=>{
+        e.preventDefault();
+        a.parentElement.classList.toggle('open');
+      });
+    });
+  </script>
 </body>
 </html>
