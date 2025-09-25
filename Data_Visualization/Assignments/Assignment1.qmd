@@ -1,0 +1,69 @@
+---
+title: "Assignment 1"
+format: html
+page-layout: article
+toc: true
+---
+
+# Assignment 1
+
+## Analyzing Anscombe’s Plots
+
+Anscombe’s Quartet teaches us that data can look the same in numbers but tell very different stories when you make a graph.  
+All four datasets have the same averages, correlations, and regression lines, but the plots show one is a straight line, another is curved, and others are shaped by outliers.  
+
+**Lesson:** If we only look at numbers, we may miss hidden patterns and draw wrong conclusions.  
+
+Always graph the data before and after running models. Simple plots like scatterplots can reveal issues such as:  
+- Outliers  
+- Non-linear trends  
+- Unusual points  
+
+---
+
+## Changing Color in Fall Script
+*(Insert code examples here if needed, e.g. R/ggplot2 or Python/Matplotlib.)*
+
+---
+
+## Critique of the Plot (Lessons from Nathan Yau)
+
+This plot tries to show too many things at once—different contrasts, shapes, colors, and line styles—making it cluttered and hard to read.  
+
+As Nathan Yau emphasizes, **a good visualization should highlight the story clearly**, but here the message is buried under visual noise.  
+
+Problems in the plot:  
+- Long inline labels crowd the chart.  
+- The zero line (a key reference) is not emphasized enough.  
+
+**Cleaner design would:**  
+- Reduce the number of comparisons per plot.  
+- Use consistent symbols.  
+- Move labels to a legend.  
+- Highlight the reference line.  
+
+This would make the main story—about winners, losers, and economic perceptions—much easier to see.
+
+---
+
+# Review: *The Next Industrial Revolution is Industrial AI*
+
+I listened to the *DataFramed* episode with **Barbara Humpton (Siemens USA)** and **Olympia Brikis (Director of Industrial AI, Siemens USA)**.
+
+## Reflections
+
+-   **AI is not just about replacing workers; it’s about empowering them with better tools.**
+-   **Collaborative AI** means machines handle repetitive tasks while humans focus on higher-value work.
+-   Many panic about job loss, but the real challenge is learning AI’s **rudiments** and embracing its advantages.
+
+## Key Lessons
+
+1.  Empowerment, not replacement.\
+2.  Collaboration between humans and machines.\
+3.  Overcoming fear of AI through adaptation.\
+4.  Trust and transparency for adoption.
+
+## Conclusion
+
+Industrial AI represents transformation, not displacement.\
+The future of work is **collaboration where both humans and machines thrive**.
