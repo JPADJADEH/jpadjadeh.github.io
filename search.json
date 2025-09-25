@@ -1,10 +1,24 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "CampusGives Database",
+    "objectID": "Assignment1.html",
+    "href": "Assignment1.html",
+    "title": "Assignment 1",
     "section": "",
-    "text": "A platform for students to give & receive free items\n\nBuilt by JP Adjadeh"
+    "text": "Anscombe’s Quartet shows that datasets can share nearly identical summary statistics (means, variances, correlations, and regression lines) yet have very different relationships when graphed. One series is roughly linear with noise, another is clearly non-linear (curved), another is driven by an outlier, and the last has vertical clustering forced by a high-leverage point.\nWhy this matters: Relying only on summary numbers can be misleading.\nBest practice: Always visualize the data (e.g., scatterplots) before and after modeling to catch:\n- Outliers / high-leverage points\n- Non-linear patterns\n- Heterogeneity or clusters\n\n# Load dataset\ndata(anscombe)\n\n# Build formulas and fit models\nff &lt;- y ~ x\nmods &lt;- setNames(vector(\"list\", 4), paste0(\"lm\", 1:4))\nfor (i in 1:4) {\n  ff[2:3] &lt;- lapply(paste0(c(\"y\",\"x\"), i), as.name)\n  mods[[i]] &lt;- lm(ff, data = anscombe)\n}\n\n# Panel layout and margins\nop &lt;- par(mfrow = c(2, 2), mar = 0.1+c(4,4,1,1), oma = c(0, 0, 2, 0))\n\n# Plot 4 panels with regression lines\nfor (i in 1:4) {\n  ff[2:3] &lt;- lapply(paste0(c(\"y\",\"x\"), i), as.name)\n  plot(ff, data = anscombe, col = \"red\", pch = 21, bg = \"orange\", cex = 1.2,\n       xlim = c(3, 19), ylim = c(3, 13))\n  abline(mods[[i]], col = \"blue\")\n}\n\nmtext(\"Anscombe's 4 Regression Data Sets\", outer = TRUE, cex = 1.3)\n\n\n\n\n\n\n\npar(op)"
+  },
+  {
+    "objectID": "Assignment1.html#q1.-analyzing-anscombes-plots",
+    "href": "Assignment1.html#q1.-analyzing-anscombes-plots",
+    "title": "Assignment 1",
+    "section": "",
+    "text": "Anscombe’s Quartet shows that datasets can share nearly identical summary statistics (means, variances, correlations, and regression lines) yet have very different relationships when graphed. One series is roughly linear with noise, another is clearly non-linear (curved), another is driven by an outlier, and the last has vertical clustering forced by a high-leverage point.\nWhy this matters: Relying only on summary numbers can be misleading.\nBest practice: Always visualize the data (e.g., scatterplots) before and after modeling to catch:\n- Outliers / high-leverage points\n- Non-linear patterns\n- Heterogeneity or clusters\n\n# Load dataset\ndata(anscombe)\n\n# Build formulas and fit models\nff &lt;- y ~ x\nmods &lt;- setNames(vector(\"list\", 4), paste0(\"lm\", 1:4))\nfor (i in 1:4) {\n  ff[2:3] &lt;- lapply(paste0(c(\"y\",\"x\"), i), as.name)\n  mods[[i]] &lt;- lm(ff, data = anscombe)\n}\n\n# Panel layout and margins\nop &lt;- par(mfrow = c(2, 2), mar = 0.1+c(4,4,1,1), oma = c(0, 0, 2, 0))\n\n# Plot 4 panels with regression lines\nfor (i in 1:4) {\n  ff[2:3] &lt;- lapply(paste0(c(\"y\",\"x\"), i), as.name)\n  plot(ff, data = anscombe, col = \"red\", pch = 21, bg = \"orange\", cex = 1.2,\n       xlim = c(3, 19), ylim = c(3, 13))\n  abline(mods[[i]], col = \"blue\")\n}\n\nmtext(\"Anscombe's 4 Regression Data Sets\", outer = TRUE, cex = 1.3)\n\n\n\n\n\n\n\npar(op)"
+  },
+  {
+    "objectID": "Assignment1.html#q.1-analyzing-anscombes-plots",
+    "href": "Assignment1.html#q.1-analyzing-anscombes-plots",
+    "title": "Assignment 1",
+    "section": "Q.1 Analyzing Anscombe’s Plots",
+    "text": "Q.1 Analyzing Anscombe’s Plots\nAnscombe’s Quartet teaches us that data can look the same in numbers but tell very different stories when you make a graph. All four datasets have the same averages, correlations, and regression lines, but the plots show one is a straight line, another is curved, and others are shaped by outliers.\nThe problem is that if we only look at numbers, we may miss these hidden patterns and make wrong conclusions.\nSolution: Always graph the data before and after running models. Simple plots like scatterplots can reveal issues such as:\n- Outliers\n- Non-linear trends\n- Unusual points"
   },
   {
     "objectID": "about.html",
@@ -14,136 +28,59 @@
     "text": "About this site\n\n1 + 1\n\n[1] 2"
   },
   {
-    "objectID": "index.html#welcome-to-campusgives",
-    "href": "index.html#welcome-to-campusgives",
-    "title": "CampusGives Database",
+    "objectID": "Data_Visualization/Assignments/Assignment1.html",
+    "href": "Data_Visualization/Assignments/Assignment1.html",
+    "title": "Assignment 1",
     "section": "",
-    "text": "A platform for students to give & receive free items\n\nBuilt by JP Adjadeh"
+    "text": "Anscombe’s Quartet teaches us that data can look the same in numbers but tell very different stories when you make a graph.\nAll four datasets have the same averages, correlations, and regression lines, but the plots show one is a straight line, another is curved, and others are shaped by outliers.\nLesson: If we only look at numbers, we may miss hidden patterns and draw wrong conclusions.\nAlways graph the data before and after running models. Simple plots like scatterplots can reveal issues such as:\n- Outliers\n- Non-linear trends\n- Unusual points\n\n\n\n\n(Insert code examples here if needed, e.g. R/ggplot2 or Python/Matplotlib.)\n\n\n\n\nThis plot tries to show too many things at once—different contrasts, shapes, colors, and line styles—making it cluttered and hard to read.\nAs Nathan Yau emphasizes, a good visualization should highlight the story clearly, but here the message is buried under visual noise.\nProblems in the plot:\n- Long inline labels crowd the chart.\n- The zero line (a key reference) is not emphasized enough.\nCleaner design would:\n- Reduce the number of comparisons per plot.\n- Use consistent symbols.\n- Move labels to a legend.\n- Highlight the reference line.\nThis would make the main story—about winners, losers, and economic perceptions—much easier to see."
   },
   {
-    "objectID": "index.html#what-is-campusgives",
-    "href": "index.html#what-is-campusgives",
-    "title": "CampusGives Database",
-    "section": "What is CampusGives?",
-    "text": "What is CampusGives?\n\nA student-driven platform for sharing items.\n\nAllows students to list items they no longer need.\n\nHelps students find free items from others."
+    "objectID": "Data_Visualization/Assignments/Assignment1.html#analyzing-anscombes-plots",
+    "href": "Data_Visualization/Assignments/Assignment1.html#analyzing-anscombes-plots",
+    "title": "Assignment 1",
+    "section": "",
+    "text": "Anscombe’s Quartet teaches us that data can look the same in numbers but tell very different stories when you make a graph.\nAll four datasets have the same averages, correlations, and regression lines, but the plots show one is a straight line, another is curved, and others are shaped by outliers.\nLesson: If we only look at numbers, we may miss hidden patterns and draw wrong conclusions.\nAlways graph the data before and after running models. Simple plots like scatterplots can reveal issues such as:\n- Outliers\n- Non-linear trends\n- Unusual points"
   },
   {
-    "objectID": "index.html#available-items",
-    "href": "index.html#available-items",
-    "title": "CampusGives Database",
-    "section": "Available Items",
-    "text": "Available Items\n\n\n\n\n\nitem_id\nuser_id\ntitle\ndescription\nstatus\n\n\n\n\n1\n1\nMath Textbook\nUsed Math textbook in good condition\nAvailable\n\n\n2\n2\nDesk Lamp\nA small desk lamp perfect for studying\nAvailable\n\n\n3\n1\nMath Textbook\nUsed Math textbook in good condition\nAvailable\n\n\n4\n2\nDesk Lamp\nA small desk lamp perfect for studying\nAvailable\n\n\n5\n1\nMath Textbook\nUsed Math textbook in good condition\nAvailable\n\n\n6\n2\nDesk Lamp\nA small desk lamp perfect for studying\nAvailable\n\n\n7\n1\nMath Textbook\nUsed Math textbook in good condition\nAvailable\n\n\n8\n2\nDesk Lamp\nA small desk lamp perfect for studying\nAvailable\n\n\n9\n1\nMath Textbook\nUsed Math textbook in good condition\nAvailable\n\n\n10\n2\nDesk Lamp\nA small desk lamp perfect for studying\nAvailable"
+    "objectID": "Data_Visualization/Assignments/Assignment1.html#changing-color-in-fall-script",
+    "href": "Data_Visualization/Assignments/Assignment1.html#changing-color-in-fall-script",
+    "title": "Assignment 1",
+    "section": "",
+    "text": "(Insert code examples here if needed, e.g. R/ggplot2 or Python/Matplotlib.)"
   },
   {
-    "objectID": "index.html#steps-to-apply-the-fix",
-    "href": "index.html#steps-to-apply-the-fix",
-    "title": "CampusGives Database",
-    "section": "✅ Steps to Apply the Fix",
-    "text": "✅ Steps to Apply the Fix\n\nMake sure your code chunk starts and ends correctly with ```{r, echo=FALSE, message=FALSE, warning=FALSE} (not a single backtick).\n\nSave the file (Cmd + S).\n\nClick “Render” in RStudio.\n\nYour slide should now display the table properly (without showing the R code)."
+    "objectID": "Data_Visualization/Assignments/Assignment1.html#critique-of-the-plot-lessons-from-nathan-yau",
+    "href": "Data_Visualization/Assignments/Assignment1.html#critique-of-the-plot-lessons-from-nathan-yau",
+    "title": "Assignment 1",
+    "section": "",
+    "text": "This plot tries to show too many things at once—different contrasts, shapes, colors, and line styles—making it cluttered and hard to read.\nAs Nathan Yau emphasizes, a good visualization should highlight the story clearly, but here the message is buried under visual noise.\nProblems in the plot:\n- Long inline labels crowd the chart.\n- The zero line (a key reference) is not emphasized enough.\nCleaner design would:\n- Reduce the number of comparisons per plot.\n- Use consistent symbols.\n- Move labels to a legend.\n- Highlight the reference line.\nThis would make the main story—about winners, losers, and economic perceptions—much easier to see."
   },
   {
-    "objectID": "index.html#what-to-do-next",
-    "href": "index.html#what-to-do-next",
-    "title": "CampusGives Database",
-    "section": "📸 What to Do Next",
-    "text": "📸 What to Do Next\n\nTry rendering again and check if the table appears properly.\n\nIf the issue is fixed, send a screenshot so we can proceed to Step 4: Allowing Users to Add Items. 🚀\n\nIf not, let me know what happens!\n\nLet’s get this working! 😊"
+    "objectID": "Data_Visualization/Assignments/Assignment1.html#reflections",
+    "href": "Data_Visualization/Assignments/Assignment1.html#reflections",
+    "title": "Assignment 1",
+    "section": "Reflections",
+    "text": "Reflections\n\nAI is not just about replacing workers; it’s about empowering them with better tools.\nCollaborative AI means machines handle repetitive tasks while humans focus on higher-value work.\nMany panic about job loss, but the real challenge is learning AI’s rudiments and embracing its advantages."
   },
   {
-    "objectID": "index.html#available-academic-materials",
-    "href": "index.html#available-academic-materials",
-    "title": "CampusGives Database",
-    "section": "Available Academic Materials",
-    "text": "Available Academic Materials\n\n\n\n\n\n\nItem ID\nTitle\nDescription\nQuantity\nCondition\nPickup Location\nStatus\n\n\n\n\n1\nCalculus Textbook\nAdvanced Calculus for Engineers\n1\nLike New\nMain Library\nAvailable\n\n\n2\nNotebook Set\nSet of 5 ruled notebooks\n5\nNew\nStudent Center\nAvailable\n\n\n3\nCasio Calculator\nCasio FX-991EX Scientific Calculator\n1\nUsed\nMath Building\nAvailable\n\n\n4\nWhiteboard\nAssorted whiteboards for study rooms\n10\nNew\nLibrary\nAvailable\n\n\n5\nHighlighter Set\nPack of 6 fluorescent highlighters\n8\nLike New\nBookstore\nAvailable"
+    "objectID": "Data_Visualization/Assignments/Assignment1.html#key-lessons",
+    "href": "Data_Visualization/Assignments/Assignment1.html#key-lessons",
+    "title": "Assignment 1",
+    "section": "Key Lessons",
+    "text": "Key Lessons\n\nEmpowerment, not replacement.\n\nCollaboration between humans and machines.\n\nOvercoming fear of AI through adaptation.\n\nTrust and transparency for adoption."
   },
   {
-    "objectID": "index.html#available-categories",
-    "href": "index.html#available-categories",
-    "title": "CampusGives Database",
-    "section": "Available Categories",
-    "text": "Available Categories\n\n\n\n\nAvailable Categories\n\n\ncategory_id\ncategory_name\ndescription\ntotal_items\n\n\n\n\n1\nAcademic & Study Materials\nTextbooks, notebooks, stationery, and study aids.\n120\n\n\n2\nElectronic & Computer Accessories\nLaptops, keyboards, headphones, and cables.\n95\n\n\n3\nFurniture & Dorm Essentials\nDesks, chairs, shelves, and lamps.\n85\n\n\n4\nClothing & Personal Items\nClothes, shoes, bags, and accessories.\n110\n\n\n5\nTransport & Ride-sharing\nCarpooling, bikes, skateboards, and ride services.\n60\n\n\n6\nArts & Creative Supplies\nPaints, brushes, sketchbooks, and crafts.\n75\n\n\n7\nKitchen & Food Supplies\nCookware, utensils, small appliances, and pantry items.\n100\n\n\n8\nEntertainment & Hobby Items\nBoard games, books, instruments, and sports gear.\n90\n\n\n9\nHealth & Wellness\nFitness equipment, supplements, and medical aids.\n70\n\n\n10\nTools & Miscellaneous\nToolkits, batteries, chargers, and home improvement items.\n80\n\n\n11\nAccommodation\nListings for shared apartments, dorm swaps, and temporary stays.\n50"
+    "objectID": "Data_Visualization/Assignments/Assignment1.html#conclusion",
+    "href": "Data_Visualization/Assignments/Assignment1.html#conclusion",
+    "title": "Assignment 1",
+    "section": "Conclusion",
+    "text": "Conclusion\nIndustrial AI represents transformation, not displacement.\nThe future of work is collaboration where both humans and machines thrive."
   },
   {
-    "objectID": "index.html#available-categories-1",
-    "href": "index.html#available-categories-1",
-    "title": "CampusGives Database",
-    "section": "Available Categories",
-    "text": "Available Categories\n\n\n\n\nAvailable Categories\n\n\ncategory_id\ncategory_name\ndescription\ntotal_items\n\n\n\n\n1\nAcademic & Study Materials\nTextbooks, notebooks, stationery, and study aids.\n120\n\n\n2\nElectronic & Computer Accessories\nLaptops, keyboards, headphones, and cables.\n95\n\n\n3\nFurniture & Dorm Essentials\nDesks, chairs, shelves, and lamps.\n85\n\n\n4\nClothing & Personal Items\nClothes, shoes, bags, and accessories.\n110\n\n\n5\nTransport & Ride-sharing\nCarpooling, bikes, skateboards, and ride services.\n60\n\n\n6\nArts & Creative Supplies\nPaints, brushes, sketchbooks, and crafts.\n75\n\n\n7\nKitchen & Food Supplies\nCookware, utensils, small appliances, and pantry items.\n100\n\n\n8\nEntertainment & Hobby Items\nBoard games, books, instruments, and sports gear.\n90\n\n\n9\nHealth & Wellness\nFitness equipment, supplements, and medical aids.\n70\n\n\n10\nTools & Miscellaneous\nToolkits, batteries, chargers, and home improvement items.\n80\n\n\n11\nAccommodation\nListings for shared apartments, dorm swaps, and temporary stays.\n50"
-  },
-  {
-    "objectID": "index.html#available-academic-materials-1",
-    "href": "index.html#available-academic-materials-1",
-    "title": "CampusGives Database",
-    "section": "Available Academic Materials",
-    "text": "Available Academic Materials\n\n\n\n\n\nItem ID\nTitle\nDescription\nQuantity\nCondition\nPickup Location\nStatus\n\n\n\n\n1\nCalculus Textbook\nAdvanced Calculus for Engineers\n1\nLike New\nMain Library\nAvailable\n\n\n2\nNotebook Set\nSet of 5 ruled notebooks\n5\nNew\nStudent Center\nAvailable\n\n\n3\nCasio Calculator\nCasio FX-991EX Scientific Calculator\n1\nUsed\nMath Building\nAvailable\n\n\n4\nWhiteboard\nAssorted whiteboards for study rooms\n10\nNew\nLibrary\nAvailable\n\n\n5\nHighlighter Set\nPack of 6 fluorescent highlighters\n8\nLike New\nBookstore\nAvailable"
-  },
-  {
-    "objectID": "index.html#available-electronic-accessories",
-    "href": "index.html#available-electronic-accessories",
-    "title": "CampusGives Database",
-    "section": "Available Electronic Accessories",
-    "text": "Available Electronic Accessories\n\n\n\n\n\n\nItem ID\nTitle\nDescription\nQuantity\nCondition\nPickup Location\nStatus\n\n\n\n\n1\nMacBook Pro\nApple MacBook Pro 13-inch, 2020 model\n1\nLike New\nLibrary Tech Center\nAvailable\n\n\n2\nDell XPS Laptop\nDell XPS 15, 16GB RAM, 512GB SSD\n1\nUsed\nStudent Lounge\nAvailable\n\n\n3\nMechanical Keyboard\nRGB Mechanical Keyboard - Red Switches\n3\nNew\nComputer Lab\nAvailable\n\n\n4\nWireless Mouse\nLogitech MX Master 3 Wireless Mouse\n2\nLike New\nMain Library\nAvailable\n\n\n5\n24-inch Monitor\nFull HD Dell 24-inch Monitor\n2\nUsed\nTech Lab\nAvailable\n\n\n6\nUSB-C Charger\n60W USB-C Power Adapter\n5\nNew\nLibrary Checkout\nAvailable\n\n\n7\nNoise-Cancelling Headphones\nSony WH-1000XM4\n1\nLike New\nLibrary Study Room\nAvailable\n\n\n8\nExternal SSD\nSamsung T7 1TB Portable SSD\n4\nNew\nComputer Center\nAvailable"
-  },
-  {
-    "objectID": "index.html#available-furniture-dorm-essentials",
-    "href": "index.html#available-furniture-dorm-essentials",
-    "title": "CampusGives Database",
-    "section": "Available Furniture & Dorm Essentials",
-    "text": "Available Furniture & Dorm Essentials\n\n\n\n\n\n\nItem ID\nTitle\nDescription\nQuantity\nCondition\nPickup Location\nStatus\n\n\n\n\n1\nStudy Desk\nWooden study desk with drawers\n2\nLike New\nDormitory Block A\nAvailable\n\n\n2\nErgonomic Chair\nAdjustable office chair with lumbar support\n1\nUsed\nStudent Center\nAvailable\n\n\n3\nBookshelf\n5-tier wooden bookshelf\n3\nNew\nLibrary Storage\nAvailable\n\n\n4\nPlastic Storage Bins\nSet of 4 stackable bins\n5\nNew\nCommon Room\nAvailable\n\n\n5\nDesk Lamp\nLED desk lamp with adjustable brightness\n4\nLike New\nMain Library\nAvailable\n\n\n6\nMemory Foam Pillow\nSoft memory foam pillow for dorm beds\n6\nNew\nDormitory Block C\nAvailable\n\n\n7\nCurtains\nSet of 2 blackout curtains\n2\nUsed\nHousing Office\nAvailable"
-  },
-  {
-    "objectID": "index.html#available-clothing-personal-items",
-    "href": "index.html#available-clothing-personal-items",
-    "title": "CampusGives Database",
-    "section": "Available Clothing & Personal Items",
-    "text": "Available Clothing & Personal Items\n\n\n\n\n\n\nItem ID\nTitle\nDescription\nSize\nQuantity\nCondition\nPickup Location\nStatus\n\n\n\n\n1\nHoodie\nBlack oversized hoodie\nM\n2\nLike New\nStudent Center\nAvailable\n\n\n2\nSneakers\nNike Air Max running shoes\n42\n1\nUsed\nDormitory Block B\nAvailable\n\n\n3\nBackpack\nLaptop backpack with multiple compartments\nOne Size\n3\nNew\nLibrary\nAvailable\n\n\n4\nWinter Gloves\nSet of 2 wool gloves\nL\n5\nNew\nHousing Office\nAvailable\n\n\n5\nWristwatch\nCasio digital watch\nOne Size\n2\nUsed\nBookstore\nAvailable\n\n\n6\nPerfume\n100ml bottle of Dior Sauvage\nN/A\n1\nNew\nStudent Union\nAvailable\n\n\n7\nBelt\nLeather formal belt\nL\n3\nNew\nCareer Center\nAvailable"
-  },
-  {
-    "objectID": "index.html#available-transport-ride-sharing",
-    "href": "index.html#available-transport-ride-sharing",
-    "title": "CampusGives Database",
-    "section": "Available Transport & Ride-Sharing",
-    "text": "Available Transport & Ride-Sharing\n\n\n\n\n\n\nItem ID\nTitle\nDescription\nType\nAvailability\nPickup Location\nStatus\n\n\n\n\n1\nMountain Bike\n26-inch Trek mountain bike with gears\nBicycle\nAnytime\nStudent Parking Lot A\nAvailable\n\n\n2\nElectric Scooter\nXiaomi Mi electric scooter\nScooter\nWeekends only\nDormitory Block C\nAvailable\n\n\n3\nCarpool Seat\nMorning ride to campus from Downtown\nCarpool\nWeekdays 7AM\nBus Stop A\nAvailable\n\n\n4\nSkateboard\nLongboard, perfect for campus rides\nSkateboard\nAnytime\nLibrary Entrance\nAvailable\n\n\n5\nBus Pass\nMonthly student bus pass (Metro Transit)\nBus Pass\nAvailable for exchange\nStudent Union Office\nAvailable\n\n\n6\nParking Permit\nValid parking permit for Lot B, valid until May\nParking Permit\nExpires in May\nSecurity Office\nAvailable"
-  },
-  {
-    "objectID": "index.html#available-kitchen-food-supplies",
-    "href": "index.html#available-kitchen-food-supplies",
-    "title": "CampusGives Database",
-    "section": "Available Kitchen & Food Supplies",
-    "text": "Available Kitchen & Food Supplies\n\n\n\n\n\n\nItem ID\nTitle\nDescription\nQuantity\nCondition\nPickup Location\nStatus\n\n\n\n\n1\nMicrowave\nCompact dorm-size microwave\n1\nLike New\nDorm Block A\nAvailable\n\n\n2\nCooking Pot Set\nStainless steel cookware set with lids\n3\nNew\nStudent Center Kitchen\nAvailable\n\n\n3\nReusable Water Bottles\nSet of 5 BPA-free reusable bottles\n5\nNew\nCampus Gym\nAvailable\n\n\n4\nCanned Food Pack\nAssorted non-perishable food items\n10\nNew\nFood Bank Room\nAvailable\n\n\n5\nMini Fridge\nSmall dorm refrigerator for food storage\n1\nUsed\nHousing Office\nAvailable\n\n\n6\nCoffee Maker\nSingle-serve Keurig coffee machine\n1\nLike New\nLibrary Lounge\nAvailable"
-  },
-  {
-    "objectID": "index.html#available-entertainment-hobby-items",
-    "href": "index.html#available-entertainment-hobby-items",
-    "title": "CampusGives Database",
-    "section": "Available Entertainment & Hobby Items",
-    "text": "Available Entertainment & Hobby Items\n\n\n\n\n\n\nItem ID\nTitle\nDescription\nQuantity\nCondition\nPickup Location\nStatus\n\n\n\n\n1\nChess Set\nClassic wooden chessboard with pieces\n2\nLike New\nStudent Lounge\nAvailable\n\n\n2\nAcoustic Guitar\nYamaha F310 acoustic guitar\n1\nUsed\nMusic Room\nAvailable\n\n\n3\nBasketball\nOfficial NBA-size basketball\n3\nNew\nSports Center\nAvailable\n\n\n4\nPlayStation 4\nPS4 console with two controllers\n1\nLike New\nGaming Hub\nAvailable\n\n\n5\nComic Book Set\nMarvel and DC comics collection\n5\nNew\nLibrary Reading Room\nAvailable\n\n\n6\nDigital Camera\nCanon EOS 200D DSLR camera\n1\nUsed\nMedia Lab\nAvailable\n\n\n7\nPainting Set\nAcrylic paints, brushes, and sketchbook\n4\nNew\nArt Studio\nAvailable"
-  },
-  {
-    "objectID": "index.html#available-health-wellness-items",
-    "href": "index.html#available-health-wellness-items",
-    "title": "CampusGives Database",
-    "section": "Available Health & Wellness Items",
-    "text": "Available Health & Wellness Items\n\n\n\n\n\n\nItem ID\nTitle\nDescription\nQuantity\nCondition\nPickup Location\nStatus\n\n\n\n\n1\nYoga Mat\nNon-slip yoga mat for exercise\n10\nNew\nGym\nAvailable\n\n\n2\nDumbbell Set\nPair of 5kg dumbbells\n4\nUsed\nFitness Center\nAvailable\n\n\n3\nFirst Aid Kit\nComprehensive first aid kit\n8\nNew\nHealth Center\nAvailable\n\n\n4\nVitamin C Supplements\n500mg tablets, 100 count\n15\nNew\nPharmacy\nAvailable\n\n\n5\nFace Masks\nPack of 50 disposable masks\n30\nNew\nStudent Clinic\nAvailable\n\n\n6\nToiletry Set\nShampoo, conditioner, soap, toothpaste\n12\nNew\nDorm Reception\nAvailable"
-  },
-  {
-    "objectID": "index.html#available-tools-miscellaneous",
-    "href": "index.html#available-tools-miscellaneous",
-    "title": "CampusGives Database",
-    "section": "Available Tools & Miscellaneous",
-    "text": "Available Tools & Miscellaneous\n\n\n\n\n\n\nItem ID\nTitle\nDescription\nQuantity\nCondition\nPickup Location\nStatus\n\n\n\n\n1\nToolbox Set\nComplete set of wrenches, screwdrivers, and pliers\n3\nLike New\nWorkshop\nAvailable\n\n\n2\nRechargeable Batteries\nPack of 4 AA rechargeable batteries\n10\nNew\nElectronics Lab\nAvailable\n\n\n3\nExtension Cord\n6-outlet power strip with surge protection\n5\nNew\nStudent Union\nAvailable\n\n\n4\nBike Repair Kit\nPatch kit, tire levers, mini pump\n7\nNew\nBike Rack Area\nAvailable\n\n\n5\nLED Light Bulbs\nEnergy-saving LED bulbs (Pack of 4)\n12\nNew\nHousing Office\nAvailable\n\n\n6\nPhone Charger\nUSB-C fast charger\n6\nLike New\nLibrary Charging Station\nAvailable"
-  },
-  {
-    "objectID": "index.html#search-available-items",
-    "href": "index.html#search-available-items",
-    "title": "CampusGives Database",
-    "section": "Search Available Items",
-    "text": "Search Available Items"
-  },
-  {
-    "objectID": "index.html#filter-items",
-    "href": "index.html#filter-items",
-    "title": "CampusGives Database",
-    "section": "Filter Items",
-    "text": "Filter Items"
+    "objectID": "Assignment1.html#q1.-analyzing-anscombes-plots-1",
+    "href": "Assignment1.html#q1.-analyzing-anscombes-plots-1",
+    "title": "Assignment 1",
+    "section": "Q1. Analyzing Anscombe’s Plots",
+    "text": "Q1. Analyzing Anscombe’s Plots\nAnscombe’s Quartet shows that datasets can share nearly identical summary statistics (means, variances, correlations, and regression lines) yet have very different relationships when graphed. One series is roughly linear with noise, another is clearly non-linear (curved), another is driven by an outlier, and the last has vertical clustering forced by a high-leverage point.\nWhy this matters: Relying only on summary numbers can be misleading.\nBest practice: Always visualize the data (e.g., scatterplots) before and after modeling to catch outliers/high-leverage points, non-linear patterns, and clusters.\n```{r setup, include=FALSE} knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)"
   }
 ]
