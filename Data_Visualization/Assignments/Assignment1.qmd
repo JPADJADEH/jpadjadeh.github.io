@@ -17,6 +17,7 @@ Anscombe's Quartet teaches us that data can look the same in numbers but tell ve
 
 ```{r}
 #| label: load-data
+#| include: false
 
 # Load Anscombe's data
 data(anscombe)
@@ -27,6 +28,7 @@ summary(anscombe)
 
 ```{r}
 #| label: build-models
+#| include: false
 
 # Create four model objects
 lm1 <- lm(y1 ~ x1, data=anscombe)
@@ -80,8 +82,7 @@ The visualization reveals four very different relationships:
 - **Dataset 4:** No relationship except for one influential point
 
 Despite these dramatic differences, all four datasets have:
-- Same mean for x and yy
-
+- Same mean for x and y
 - Same correlation coefficient
 - Same regression line
 - Same R-squared value
