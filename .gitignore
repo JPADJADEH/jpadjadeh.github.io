@@ -23,3 +23,5 @@
 .DS_Store
 Thumbs.db
 >>>>>>> gh-pages
+
+**/*.quarto_ipynb

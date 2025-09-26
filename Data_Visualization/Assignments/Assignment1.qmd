@@ -1,31 +1,40 @@
 ---
-<<<<<<< HEAD
 title: "Assignment 1: Data Visualization"
-author: "Your Name"
+author: "JP ADJADEH"
 date: "September 26, 2025"
 format: html
 ---
 
-## 1. Analyzing Anscombe’s Plots
+## 1. Analyzing Anscombe's Plots
 
-Anscombe’s Quartet teaches us that data can look the same in numbers but tell very different stories when you make a graph. All four datasets have the same averages, correlations, and regression lines, but the plots show one is a straight line, another is curved, and others are shaped by outliers.
+Anscombe's Quartet teaches us that data can look the same in numbers but tell very different stories when you make a graph. All four datasets have the same averages, correlations, and regression lines, but the plots show one is a straight line, another is curved, and others are shaped by outliers. 
 
-Lesson: If we only look at numbers, we may miss hidden patterns and draw wrong conclusions.
+**The problem:** If we only look at numbers, we may miss these hidden patterns and make wrong conclusions. 
 
-Always graph the data before and after running models. Simple plots like scatterplots can reveal issues such as:
-- Outliers
-- Non-linear trends
-- Unusual points
+**The solution:** Always graph the data before and after running models. Simple plots like scatterplots can reveal issues like outliers, non-linear trends, or unusual points.
 
-### Anscombe Plots Code and Output
+### Loading and Exploring the Data
 
-Here’s the code to generate the Anscombe Quartet plots.
+```{r}
+#| label: load-data
 
-```{r anscombe-plots, echo=TRUE, eval=TRUE, fig.show='hold', fig.cap="Anscombe's Quartet"}
-# Load data
+# Load Anscombe's data
 data(anscombe)
+summary(anscombe)
+```
 
-# Create models
+### Building Linear Models
+
+```{r}
+#| label: build-models
+
+# Create four model objects
+lm1 <- lm(y1 ~ x1, data=anscombe)
+lm2 <- lm(y2 ~ x2, data=anscombe)
+lm3 <- lm(y3 ~ x3, data=anscombe)
+lm4 <- lm(y4 ~ x4, data=anscombe)
+
+# Compare model coefficients
 ff <- y ~ x
 mods <- setNames(as.list(1:4), paste0("lm", 1:4))
 
@@ -34,66 +43,54 @@ for(i in 1:4) {
   mods[[i]] <- lmi <- lm(ff, data = anscombe)
 }
 
-# Prepare plot layout
-op <- par(mfrow = c(2, 2), mar = 0.1 + c(4,4,1,1), oma = c(0, 0, 2, 0))
+# Show coefficients are identical
+sapply(mods, coef)
+```
 
-# Plot each dataset
-for(i in 1:4) {
-=======
-title: "Assignment 1"
-format: html
-page-layout: article
-toc: true
----
-## Q1. Analyzing Anscombe’s Plots
+### Visualizing the Four Datasets
 
-Anscombe’s Quartet shows that datasets can share nearly identical summary statistics (means, variances, correlations, and regression lines) yet have very different relationships when graphed. One series is roughly linear with noise, another is clearly non-linear (curved), another is driven by an outlier, and the last has vertical clustering forced by a high-leverage point.
+```{r}
+#| label: anscombe-plots
+#| fig-width: 10
+#| fig-height: 8
+#| fig-cap: "Anscombe's Quartet: Four datasets with identical summary statistics but very different patterns"
 
-**Why this matters:** Relying only on summary numbers can be misleading.  
-**Best practice:** Always visualize the data (e.g., scatterplots) before and after modeling to catch:  
-- Outliers / high-leverage points  
-- Non-linear patterns  
-- Heterogeneity or clusters
-```{r anscombe-plots, fig.width=6, fig.height=6}
-# Load dataset
-data(anscombe)
-
-# Build formulas and fit models
-ff <- y ~ x
-mods <- setNames(vector("list", 4), paste0("lm", 1:4))
-for (i in 1:4) {
-  ff[2:3] <- lapply(paste0(c("y","x"), i), as.name)
-  mods[[i]] <- lm(ff, data = anscombe)
-}
-
-# Panel layout and margins
+# Set up plotting layout
 op <- par(mfrow = c(2, 2), mar = 0.1+c(4,4,1,1), oma = c(0, 0, 2, 0))
 
-# Plot 4 panels with regression lines
-for (i in 1:4) {
->>>>>>> gh-pages
+# Plot all four datasets with regression lines
+for(i in 1:4) {
   ff[2:3] <- lapply(paste0(c("y","x"), i), as.name)
   plot(ff, data = anscombe, col = "red", pch = 21, bg = "orange", cex = 1.2,
-       xlim = c(3, 19), ylim = c(3, 13))
-  abline(mods[[i]], col = "blue")
+       xlim = c(3, 19), ylim = c(3, 13),
+       main = paste("Dataset", i))
+  abline(mods[[i]], col = "blue", lwd = 2)
 }
-<<<<<<< HEAD
 mtext("Anscombe's 4 Regression Data Sets", outer = TRUE, cex = 1.5)
-par(op)
-=======
-
-mtext("Anscombe's 4 Regression Data Sets", outer = TRUE, cex = 1.3)
 par(op)
 ```
 
----
+### Key Insights
 
-## Q1. Analyzing Anscombe’s Plots
+The visualization reveals four very different relationships:
 
-Anscombe’s Quartet shows that datasets can share nearly identical summary statistics (means, variances, correlations, and regression lines) yet have very different relationships when graphed. One series is roughly linear with noise, another is clearly non-linear (curved), another is driven by an outlier, and the last has vertical clustering forced by a high-leverage point.
+- **Dataset 1:** Perfect linear relationship
+- **Dataset 2:** Clear non-linear (curved) relationship  
+- **Dataset 3:** Linear relationship with one outlier
+- **Dataset 4:** No relationship except for one influential point
 
-**Why this matters:** Relying only on summary numbers can be misleading.\
-**Best practice:** Always visualize the data (e.g., scatterplots) before and after modeling to catch outliers/high-leverage points, non-linear patterns, and clusters.
+Despite these dramatic differences, all four datasets have:
+- Same mean for x and y
+- Same correlation coefficient
+- Same regression line
+- Same R-squared value
 
-\`\`\`{r setup, include=FALSE} knitr::opts_chunk\$set(echo = FALSE, message = FALSE, warning = FALSE)
->>>>>>> gh-pages
+This demonstrates why **visualization is essential** for understanding data patterns that summary statistics alone cannot reveal.
+
+## 2. Changing Color in Fall Script
+
+*[This section will be completed in the next iteration]*
+
+## 3. Critique of Plot Design (Nathan Yau Principles)
+
+*[This section will be completed in the next iteration]*
