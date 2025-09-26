@@ -1,6 +1,7 @@
 ---
 title: "Assignment 1: Data Visualization"
 author: "Your Name"
+date: "September 26, 2025"
 format: html
 ---
 
@@ -14,6 +15,10 @@ Always graph the data before and after running models. Simple plots like scatter
 - Outliers
 - Non-linear trends
 - Unusual points
+
+### Anscombe Plots Code and Output
+
+Here’s the code to generate the Anscombe Quartet plots.
 
 ```{r anscombe-plots, echo=TRUE, eval=TRUE, fig.show='hold', fig.cap="Anscombe's Quartet"}
 # Load data
