@@ -78,7 +78,7 @@ body{
   min-height:calc(100vh - 80px);   /* 80px ~ footer height */
 }
 
-/* NEW: Center the content area and constrain width */
+/* Center the content area and constrain width */
 .main-inner{
   max-width:1100px;                /* adjust to taste (1000–1200px works well) */
   margin:0 auto;                   /* centers the white cards inside khaki bg */
@@ -89,18 +89,20 @@ body{
   background:var(--khaki);
   border-left:8px solid var(--accent);
   color:#2b2b2b;
-  padding:16px 18px;
+  padding:24px 26px;               /* more breathing room */
   border-radius:12px;
   font-weight:800;
-  letter-spacing:.2px;
-  font-size:clamp(18px, 2.2vw, 24px);
+  letter-spacing:.3px;
+  text-align:center;               /* centered headline */
+  font-size:clamp(26px, 3.5vw, 40px); /* BIGGER hero: 26–40px responsively */
 }
 
 /* subtitle under the banner */
 .subtitle{
-  margin:10px 2px 18px;
+  margin:14px 2px 22px;
   color:#61636b;
-  font-size:clamp(15px, 1.4vw, 18px);
+  text-align:center;               /* centered subheadline */
+  font-size:clamp(18px, 2vw, 22px);
 }
 
 /* content card */
