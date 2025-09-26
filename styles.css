@@ -3,9 +3,8 @@
   --nav-bg: #242643;          /* sidebar + footer navy */
   --nav-txt: #e9ecf3;
   --nav-txt-muted:#bfc6d8;
-  --khaki: #f4eee3;           /* banner background */
-  --accent: #d4a373;          /* warm accent */
-  --body-bg:#ffffff;
+  --khaki: #f4eee3;           /* page & banner background */
+  --accent: #d4a373;          /* warm accent (banner left bar) */
   --body-txt:#1f2430;
 }
 
@@ -16,7 +15,7 @@ body{
   margin:0;
   font:16px/1.5 system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
   color:var(--body-txt);
-  background:var(--body-bg);
+  background:var(--khaki);          /* <-- khaki page background */
 }
 
 /* ====== Sidebar ====== */
@@ -74,28 +73,42 @@ body{
 
 /* ====== Main area ====== */
 .main-content{
-  margin-left:220px;
-  padding:24px 28px 120px;  /* bottom padding so content never hides behind fixed footer */
-  min-height:calc(100vh - 80px);  /* 80px = footer height */
+  margin-left:220px;               /* make room for sidebar */
+  padding:24px 28px 120px;         /* bottom padding so footer never overlaps */
+  min-height:calc(100vh - 80px);   /* 80px ~ footer height */
 }
 
-/* khaki banner at the top */
+/* NEW: Center the content area and constrain width */
+.main-inner{
+  max-width:1100px;                /* adjust to taste (1000–1200px works well) */
+  margin:0 auto;                   /* centers the white cards inside khaki bg */
+}
+
+/* khaki banner at the top (hero) */
 .banner{
   background:var(--khaki);
-  border-left:6px solid var(--accent);
+  border-left:8px solid var(--accent);
   color:#2b2b2b;
-  padding:14px 16px;
-  border-radius:10px;
-  font-weight:700;
+  padding:16px 18px;
+  border-radius:12px;
+  font-weight:800;
   letter-spacing:.2px;
+  font-size:clamp(18px, 2.2vw, 24px);
 }
-.subtitle{margin:8px 2px 18px; color:#61636b}
 
+/* subtitle under the banner */
+.subtitle{
+  margin:10px 2px 18px;
+  color:#61636b;
+  font-size:clamp(15px, 1.4vw, 18px);
+}
+
+/* content card */
 .content-box{
   background:#fff;
   border:1px solid #eceef3;
   border-radius:12px;
-  padding:16px 18px;
+  padding:18px 20px;
   box-shadow:0 4px 12px rgba(22,24,33,.06);
   margin-top:14px;
 }
@@ -114,3 +127,14 @@ footer .social-links{
 }
 footer .social-links a{color:#fff; opacity:.85}
 footer .social-links a:hover{opacity:1}
+
+/* ====== Responsive tweaks ====== */
+@media (max-width: 880px){
+  .sidebar{width:200px}
+  .main-content{margin-left:200px}
+}
+@media (max-width: 720px){
+  .sidebar{position:static; width:auto}
+  .main-content{margin-left:0; padding:16px 16px 120px}
+  .main-inner{max-width:700px}
+}
