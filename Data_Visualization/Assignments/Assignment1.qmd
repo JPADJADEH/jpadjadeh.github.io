@@ -80,7 +80,8 @@ The visualization reveals four very different relationships:
 - **Dataset 4:** No relationship except for one influential point
 
 Despite these dramatic differences, all four datasets have:
-- Same mean for x and y
+- Same mean for x and yy
+
 - Same correlation coefficient
 - Same regression line
 - Same R-squared value
