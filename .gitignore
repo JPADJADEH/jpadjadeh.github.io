@@ -1,0 +1,18 @@
+# RStudio project/user files
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+
+# RStudio temporary files
+*.Rproj
+*.Rproj.*
+
+# Quarto build directories
+/.quarto/
+/_site/
+/*_files/
+
+# OS-specific files
+.DS_Store
+Thumbs.db

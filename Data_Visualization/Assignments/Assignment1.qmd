@@ -1,0 +1,52 @@
+---
+title: "Assignment 1"
+format: html
+page-layout: article
+toc: true
+---
+## Q1. Analyzing Anscombe’s Plots
+
+Anscombe’s Quartet shows that datasets can share nearly identical summary statistics (means, variances, correlations, and regression lines) yet have very different relationships when graphed. One series is roughly linear with noise, another is clearly non-linear (curved), another is driven by an outlier, and the last has vertical clustering forced by a high-leverage point.
+
+**Why this matters:** Relying only on summary numbers can be misleading.  
+**Best practice:** Always visualize the data (e.g., scatterplots) before and after modeling to catch:  
+- Outliers / high-leverage points  
+- Non-linear patterns  
+- Heterogeneity or clusters
+```{r anscombe-plots, fig.width=6, fig.height=6}
+# Load dataset
+data(anscombe)
+
+# Build formulas and fit models
+ff <- y ~ x
+mods <- setNames(vector("list", 4), paste0("lm", 1:4))
+for (i in 1:4) {
+  ff[2:3] <- lapply(paste0(c("y","x"), i), as.name)
+  mods[[i]] <- lm(ff, data = anscombe)
+}
+
+# Panel layout and margins
+op <- par(mfrow = c(2, 2), mar = 0.1+c(4,4,1,1), oma = c(0, 0, 2, 0))
+
+# Plot 4 panels with regression lines
+for (i in 1:4) {
+  ff[2:3] <- lapply(paste0(c("y","x"), i), as.name)
+  plot(ff, data = anscombe, col = "red", pch = 21, bg = "orange", cex = 1.2,
+       xlim = c(3, 19), ylim = c(3, 13))
+  abline(mods[[i]], col = "blue")
+}
+
+mtext("Anscombe's 4 Regression Data Sets", outer = TRUE, cex = 1.3)
+par(op)
+```
+
+---
+
+## Q1. Analyzing Anscombe’s Plots
+
+Anscombe’s Quartet shows that datasets can share nearly identical summary statistics (means, variances, correlations, and regression lines) yet have very different relationships when graphed. One series is roughly linear with noise, another is clearly non-linear (curved), another is driven by an outlier, and the last has vertical clustering forced by a high-leverage point.
+
+**Why this matters:** Relying only on summary numbers can be misleading.\
+**Best practice:** Always visualize the data (e.g., scatterplots) before and after modeling to catch outliers/high-leverage points, non-linear patterns, and clusters.
+
+\`\`\`{r setup, include=FALSE} knitr::opts_chunk\$set(echo = FALSE, message = FALSE, warning = FALSE)
