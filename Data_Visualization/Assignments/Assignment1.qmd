@@ -191,7 +191,8 @@ After testing these options, I chose `"darkred"` because it best captures the de
 
 The plot below demonstrates several visualization design issues that violate key principles emphasized by Nathan Yau about creating clear, effective data visualizations.
 
-![Problematic visualization with multiple design issues](images/plot_critique.png)
+![Problematic visualization with multiple design issues](plot_critique.png)
+ issues](images/plot_critique.png)
 
 ### Analysis of Design Problems
 
