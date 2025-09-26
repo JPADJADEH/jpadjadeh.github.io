@@ -91,7 +91,101 @@ This demonstrates why **visualization is essential** for understanding data patt
 
 ## 2. Changing Color in Fall Script
 
-*[This section will be completed in the next iteration]*
+This section demonstrates generative art using L-systems to create plant-like structures. The original script uses "burlywood3" color, but we can experiment with different fall colors to create various artistic effects.
+
+### Setup Required Packages
+
+```{r}
+#| label: fall-setup
+#| include: false
+#| message: false
+
+# Install and load required packages
+if (!require(gsubfn)) install.packages("gsubfn")
+if (!require(tidyverse)) install.packages("tidyverse")
+
+library(gsubfn)
+library(tidyverse)
+```
+
+### Generating the Fall Plant Art
+
+```{r}
+#| label: fall-art
+#| fig-width: 8
+#| fig-height: 8
+#| fig-cap: "Generative plant art using L-systems - Modified with different fall colors"
+
+# Define elements in plant art
+axiom <- "X"
+rules <- list("X"="F-[[X]+X]+F[+FX]-X", "F"="FF")
+angle <- 22.5
+depth <- 6
+
+# Generate the L-system string
+for (i in 1:depth) axiom <- gsubfn(".", rules, axiom)
+
+# Extract actions
+actions <- str_extract_all(axiom, "\\d*\\+|\\d*\\-|F|L|R|\\[|\\]|\\|") %>% unlist
+
+# Initialize data structures
+status <- data.frame(x=numeric(0), y=numeric(0), alfa=numeric(0))
+points <- data.frame(x1 = 0, y1 = 0, x2 = NA, y2 = NA, alfa=90, depth=1)
+
+# Generate drawing data
+for (action in actions) {
+  if (action=="F") {
+    x <- points[1, "x1"] + cos(points[1, "alfa"]*(pi/180))
+    y <- points[1, "y1"] + sin(points[1, "alfa"]*(pi/180))
+    points[1,"x2"] <- x
+    points[1,"y2"] <- y
+    data.frame(x1 = x, y1 = y, x2 = NA, y2 = NA,
+               alfa=points[1, "alfa"],
+               depth=points[1,"depth"]) %>% rbind(points) -> points
+  }
+  if (action %in% c("+", "-")){
+    alfa <- points[1, "alfa"]
+    points[1, "alfa"] <- eval(parse(text=paste0("alfa",action, angle)))
+  }
+  if(action=="["){
+    data.frame(x=points[1, "x1"], y=points[1, "y1"], alfa=points[1, "alfa"]) %>%
+      rbind(status) -> status
+    points[1, "depth"] <- points[1, "depth"]+1
+  }
+  if(action=="]"){
+    depth <- points[1, "depth"]
+    points[-1,] -> points
+    data.frame(x1=status[1, "x"], y1=status[1, "y"], x2=NA, y2=NA,
+               alfa=status[1, "alfa"],
+               depth=depth-1) %>%
+      rbind(points) -> points
+    status[-1,] -> status
+  }
+}
+
+# Create the plot with modified fall color
+ggplot() +
+  geom_segment(aes(x = x1, y = y1, xend = x2, yend = y2),
+               lineend = "round",
+               color="darkred", # Changed from original "burlywood3" to "darkred"
+               data=na.omit(points)) +
+  coord_fixed(ratio = 1) +
+  theme_void() +
+  labs(title = "Fall Plant Art - L-System Generated",
+       subtitle = "Color changed from burlywood3 to darkred for autumn theme")
+```
+
+### Color Experiment Notes
+
+The original script used `color="burlywood3"` which creates a tan/brown appearance. For this fall-themed version, I changed it to `color="darkred"` to evoke autumn foliage. Other fall color options you could experiment with include:
+
+- `"orange"` - Bright autumn orange
+- `"goldenrod"` - Golden yellow fall color  
+- `"saddlebrown"` - Rich brown
+- `"firebrick"` - Deep red
+- `"chocolate"` - Warm brown
+
+The L-system uses rules to recursively generate a tree-like structure, creating organic, plant-like patterns through mathematical iteration.
 
 ## 3. Critique of Plot Design (Nathan Yau Principles)
 
