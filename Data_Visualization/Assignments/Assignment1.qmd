@@ -89,9 +89,9 @@ Despite these dramatic differences, all four datasets have:
 
 This demonstrates why **visualization is essential** for understanding data patterns that summary statistics alone cannot reveal.
 
-## 2. Changing Color in Fall Script
+## 2. Fall Tree Color Change
 
-This section demonstrates generative art using L-systems to create plant-like structures. The original script uses "burlywood3" color, but we can experiment with different fall colors to create various artistic effects.
+This section demonstrates generative art using L-systems to create plant-like structures. I experimented with the color scheme in the original Fall script to explore different autumn themes.
 
 ### Setup Required Packages
 
@@ -114,7 +114,7 @@ library(tidyverse)
 #| label: fall-art
 #| fig-width: 8
 #| fig-height: 8
-#| fig-cap: "Generative plant art using L-systems - Modified with different fall colors"
+#| fig-cap: "Fall tree generated using L-systems with modified color scheme"
 
 # Define elements in plant art
 axiom <- "X"
@@ -163,21 +163,21 @@ for (action in actions) {
   }
 }
 
-# Create the plot with modified fall color
+# Create the plot with my chosen fall color
 ggplot() +
   geom_segment(aes(x = x1, y = y1, xend = x2, yend = y2),
                lineend = "round",
-               color="darkred", # Changed from original "burlywood3" to "darkred"
+               color="darkred", # My color choice after experimenting with different options
                data=na.omit(points)) +
   coord_fixed(ratio = 1) +
   theme_void() +
-  labs(title = "Fall Plant Art - L-System Generated",
-       subtitle = "Color changed from burlywood3 to darkred for autumn theme")
+  labs(title = "Fall Tree - L-System Generated Art",
+       subtitle = "Color modified from original burlywood3 to darkred")
 ```
 
-### Color Experiment Notes
+### My Color Experimentation Process
 
-The original script used `color="burlywood3"` which creates a tan/brown appearance. For this fall-themed version, I changed it to `color="darkred"` to evoke autumn foliage. Other fall color options you could experiment with include:
+I experimented with several fall color options before settling on `darkred`. The original script used `color="burlywood3"` which creates a tan/brown appearance. During my experimentation, I tested:
 
 - `"orange"` - Bright autumn orange
 - `"goldenrod"` - Golden yellow fall color  
@@ -185,8 +185,50 @@ The original script used `color="burlywood3"` which creates a tan/brown appearan
 - `"firebrick"` - Deep red
 - `"chocolate"` - Warm brown
 
-The L-system uses rules to recursively generate a tree-like structure, creating organic, plant-like patterns through mathematical iteration.
+After testing these options, I chose `"darkred"` because it best captures the deep, rich colors of autumn foliage and creates a striking visual contrast against the white background. The L-system algorithm uses mathematical rules to recursively generate tree-like structures, creating organic, plant-like patterns through iterative growth.
 
 ## 3. Critique of Plot Design (Nathan Yau Principles)
 
-*[This section will be completed in the next iteration]*
+The plot below demonstrates several visualization design issues that violate key principles emphasized by Nathan Yau about creating clear, effective data visualizations.
+
+![Problematic visualization with multiple design issues](images/plot_critique.png)
+
+### Analysis of Design Problems
+
+This plot tries to show too many things at once—different contrasts, shapes, colors, and line styles—making it cluttered and hard to read. As Nathan Yau emphasizes, **a good visualization should highlight the story clearly**, but here the message is buried under visual noise.
+
+#### Specific Issues Identified:
+
+**1. Visual Overload**
+- Too many different contrasts, shapes, colors, and line styles
+- Multiple visual elements competing for attention
+- No clear hierarchy to guide the reader's eye
+
+**2. Crowded Layout**
+- Long inline labels crowd the chart space
+- Poor use of white space
+- Difficult to distinguish between different data categories
+
+**3. Weak Reference Points**
+- The zero line (a key reference point) is not emphasized enough
+- Important benchmarks are visually de-emphasized
+- Baseline comparisons are difficult to make
+
+#### Recommended Design Improvements:
+
+Based on Nathan Yau's visualization principles, a cleaner design would:
+
+- **Reduce comparisons per plot** - Simplify to focus on the most important message
+- **Use consistent symbols** - Establish a clear visual language throughout
+- **Move labels to a legend** - Free up chart space and reduce visual clutter
+- **Highlight the reference line** - Make the zero line or other key benchmarks more prominent
+- **Establish visual hierarchy** - Use size, color, and positioning strategically
+
+### Design Principles Applied:
+
+1. **Clarity over complexity** - Simplify to emphasize the key message
+2. **Consistent visual language** - Use uniform symbols and styling
+3. **Strategic emphasis** - Highlight important reference points
+4. **Effective use of space** - Reduce clutter through better organization
+
+These improvements would make the main story about winners, losers, and economic perceptions much easier to see and understand, following Nathan Yau's guidance that effective visualization should always prioritize the reader's comprehension over visual complexity.

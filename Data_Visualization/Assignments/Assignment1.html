@@ -201,9 +201,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>This demonstrates why <strong>visualization is essential</strong> for understanding data patterns that summary statistics alone cannot reveal.</p>
 </section>
 </section>
-<section id="changing-color-in-fall-script" class="level2">
-<h2 class="anchored" data-anchor-id="changing-color-in-fall-script">2. Changing Color in Fall Script</h2>
-<p>This section demonstrates generative art using L-systems to create plant-like structures. The original script uses “burlywood3” color, but we can experiment with different fall colors to create various artistic effects.</p>
+<section id="fall-tree-color-change" class="level2">
+<h2 class="anchored" data-anchor-id="fall-tree-color-change">2. Fall Tree Color Change</h2>
+<p>This section demonstrates generative art using L-systems to create plant-like structures. I experimented with the color scheme in the original Fall script to explore different autumn themes.</p>
 <section id="setup-required-packages" class="level3">
 <h3 class="anchored" data-anchor-id="setup-required-packages">Setup Required Packages</h3>
 </section>
@@ -257,29 +257,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>  }</span>
 <span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the plot with modified fall color</span></span>
+<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the plot with my chosen fall color</span></span>
 <span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
 <span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="fu">aes</span>(<span class="at">x =</span> x1, <span class="at">y =</span> y1, <span class="at">xend =</span> x2, <span class="at">yend =</span> y2),</span>
 <span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a>               <span class="at">lineend =</span> <span class="st">"round"</span>,</span>
-<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a>               <span class="at">color=</span><span class="st">"darkred"</span>, <span class="co"># Changed from original "burlywood3" to "darkred"</span></span>
+<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a>               <span class="at">color=</span><span class="st">"darkred"</span>, <span class="co"># My color choice after experimenting with different options</span></span>
 <span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a>               <span class="at">data=</span><span class="fu">na.omit</span>(points)) <span class="sc">+</span></span>
 <span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_fixed</span>(<span class="at">ratio =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
 <span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>() <span class="sc">+</span></span>
-<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Fall Plant Art - L-System Generated"</span>,</span>
-<span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"Color changed from burlywood3 to darkred for autumn theme"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Fall Tree - L-System Generated Art"</span>,</span>
+<span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"Color modified from original burlywood3 to darkred"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="Assignment1_files/figure-html/fall-art-1.png" class="img-fluid figure-img" width="768"></p>
-<figcaption>Generative plant art using L-systems - Modified with different fall colors</figcaption>
+<figcaption>Fall tree generated using L-systems with modified color scheme</figcaption>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="color-experiment-notes" class="level3">
-<h3 class="anchored" data-anchor-id="color-experiment-notes">Color Experiment Notes</h3>
-<p>The original script used <code>color="burlywood3"</code> which creates a tan/brown appearance. For this fall-themed version, I changed it to <code>color="darkred"</code> to evoke autumn foliage. Other fall color options you could experiment with include:</p>
+<section id="my-color-experimentation-process" class="level3">
+<h3 class="anchored" data-anchor-id="my-color-experimentation-process">My Color Experimentation Process</h3>
+<p>I experimented with several fall color options before settling on <code>darkred</code>. The original script used <code>color="burlywood3"</code> which creates a tan/brown appearance. During my experimentation, I tested:</p>
 <ul>
 <li><code>"orange"</code> - Bright autumn orange</li>
 <li><code>"goldenrod"</code> - Golden yellow fall color<br>
@@ -288,14 +288,51 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><code>"firebrick"</code> - Deep red</li>
 <li><code>"chocolate"</code> - Warm brown</li>
 </ul>
-<p>The L-system uses rules to recursively generate a tree-like structure, creating organic, plant-like patterns through mathematical iteration.</p>
+<p>After testing these options, I chose <code>"darkred"</code> because it best captures the deep, rich colors of autumn foliage and creates a striking visual contrast against the white background. The L-system algorithm uses mathematical rules to recursively generate tree-like structures, creating organic, plant-like patterns through iterative growth.</p>
 </section>
 </section>
 <section id="critique-of-plot-design-nathan-yau-principles" class="level2">
 <h2 class="anchored" data-anchor-id="critique-of-plot-design-nathan-yau-principles">3. Critique of Plot Design (Nathan Yau Principles)</h2>
-<p><em>[This section will be completed in the next iteration]</em></p>
+<p>The plot below demonstrates several visualization design issues that violate key principles emphasized by Nathan Yau about creating clear, effective data visualizations.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/plot_critique.png" class="img-fluid figure-img"></p>
+<figcaption>Problematic visualization with multiple design issues</figcaption>
+</figure>
+</div>
+<section id="analysis-of-design-problems" class="level3">
+<h3 class="anchored" data-anchor-id="analysis-of-design-problems">Analysis of Design Problems</h3>
+<p>This plot tries to show too many things at once—different contrasts, shapes, colors, and line styles—making it cluttered and hard to read. As Nathan Yau emphasizes, <strong>a good visualization should highlight the story clearly</strong>, but here the message is buried under visual noise.</p>
+<section id="specific-issues-identified" class="level4">
+<h4 class="anchored" data-anchor-id="specific-issues-identified">Specific Issues Identified:</h4>
+<p><strong>1. Visual Overload</strong> - Too many different contrasts, shapes, colors, and line styles - Multiple visual elements competing for attention - No clear hierarchy to guide the reader’s eye</p>
+<p><strong>2. Crowded Layout</strong> - Long inline labels crowd the chart space - Poor use of white space - Difficult to distinguish between different data categories</p>
+<p><strong>3. Weak Reference Points</strong> - The zero line (a key reference point) is not emphasized enough - Important benchmarks are visually de-emphasized - Baseline comparisons are difficult to make</p>
+</section>
+<section id="recommended-design-improvements" class="level4">
+<h4 class="anchored" data-anchor-id="recommended-design-improvements">Recommended Design Improvements:</h4>
+<p>Based on Nathan Yau’s visualization principles, a cleaner design would:</p>
+<ul>
+<li><strong>Reduce comparisons per plot</strong> - Simplify to focus on the most important message</li>
+<li><strong>Use consistent symbols</strong> - Establish a clear visual language throughout</li>
+<li><strong>Move labels to a legend</strong> - Free up chart space and reduce visual clutter</li>
+<li><strong>Highlight the reference line</strong> - Make the zero line or other key benchmarks more prominent</li>
+<li><strong>Establish visual hierarchy</strong> - Use size, color, and positioning strategically</li>
+</ul>
+</section>
+</section>
+<section id="design-principles-applied" class="level3">
+<h3 class="anchored" data-anchor-id="design-principles-applied">Design Principles Applied:</h3>
+<ol type="1">
+<li><strong>Clarity over complexity</strong> - Simplify to emphasize the key message</li>
+<li><strong>Consistent visual language</strong> - Use uniform symbols and styling</li>
+<li><strong>Strategic emphasis</strong> - Highlight important reference points</li>
+<li><strong>Effective use of space</strong> - Reduce clutter through better organization</li>
+</ol>
+<p>These improvements would make the main story about winners, losers, and economic perceptions much easier to see and understand, following Nathan Yau’s guidance that effective visualization should always prioritize the reader’s comprehension over visual complexity.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
