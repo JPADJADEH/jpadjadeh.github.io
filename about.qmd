@@ -1,9 +1,5 @@
 ---
-title: "About"
+title: "About Author"
 ---
 
-About this site
-
-```{r}
-1 + 1
-```
+John-Paul Adjadeh is a Ph.D. Candidate in Political Science and M.S. student in Social Data Analytics at the University of Texas at Dallas. His research explores traditional authority, democratic governance, and AI-informed policy, drawing on experience at Ghana's Ministry of Chieftaincy and collaborations with the Governance and Local Development Institute.
