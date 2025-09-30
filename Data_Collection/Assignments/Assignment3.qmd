@@ -1,0 +1,166 @@
+---
+title: "Assignment 3: Mapping Census Data"
+author: "Your Name"
+date: "2025-09-30"
+format: 
+  html:
+    code-fold: true
+    code-summary: "Show code"
+    toc: true
+    toc-location: left
+execute:
+  warning: false
+  message: false
+---
+
+# Census Data Analysis: Texas Counties
+
+## Setup and Data Collection
+
+```{r setup}
+#| echo: true
+#| output: false
+
+# Load required packages
+library(tidycensus)
+library(tigris)
+library(sf)
+library(dplyr)
+library(ggplot2)
+library(readr)
+
+options(tigris_use_cache = TRUE)
+
+# Set Census API key
+census_api_key("b1b5addc32c59ed25b2ac40f0264ab6a93c70fe4", install = FALSE)
+
+# Explore available variables
+vars <- load_variables(2023, "acs5", cache = TRUE)
+```
+
+```{r parameters}
+#| echo: true
+
+# Define parameters
+state_abbr <- "TX"
+geo_level  <- "county"
+my_vars    <- c(income = "B19013_001", poverty = "B17001_002")
+year_acs   <- 2023
+survey     <- "acs5"
+```
+
+```{r download-data}
+#| echo: true
+#| output: false
+
+# Download ACS data with geometry
+acs <- get_acs(
+  geography = geo_level,
+  variables = my_vars,
+  state = state_abbr,
+  year = year_acs,
+  survey = survey,
+  geometry = TRUE
+)
+
+# Convert to wide format
+acs_wide <- acs |>
+  tidyr::pivot_wider(
+    id_cols = c(GEOID, NAME, geometry),
+    names_from = variable,
+    values_from = c(estimate, moe)
+  )
+```
+
+## Visualization
+
+### Figure 1: Choropleth Map of Median Household Income
+
+```{r choropleth-map}
+#| echo: true
+#| fig-width: 10
+#| fig-height: 8
+
+ggplot(acs_wide) +
+  geom_sf(aes(fill = estimate_income), color = NA) +
+  scale_fill_viridis_c(name = "Median HH Income") +
+  labs(
+    title = paste0("ACS ", year_acs, " 5-year: Median Income — ", state_abbr, " (", geo_level, ")"),
+    caption = "Source: U.S. Census Bureau via tidycensus"
+  ) +
+  theme_minimal()
+```
+
+**Interpretation:** The choropleth map shows strong geographic variation in median household income across Texas counties. Higher incomes cluster around major metropolitan regions such as Houston, Dallas, Austin, and San Antonio, while many rural areas, especially in West Texas and along the border, report substantially lower incomes. The visualization highlights the spatial concentration of economic advantage in urban centers compared to persistent income disparities in less populated counties.
+
+## Data Tables
+
+### Top 10 Counties by Median Household Income
+
+```{r top-counties}
+#| echo: true
+
+top10 <- acs_wide |>
+  arrange(desc(estimate_income)) |>
+  select(NAME, estimate_income, moe_income) |>
+  slice_head(n = 10) |>
+  st_drop_geometry()
+
+# Format as table
+top10 |>
+  mutate(
+    Rank = row_number(),
+    County = NAME,
+    `Estimate Income ($)` = format(estimate_income, big.mark = ","),
+    `Margin of Error ($)` = format(moe_income, big.mark = ",")
+  ) |>
+  select(Rank, County, `Estimate Income ($)`, `Margin of Error ($)`) |>
+  knitr::kable()
+```
+
+**Note:** Estimates are from the 2023 American Community Survey, 5-year estimates.
+
+The highest-income counties include Harris, Dallas, Bexar, Tarrant, and Travis, reflecting the economic strength of Texas's largest metropolitan areas. These counties benefit from diverse economies, large populations, and employment opportunities that support higher household incomes. The estimates are relatively precise, with moderate margins of error.
+
+### Bottom 10 Counties by Median Household Income
+
+```{r bottom-counties}
+#| echo: true
+
+bottom10 <- acs_wide |>
+  arrange(estimate_income) |>
+  select(NAME, estimate_income, moe_income) |>
+  slice_head(n = 10) |>
+  st_drop_geometry()
+
+# Format as table
+bottom10 |>
+  mutate(
+    Rank = row_number(),
+    County = NAME,
+    `Estimate Income ($)` = format(estimate_income, big.mark = ","),
+    `Margin of Error ($)` = format(moe_income, big.mark = ",")
+  ) |>
+  select(Rank, County, `Estimate Income ($)`, `Margin of Error ($)`) |>
+  knitr::kable()
+```
+
+**Note:** Estimates are from the 2023 American Community Survey, 5-year estimates.
+
+At the other end, counties such as Kenedy, Loving, and King show the lowest median incomes in the state. Many of these counties are sparsely populated, which explains both the very low-income figures and the relatively large margins of error. The data highlight the economic vulnerability of rural Texas, where limited labor markets and small sample sizes constrain reliable measurement.
+
+## Conclusion
+
+Taken together, the map and tables underscore the sharp income inequality across Texas counties. Metropolitan areas consistently report the highest incomes, while rural counties remain at the bottom, with wide confidence intervals that reflect small populations. These results demonstrate how geography and population density shape economic outcomes, pointing to persistent divides between urban prosperity and rural disadvantage.
+
+## Data Export
+
+```{r export}
+#| echo: true
+#| output: false
+
+# Save the processed data
+readr::write_csv(st_drop_geometry(acs_wide), "acs_data.csv")
+```
+
+*Note: Processed data saved to `acs_data.csv`*
