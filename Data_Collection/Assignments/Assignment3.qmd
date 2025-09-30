@@ -1,7 +1,6 @@
 ---
 title: "Assignment 3: Mapping Census Data"
 author: "Your Name"
-date: "2025-09-30"
 format: 
   html:
     code-fold: true
