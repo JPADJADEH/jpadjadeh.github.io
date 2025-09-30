@@ -369,5 +369,47 @@
     "title": "Assignment 2: Google Trends Analysis",
     "section": "",
     "text": "Show code\n# Save processed data\nwrite.csv(df, \"multiTimeline_analyzed.csv\", row.names = FALSE)\nsaveRDS(df, \"multiTimeline_analyzed.rds\")\n\n\nNote: Processed data saved to multiTimeline_analyzed.csv and multiTimeline_analyzed.rds"
+  },
+  {
+    "objectID": "Data_Collection/Reviews/Review1.html",
+    "href": "Data_Collection/Reviews/Review1.html",
+    "title": "Podcast Review: The Next Industrial Revolution is Industrial AI",
+    "section": "",
+    "text": "Featuring: - Barbara Humpton (CEO, Siemens USA) - Olympia Brikis (Director of Industrial AI, Siemens USA)\nTopic: How Industrial AI is reshaping manufacturing and infrastructure, with applications such as predictive maintenance, digital twins, and real-time optimization."
+  },
+  {
+    "objectID": "Data_Collection/Reviews/Review1.html#podcast-information",
+    "href": "Data_Collection/Reviews/Review1.html#podcast-information",
+    "title": "Podcast Review: The Next Industrial Revolution is Industrial AI",
+    "section": "",
+    "text": "Featuring: - Barbara Humpton (CEO, Siemens USA) - Olympia Brikis (Director of Industrial AI, Siemens USA)\nTopic: How Industrial AI is reshaping manufacturing and infrastructure, with applications such as predictive maintenance, digital twins, and real-time optimization."
+  },
+  {
+    "objectID": "Data_Collection/Reviews/Review1.html#overview",
+    "href": "Data_Collection/Reviews/Review1.html#overview",
+    "title": "Podcast Review: The Next Industrial Revolution is Industrial AI",
+    "section": "Overview",
+    "text": "Overview\nThe discussion explored how Industrial AI is transforming manufacturing and infrastructure. One of the most compelling aspects of the conversation was the emphasis on human-centered AI adoption. Both speakers underscored that AI should not be seen primarily as a tool for replacing workers but rather as a powerful way to empower them with better tools. This aligns with the concept of collaborative AI, where machines take on repetitive or heavy computational tasks, freeing humans to focus on higher-value decisions, creativity, and problem-solving."
+  },
+  {
+    "objectID": "Data_Collection/Reviews/Review1.html#my-reflections",
+    "href": "Data_Collection/Reviews/Review1.html#my-reflections",
+    "title": "Podcast Review: The Next Industrial Revolution is Industrial AI",
+    "section": "My Reflections",
+    "text": "My Reflections\nThis point resonated deeply with me. There is widespread panic and skepticism about AI, particularly fears of job loss. Many people are hesitant to engage with AI technologies, assuming that adoption inevitably means displacement. However, what stood out in this podcast is that AI is not the end of human contribution, but a transformation of it. The challenge, then, is not resisting AI but learning its rudiments, embracing its potential, and positioning ourselves to thrive in an AI-augmented environment.\nAnother lesson is the importance of trust and transparency. Workers need to understand why AI systems recommend certain actions, which means organizations must prioritize explainability and communication. The success of Industrial AI is as much about building trust and changing culture as it is about deploying advanced technologies."
+  },
+  {
+    "objectID": "Data_Collection/Reviews/Review1.html#key-lessons-learned",
+    "href": "Data_Collection/Reviews/Review1.html#key-lessons-learned",
+    "title": "Podcast Review: The Next Industrial Revolution is Industrial AI",
+    "section": "Key Lessons Learned",
+    "text": "Key Lessons Learned\n\nAI as Empowerment, Not Replacement – The real value of Industrial AI lies in supporting workers, not displacing them.\nCollaborative AI – Machines handle repetitive processes, while humans focus on strategic and creative tasks.\nOvercoming Fear – Instead of panicking about job loss, individuals and organizations must invest in learning and adapting to AI’s advantages.\nTrust and Transparency – For successful adoption, AI systems must be explainable and aligned with workforce needs.\nScaling Responsibly – Moving from small pilot projects to enterprise-wide adoption requires leadership, governance, and cultural readiness."
+  },
+  {
+    "objectID": "Data_Collection/Reviews/Review1.html#conclusion",
+    "href": "Data_Collection/Reviews/Review1.html#conclusion",
+    "title": "Podcast Review: The Next Industrial Revolution is Industrial AI",
+    "section": "Conclusion",
+    "text": "Conclusion\nThis podcast reinforced my belief that the conversation around AI should shift from fear to readiness and adaptation. Industrial AI, as Siemens demonstrates, has the potential to revolutionize not just productivity but also sustainability and worker empowerment. The future of work is not a competition between humans and machines, but a collaboration where both thrive together."
   }
 ]
