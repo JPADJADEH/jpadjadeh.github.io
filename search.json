@@ -145,5 +145,61 @@
     "title": "Assignment 2: Paul Murrell’s R Graphics Functions",
     "section": "Applying these techniques to real Happy Planet Index data revealed meaningful patterns between countries’ happiness, life expectancy, and environmental sustainability. The systematic approach of modifying Murrell’s examples first, then applying the knowledge to new data, reinforced my understanding of each function’s purpose and capabilities.",
     "text": "Applying these techniques to real Happy Planet Index data revealed meaningful patterns between countries’ happiness, life expectancy, and environmental sustainability. The systematic approach of modifying Murrell’s examples first, then applying the knowledge to new data, reinforced my understanding of each function’s purpose and capabilities."
+  },
+  {
+    "objectID": "Data_Collection/Assignment2.html",
+    "href": "Data_Collection/Assignment2.html",
+    "title": "Assignment 2: Google Trends Analysis",
+    "section": "",
+    "text": "This assignment explores Google Trends data collection methods, comparing website-based CSV downloads with programmatic access through the gtrendsR package. ```{r} #| label: setup #| message: false #| warning: false #| echo: false\nlibrary(readr) library(dplyr) library(stringr) library(gtrendsR)\n#| label: load-data #| eval: false #| echo: true"
+  },
+  {
+    "objectID": "Data_Collection/Assignment2.html#google-trends-analysis-trump-harris-election",
+    "href": "Data_Collection/Assignment2.html#google-trends-analysis-trump-harris-election",
+    "title": "Assignment 2: Google Trends Analysis",
+    "section": "",
+    "text": "This assignment explores Google Trends data collection methods, comparing website-based CSV downloads with programmatic access through the gtrendsR package. ```{r} #| label: setup #| message: false #| warning: false #| echo: false\nlibrary(readr) library(dplyr) library(stringr) library(gtrendsR)\n#| label: load-data #| eval: false #| echo: true"
+  },
+  {
+    "objectID": "Data_Collection/Assignment2/Assignment2.html",
+    "href": "Data_Collection/Assignment2/Assignment2.html",
+    "title": "Assignment 2: Google Trends Analysis",
+    "section": "",
+    "text": "Show code\n# Load required packages\nlibrary(gtrendsR)\nlibrary(readr)\nlibrary(dplyr)\nlibrary(stringr)\n\n# Import and process the CSV data\n# Since the CSV is in the same folder as this .qmd file, use relative path\ndf_raw &lt;- read_csv(\"multiTimeline.csv\", skip = 2, show_col_types = FALSE)\n\ndf &lt;- df_raw %&gt;%\n  rename(\n    week     = Week,\n    trump    = `Donald Trump: (United States)`,\n    harris   = `Kamala Harris: (United States)`,\n    election = `election: (United States)`\n  ) %&gt;%\n  # Convert \"&lt;1\" to 0.5, then to numeric\n  mutate(across(-week, ~ as.numeric(str_replace(.x, \"&lt;1\", \"0.5\")))) %&gt;%\n  mutate(week = as.Date(week))\n\n# Display data structure (output hidden)\nglimpse(df)\nhead(df)\n\n\n\n\n\n\n\nShow code\n# Create the plot\nplot(df$week, df$trump, type = \"l\", col = \"blue\", \n     xlab = \"Week\", ylab = \"Interest\", \n     main = \"Google Trends: Trump, Harris, Election\",\n     ylim = c(0, max(c(df$trump, df$harris, df$election), na.rm = TRUE)))\nlines(df$week, df$harris, col = \"red\")\nlines(df$week, df$election, col = \"green\")\nlegend(\"topright\", \n       legend = c(\"Trump\", \"Harris\", \"Election\"), \n       col = c(\"blue\", \"red\", \"green\"), \n       lty = 1)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThe data is collected at weekly intervals. This is evident from the x-axis of the plot, which shows weekly increments (e.g., spanning 2021 to 2025 with distinct weekly data points). The CSV file (multiTimeline.csv) also lists data by “Week” (e.g., 2020-09-13, 2020-09-20), confirming that each row represents one week of interest scores for “Donald Trump,” “Kamala Harris,” and “election” in the United States.\n\n\n\nWebsite Method: Provides data as a pre-processed CSV (e.g., multiTimeline.csv) where search terms are interpreted as topics. When you download data from Google Trends website, it automatically groups related searches and gives you topic-level data.\ngtrendsR Method: Fetches data programmatically, treating inputs as exact keywords. The R package gives you more control over the exact search terms and allows for automated data collection, but may interpret terms more literally rather than as broader topics.\n\n\n\n\n\n\nShow code\n# Example: Tariff, China military, Taiwan\nplot(gtrends(c(\"tariff\"), time = \"all\"))\nplot(gtrends(c(\"tariff\"), geo = \"GB\", time = \"all\"))\nplot(gtrends(c(\"tariff\"), geo = c(\"US\", \"GB\", \"TW\"), time = \"all\"))\n\n# Store results\ntg_lot &lt;- gtrends(c(\"tariff\"), time = \"all\")\ntc &lt;- gtrends(c(\"tariff\", \"China military\", \"Taiwan\"), time = \"all\")\ntc_df &lt;- data.frame(tc$interest_over_time)\nplot(gtrends(c(\"tariff\", \"China military\", \"Taiwan\"), time = \"all\"))\n\n\n\n\n\n\n\nShow code\n# Save processed data\nwrite.csv(df, \"multiTimeline_analyzed.csv\", row.names = FALSE)\nsaveRDS(df, \"multiTimeline_analyzed.rds\")\n\n\nNote: Processed data saved to multiTimeline_analyzed.csv and multiTimeline_analyzed.rds"
+  },
+  {
+    "objectID": "Data_Collection/Assignment2/Assignment2.html#data-analysis",
+    "href": "Data_Collection/Assignment2/Assignment2.html#data-analysis",
+    "title": "Assignment 2: Google Trends Analysis",
+    "section": "",
+    "text": "Show code\n# Load required packages\nlibrary(gtrendsR)\nlibrary(readr)\nlibrary(dplyr)\nlibrary(stringr)\n\n# Import and process the CSV data\n# Since the CSV is in the same folder as this .qmd file, use relative path\ndf_raw &lt;- read_csv(\"multiTimeline.csv\", skip = 2, show_col_types = FALSE)\n\ndf &lt;- df_raw %&gt;%\n  rename(\n    week     = Week,\n    trump    = `Donald Trump: (United States)`,\n    harris   = `Kamala Harris: (United States)`,\n    election = `election: (United States)`\n  ) %&gt;%\n  # Convert \"&lt;1\" to 0.5, then to numeric\n  mutate(across(-week, ~ as.numeric(str_replace(.x, \"&lt;1\", \"0.5\")))) %&gt;%\n  mutate(week = as.Date(week))\n\n# Display data structure (output hidden)\nglimpse(df)\nhead(df)"
+  },
+  {
+    "objectID": "Data_Collection/Assignment2/Assignment2.html#visualization",
+    "href": "Data_Collection/Assignment2/Assignment2.html#visualization",
+    "title": "Assignment 2: Google Trends Analysis",
+    "section": "",
+    "text": "Show code\n# Create the plot\nplot(df$week, df$trump, type = \"l\", col = \"blue\", \n     xlab = \"Week\", ylab = \"Interest\", \n     main = \"Google Trends: Trump, Harris, Election\",\n     ylim = c(0, max(c(df$trump, df$harris, df$election), na.rm = TRUE)))\nlines(df$week, df$harris, col = \"red\")\nlines(df$week, df$election, col = \"green\")\nlegend(\"topright\", \n       legend = c(\"Trump\", \"Harris\", \"Election\"), \n       col = c(\"blue\", \"red\", \"green\"), \n       lty = 1)"
+  },
+  {
+    "objectID": "Data_Collection/Assignment2/Assignment2.html#assignment-questions",
+    "href": "Data_Collection/Assignment2/Assignment2.html#assignment-questions",
+    "title": "Assignment 2: Google Trends Analysis",
+    "section": "",
+    "text": "The data is collected at weekly intervals. This is evident from the x-axis of the plot, which shows weekly increments (e.g., spanning 2021 to 2025 with distinct weekly data points). The CSV file (multiTimeline.csv) also lists data by “Week” (e.g., 2020-09-13, 2020-09-20), confirming that each row represents one week of interest scores for “Donald Trump,” “Kamala Harris,” and “election” in the United States.\n\n\n\nWebsite Method: Provides data as a pre-processed CSV (e.g., multiTimeline.csv) where search terms are interpreted as topics. When you download data from Google Trends website, it automatically groups related searches and gives you topic-level data.\ngtrendsR Method: Fetches data programmatically, treating inputs as exact keywords. The R package gives you more control over the exact search terms and allows for automated data collection, but may interpret terms more literally rather than as broader topics."
+  },
+  {
+    "objectID": "Data_Collection/Assignment2/Assignment2.html#additional-analysis",
+    "href": "Data_Collection/Assignment2/Assignment2.html#additional-analysis",
+    "title": "Assignment 2: Google Trends Analysis",
+    "section": "",
+    "text": "Show code\n# Example: Tariff, China military, Taiwan\nplot(gtrends(c(\"tariff\"), time = \"all\"))\nplot(gtrends(c(\"tariff\"), geo = \"GB\", time = \"all\"))\nplot(gtrends(c(\"tariff\"), geo = c(\"US\", \"GB\", \"TW\"), time = \"all\"))\n\n# Store results\ntg_lot &lt;- gtrends(c(\"tariff\"), time = \"all\")\ntc &lt;- gtrends(c(\"tariff\", \"China military\", \"Taiwan\"), time = \"all\")\ntc_df &lt;- data.frame(tc$interest_over_time)\nplot(gtrends(c(\"tariff\", \"China military\", \"Taiwan\"), time = \"all\"))"
+  },
+  {
+    "objectID": "Data_Collection/Assignment2/Assignment2.html#data-export",
+    "href": "Data_Collection/Assignment2/Assignment2.html#data-export",
+    "title": "Assignment 2: Google Trends Analysis",
+    "section": "",
+    "text": "Show code\n# Save processed data\nwrite.csv(df, \"multiTimeline_analyzed.csv\", row.names = FALSE)\nsaveRDS(df, \"multiTimeline_analyzed.rds\")\n\n\nNote: Processed data saved to multiTimeline_analyzed.csv and multiTimeline_analyzed.rds"
   }
 ]
