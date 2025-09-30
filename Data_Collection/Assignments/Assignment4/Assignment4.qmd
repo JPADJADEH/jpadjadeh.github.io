@@ -36,6 +36,8 @@ names(fores) <- c("Rank", "Country", "Forexres", "Date", "Change", "Sources")
 head(fores$Country, n=10)
 ```
 
+**Note:** The scraped data shows regional groupings (Asia, Europe, Americas) rather than individual country names. This occurred because Wikipedia's table structure has changed since the original code was written. This demonstrates an important aspect of web scraping - websites frequently update their layouts, requiring scrapers to be regularly maintained and updated.
+
 ## a. Scraping Other Tables
 
 To scrape different tables, I changed the table index in the XPath. For the second table, I used `table[2]` instead of `table[1]`:

@@ -190,6 +190,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  [6] "Europe/Asia" "Asia"        "Asia"        "Asia"        "Asia"       </code></pre>
 </div>
 </div>
+<p><strong>Note:</strong> The scraped data shows regional groupings (Asia, Europe, Americas) rather than individual country names. This occurred because Wikipedia’s table structure has changed since the original code was written. This demonstrates an important aspect of web scraping - websites frequently update their layouts, requiring scrapers to be regularly maintained and updated.</p>
 <section id="a.-scraping-other-tables" class="level2">
 <h2 class="anchored" data-anchor-id="a.-scraping-other-tables">a. Scraping Other Tables</h2>
 <p>To scrape different tables, I changed the table index in the XPath. For the second table, I used <code>table[2]</code> instead of <code>table[1]</code>:</p>
