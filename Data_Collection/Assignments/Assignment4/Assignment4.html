@@ -124,7 +124,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#b.-data-cleaning" id="toc-b.-data-cleaning" class="nav-link" data-scroll-target="#b.-data-cleaning">b. Data Cleaning</a>
   <ul class="collapse">
   <li><a href="#i.-date-variable" id="toc-i.-date-variable" class="nav-link" data-scroll-target="#i.-date-variable">i. Date Variable</a></li>
-  <li><a href="#ii.-removing-rows-and-columns" id="toc-ii.-removing-rows-and-columns" class="nav-link" data-scroll-target="#ii.-removing-rows-and-columns">ii. Removing Rows and Columns</a></li>
+  <li><a href="#ii.-final-cleaned-data" id="toc-ii.-final-cleaned-data" class="nav-link" data-scroll-target="#ii.-final-cleaned-data">ii. Final Cleaned Data</a></li>
   </ul></li>
   <li><a href="#c.-web-data-collection-plan" id="toc-c.-web-data-collection-plan" class="nav-link" data-scroll-target="#c.-web-data-collection-plan">c.&nbsp;Web Data Collection Plan</a></li>
   </ul></li>
@@ -165,7 +165,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="scraping-foreign-exchange-reserve-data" class="level1">
 <h1>Scraping Foreign Exchange Reserve Data</h1>
-<p>I scraped foreign exchange reserve data from Wikipedia using the <code>rvest</code> package.</p>
+<p>I scraped foreign exchange reserve data from Wikipedia using the <code>rvest</code> package. Using browser inspection tools, I identified the correct XPath for the table containing individual country data. The Wikipedia table structure had changed since the original exercise code was written, requiring adjustment from <code>/div/table[1]</code> to <code>/div[1]/table[1]</code> to target the specific table with country-level reserves.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Show code</summary>
@@ -177,20 +177,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>wikiforreserve <span class="ot">&lt;-</span> <span class="fu">read_html</span>(url)</span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>foreignreserve <span class="ot">&lt;-</span> wikiforreserve <span class="sc">%&gt;%</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_nodes</span>(<span class="at">xpath=</span><span class="st">'//*[@id="mw-content-text"]/div/table[1]'</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_nodes</span>(<span class="at">xpath=</span><span class="st">'//*[@id="mw-content-text"]/div[1]/table[1]'</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_table</span>()</span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>fores <span class="ot">=</span> foreignreserve[[<span class="dv">1</span>]]</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(fores) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Rank"</span>, <span class="st">"Country"</span>, <span class="st">"Forexres"</span>, <span class="st">"Date"</span>, <span class="st">"Change"</span>, <span class="st">"Sources"</span>)</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(fores<span class="sc">$</span>Country, <span class="at">n=</span><span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Rename all 8 columns appropriately</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(fores) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Country"</span>, <span class="st">"Continent"</span>, <span class="st">"Forexres_gold"</span>, <span class="st">"Forexres"</span>, <span class="st">"Change_gold"</span>, <span class="st">"Change"</span>, <span class="st">"Date"</span>, <span class="st">"Ref"</span>)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(fores<span class="sc">$</span>Country, <span class="at">n=</span><span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] "Continent"   "Continent"   "Asia"        "Asia"        "Europe"     
- [6] "Europe/Asia" "Asia"        "Asia"        "Asia"        "Asia"       </code></pre>
+<pre><code> [1] "Country(as recognized by the U.N.)" "Country(as recognized by the U.N.)"
+ [3] "China"                              "Japan"                             
+ [5] "Switzerland"                        "Russia"                            
+ [7] "India"                              "Taiwan"                            
+ [9] "Saudi Arabia"                       "Hong Kong"                         </code></pre>
 </div>
 </div>
-<p><strong>Note:</strong> The scraped data shows regional groupings (Asia, Europe, Americas) rather than individual country names. This occurred because Wikipedia’s table structure has changed since the original code was written. This demonstrates an important aspect of web scraping - websites frequently update their layouts, requiring scrapers to be regularly maintained and updated.</p>
 <section id="a.-scraping-other-tables" class="level2">
 <h2 class="anchored" data-anchor-id="a.-scraping-other-tables">a. Scraping Other Tables</h2>
 <p>To scrape different tables, I changed the table index in the XPath. For the second table, I used <code>table[2]</code> instead of <code>table[1]</code>:</p>
@@ -198,7 +202,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <details class="code-fold">
 <summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>foreignreserve2 <span class="ot">&lt;-</span> wikiforreserve <span class="sc">%&gt;%</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_nodes</span>(<span class="at">xpath=</span><span class="st">'//*[@id="mw-content-text"]/div/table[2]'</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_nodes</span>(<span class="at">xpath=</span><span class="st">'//*[@id="mw-content-text"]/div[1]/table[2]'</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_table</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
@@ -211,45 +215,52 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details class="code-fold">
 <summary>Show code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>fores<span class="sc">$</span>newdate <span class="ot">=</span> <span class="fu">str_split_fixed</span>(fores<span class="sc">$</span>Date, <span class="st">"</span><span class="sc">\\</span><span class="st">["</span>, <span class="at">n =</span> <span class="dv">2</span>)[, <span class="dv">1</span>]</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>fores<span class="sc">$</span>newdate <span class="ot">=</span> <span class="fu">trimws</span>(fores<span class="sc">$</span>newdate)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove first 2 header rows</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>newfores <span class="ot">=</span> fores[<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), ]</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>fores[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="fu">c</span>(<span class="st">"Date"</span>, <span class="st">"newdate"</span>)]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Select only needed columns</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>newfores <span class="ot">&lt;-</span> newfores <span class="sc">%&gt;%</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Country, Continent, Forexres, Change, Date)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Clean the Date variable</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>newfores<span class="sc">$</span>newdate <span class="ot">=</span> <span class="fu">str_split_fixed</span>(newfores<span class="sc">$</span>Date, <span class="st">"</span><span class="sc">\\</span><span class="st">["</span>, <span class="at">n =</span> <span class="dv">2</span>)[, <span class="dv">1</span>]</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>newfores<span class="sc">$</span>newdate <span class="ot">=</span> <span class="fu">trimws</span>(newfores<span class="sc">$</span>newdate)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(newfores[, <span class="fu">c</span>(<span class="st">"Date"</span>, <span class="st">"newdate"</span>)], <span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2 × 2
-  Date           newdate       
-  &lt;chr&gt;          &lt;chr&gt;         
-1 Including gold Including gold
-2 Change         Change        </code></pre>
+<pre><code># A tibble: 5 × 2
+  Date        newdate    
+  &lt;chr&gt;       &lt;chr&gt;      
+1 31 Aug 2025 31 Aug 2025
+2 31 Aug 2025 31 Aug 2025
+3 31 Jul 2025 31 Jul 2025
+4 19 Sep 2025 19 Sep 2025
+5 19 Sep 2025 19 Sep 2025</code></pre>
 </div>
 </div>
 </section>
-<section id="ii.-removing-rows-and-columns" class="level3">
-<h3 class="anchored" data-anchor-id="ii.-removing-rows-and-columns">ii. Removing Rows and Columns</h3>
-<p>I removed the first two header rows and converted Rank to numeric:</p>
+<section id="ii.-final-cleaned-data" class="level3">
+<h3 class="anchored" data-anchor-id="ii.-final-cleaned-data">ii. Final Cleaned Data</h3>
 <div class="cell">
 <details class="code-fold">
 <summary>Show code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>newfores <span class="ot">=</span> fores[<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), ]</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>newfores<span class="sc">$</span>Rank <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(newfores<span class="sc">$</span>Rank)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(newfores, <span class="at">n=</span><span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(newfores, <span class="at">n=</span><span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 10 × 9
-    Rank Country     Forexres  Date   Change    Sources ``         ``    newdate
-   &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;   &lt;chr&gt;      &lt;chr&gt; &lt;chr&gt;  
- 1    NA Asia        3,643,149 41,079 3,389,306 31,221  31 Aug 20… [3]   41,079 
- 2    NA Asia        1,324,210 19,774 1,230,940 16,230  31 Aug 20… [4]   19,774 
- 3    NA Europe      1,007,710 13,935 897,295   14,490  31 Jul 20… [5]   13,935 
- 4    NA Europe/Asia 712,600   7,500  434,487   1,517   19 Sep 20… [6]   7,500  
- 5    NA Asia        702,570   396    609,791   756     19 Sep 20… [7]   396    
- 6    NA Asia        597,430   4,390  544,300   1,071   31 Aug 20… [8]   4,390  
- 7    NA Asia        434,547   21,728 434,116   21,728  7 Nov 2024 [9]   21,728 
- 8    NA Asia        421,400   5,126  416,216   85      8 Nov 2024 [10]  5,126  
- 9    NA Asia        415,700   4,300  410,900   790     5 Nov 2024 [11]  4,300  
-10    NA Americas    388,571   7,465  344,173   361     1 Oct 2024 [12]  7,465  </code></pre>
+<pre><code># A tibble: 10 × 6
+   Country      Continent   Forexres Change Date        newdate    
+   &lt;chr&gt;        &lt;chr&gt;       &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;       &lt;chr&gt;      
+ 1 China        Asia        41,079   31,221 31 Aug 2025 31 Aug 2025
+ 2 Japan        Asia        19,774   16,230 31 Aug 2025 31 Aug 2025
+ 3 Switzerland  Europe      13,935   14,490 31 Jul 2025 31 Jul 2025
+ 4 Russia       Europe/Asia 7,500    1,517  19 Sep 2025 19 Sep 2025
+ 5 India        Asia        396      756    19 Sep 2025 19 Sep 2025
+ 6 Taiwan       Asia        4,390    1,071  31 Aug 2025 31 Aug 2025
+ 7 Saudi Arabia Asia        21,728   21,728 7 Nov 2024  7 Nov 2024 
+ 8 Hong Kong    Asia        5,126    85     8 Nov 2024  8 Nov 2024 
+ 9 South Korea  Asia        4,300    790    5 Nov 2024  5 Nov 2024 
+10 Brazil       Americas    7,465    361    1 Oct 2024  1 Oct 2024 </code></pre>
 </div>
 </div>
 <div class="cell">

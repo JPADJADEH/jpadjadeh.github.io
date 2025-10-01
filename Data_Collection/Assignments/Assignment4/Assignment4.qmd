@@ -14,7 +14,7 @@ execute:
 
 # Scraping Foreign Exchange Reserve Data
 
-I scraped foreign exchange reserve data from Wikipedia using the `rvest` package.
+I scraped foreign exchange reserve data from Wikipedia using the `rvest` package. Using browser inspection tools, I identified the correct XPath for the table containing individual country data. The Wikipedia table structure had changed since the original exercise code was written, requiring adjustment from `/div/table[1]` to `/div[1]/table[1]` to target the specific table with country-level reserves.
 
 ```{r setup}
 #| echo: true
@@ -27,16 +27,16 @@ url <- 'https://en.wikipedia.org/wiki/List_of_countries_by_foreign-exchange_rese
 wikiforreserve <- read_html(url)
 
 foreignreserve <- wikiforreserve %>%
-  html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  html_nodes(xpath='//*[@id="mw-content-text"]/div[1]/table[1]') %>%
   html_table()
 
 fores = foreignreserve[[1]]
-names(fores) <- c("Rank", "Country", "Forexres", "Date", "Change", "Sources")
+
+# Rename all 8 columns appropriately
+names(fores) <- c("Country", "Continent", "Forexres_gold", "Forexres", "Change_gold", "Change", "Date", "Ref")
 
 head(fores$Country, n=10)
 ```
-
-**Note:** The scraped data shows regional groupings (Asia, Europe, Americas) rather than individual country names. This occurred because Wikipedia's table structure has changed since the original code was written. This demonstrates an important aspect of web scraping - websites frequently update their layouts, requiring scrapers to be regularly maintained and updated.
 
 ## a. Scraping Other Tables
 
@@ -47,7 +47,7 @@ To scrape different tables, I changed the table index in the XPath. For the seco
 #| eval: false
 
 foreignreserve2 <- wikiforreserve %>%
-  html_nodes(xpath='//*[@id="mw-content-text"]/div/table[2]') %>%
+  html_nodes(xpath='//*[@id="mw-content-text"]/div[1]/table[2]') %>%
   html_table()
 ```
 
@@ -60,21 +60,24 @@ I removed reference notes from the Date column using string splitting:
 ```{r clean-date}
 #| echo: true
 
-fores$newdate = str_split_fixed(fores$Date, "\\[", n = 2)[, 1]
-fores$newdate = trimws(fores$newdate)
+# Remove first 2 header rows
+newfores = fores[-c(1, 2), ]
 
-fores[1:2, c("Date", "newdate")]
+# Select only needed columns
+newfores <- newfores %>%
+  select(Country, Continent, Forexres, Change, Date)
+
+# Clean the Date variable
+newfores$newdate = str_split_fixed(newfores$Date, "\\[", n = 2)[, 1]
+newfores$newdate = trimws(newfores$newdate)
+
+head(newfores[, c("Date", "newdate")], 5)
 ```
 
-### ii. Removing Rows and Columns
+### ii. Final Cleaned Data
 
-I removed the first two header rows and converted Rank to numeric:
-
-```{r clean-rows}
+```{r display-cleaned}
 #| echo: true
-
-newfores = fores[-c(1, 2), ]
-newfores$Rank <- as.numeric(newfores$Rank)
 
 head(newfores, n=10)
 ```
