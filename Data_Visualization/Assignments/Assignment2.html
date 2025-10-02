@@ -118,29 +118,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#assignment-overview" id="toc-assignment-overview" class="nav-link active" data-scroll-target="#assignment-overview">Assignment Overview</a>
-  <ul class="collapse">
-  <li><a href="#key-learnings-from-murrells-examples" id="toc-key-learnings-from-murrells-examples" class="nav-link" data-scroll-target="#key-learnings-from-murrells-examples">Key Learnings from Murrell’s Examples</a></li>
-  </ul></li>
+  <li><a href="#assignment-overview" id="toc-assignment-overview" class="nav-link active" data-scroll-target="#assignment-overview">Assignment Overview</a></li>
   <li><a href="#data-import" id="toc-data-import" class="nav-link" data-scroll-target="#data-import">Data Import</a></li>
-  <li><a href="#visualizations-using-murrells-techniques" id="toc-visualizations-using-murrells-techniques" class="nav-link" data-scroll-target="#visualizations-using-murrells-techniques">Visualizations Using Murrell’s Techniques</a></li>
-  <li><a href="#key-functions-demonstrated" id="toc-key-functions-demonstrated" class="nav-link" data-scroll-target="#key-functions-demonstrated">Key Functions Demonstrated</a>
-  <ul class="collapse">
-  <li><a href="#par" id="toc-par" class="nav-link" data-scroll-target="#par">par()</a></li>
-  <li><a href="#plot-points-and-lines" id="toc-plot-points-and-lines" class="nav-link" data-scroll-target="#plot-points-and-lines">plot(), points(), and lines()</a></li>
-  <li><a href="#axis-and-box" id="toc-axis-and-box" class="nav-link" data-scroll-target="#axis-and-box">axis() and box()</a></li>
-  <li><a href="#text-and-mtext" id="toc-text-and-mtext" class="nav-link" data-scroll-target="#text-and-mtext">text() and mtext()</a></li>
-  <li><a href="#hist" id="toc-hist" class="nav-link" data-scroll-target="#hist">hist()</a></li>
-  <li><a href="#boxplot" id="toc-boxplot" class="nav-link" data-scroll-target="#boxplot">boxplot()</a></li>
-  <li><a href="#persp" id="toc-persp" class="nav-link" data-scroll-target="#persp">persp()</a></li>
-  <li><a href="#pie-and-names" id="toc-pie-and-names" class="nav-link" data-scroll-target="#pie-and-names">pie() and names()</a></li>
-  </ul></li>
-  <li><a href="#analysis-and-insights" id="toc-analysis-and-insights" class="nav-link" data-scroll-target="#analysis-and-insights">Analysis and Insights</a>
-  <ul class="collapse">
-  <li><a href="#hpi-and-life-expectancy-relationship" id="toc-hpi-and-life-expectancy-relationship" class="nav-link" data-scroll-target="#hpi-and-life-expectancy-relationship">HPI and Life Expectancy Relationship</a></li>
-  <li><a href="#distribution-patterns" id="toc-distribution-patterns" class="nav-link" data-scroll-target="#distribution-patterns">Distribution Patterns</a></li>
-  <li><a href="#variable-comparison" id="toc-variable-comparison" class="nav-link" data-scroll-target="#variable-comparison">Variable Comparison</a></li>
-  </ul></li>
+  <li><a href="#plotting-functions-with-hpi-data" id="toc-plotting-functions-with-hpi-data" class="nav-link" data-scroll-target="#plotting-functions-with-hpi-data">Plotting Functions with HPI Data</a></li>
+  <li><a href="#key-functions" id="toc-key-functions" class="nav-link" data-scroll-target="#key-functions">Key Functions</a></li>
   <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
   </ul>
 </nav>
@@ -179,17 +160,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="assignment-overview" class="level1">
 <h1>Assignment Overview</h1>
-<p>This assignment explores Paul Murrell’s R graphics functions using the Happy Planet Index dataset from <a href="http://happyplanetindex.org">http://happyplanetindex.org</a>. After working through Murrell’s basic examples in murrell01.R, I applied these low-level graphics functions to create custom visualizations of HPI data.</p>
-<section id="key-learnings-from-murrells-examples" class="level2">
-<h2 class="anchored" data-anchor-id="key-learnings-from-murrells-examples">Key Learnings from Murrell’s Examples</h2>
-<p>Working through murrell01.R line-by-line revealed how R’s base graphics system builds complex plots incrementally:</p>
+<p>This assignment uses Paul Murrell’s R graphics functions with the Happy Planet Index dataset from <a href="http://happyplanetindex.org">http://happyplanetindex.org</a>.</p>
+<p>After working through murrell01.R, I learned that:</p>
 <ul>
-<li>The <code>axis()</code> function’s first parameter specifies which side of the plot (1=bottom, 2=left, 3=top, 4=right)</li>
-<li>The <code>cex</code> parameter controls point and text size - larger values create more emphasis</li>
-<li><code>par()</code> settings like <code>mar</code> (margins) and <code>mfrow</code> (layout grid) must be carefully managed and reset</li>
-<li>Multiple low-level functions (<code>lines()</code>, <code>points()</code>, <code>text()</code>, <code>mtext()</code>) can layer onto a base plot for precise control</li>
+<li><code>axis()</code> first parameter sets which side (1=bottom, 2=left, 3=top, 4=right)</li>
+<li><code>cex</code> controls text and point size</li>
+<li><code>par()</code> settings for margins and layout need to be reset after changes</li>
 </ul>
-</section>
 </section>
 <section id="data-import" class="level1">
 <h1>Data Import</h1>
@@ -229,81 +206,73 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="visualizations-using-murrells-techniques" class="level1">
-<h1>Visualizations Using Murrell’s Techniques</h1>
-<p>Using the plotting functions demonstrated in Murrell’s examples, I created six different visualizations of the Happy Planet Index data.</p>
+<section id="plotting-functions-with-hpi-data" class="level1">
+<h1>Plotting Functions with HPI Data</h1>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set layout (3 rows, 2 columns)</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">2</span>), <span class="at">bg=</span><span class="st">"white"</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Scatterplot: HPI vs Life Expectancy</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Using plot(), points(), and abline() as in Murrell's climate example</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(hpi_scores, life_expectancy, <span class="at">pch=</span><span class="dv">16</span>, <span class="at">col=</span><span class="st">"blue"</span>,</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">"HPI Score"</span>, <span class="at">ylab=</span><span class="st">"Life Expectancy (years)"</span>,</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="st">"HPI vs Life Expectancy"</span>, <span class="at">cex=</span><span class="fl">1.2</span>)</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(life_expectancy <span class="sc">~</span> hpi_scores), <span class="at">col=</span><span class="st">"red"</span>, <span class="at">lwd=</span><span class="dv">2</span>)</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="dv">35</span>, <span class="dv">80</span>, <span class="st">"Positive correlation"</span>, <span class="at">cex=</span><span class="fl">0.9</span>, <span class="at">col=</span><span class="st">"darkred"</span>)</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Histogram: Distribution of HPI Scores</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Using hist() and lines() for density overlay</span></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(hpi_scores, <span class="at">col=</span><span class="st">"lightblue"</span>, <span class="at">border=</span><span class="st">"white"</span>,</span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="st">"Distribution of HPI Scores"</span>, <span class="at">xlab=</span><span class="st">"HPI Score"</span>, </span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>     <span class="at">freq=</span><span class="cn">FALSE</span>, <span class="at">breaks=</span><span class="dv">10</span>)</span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">density</span>(hpi_scores, <span class="at">na.rm=</span><span class="cn">TRUE</span>), <span class="at">col=</span><span class="st">"red"</span>, <span class="at">lwd=</span><span class="dv">3</span>)</span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Barplot: Top 5 Countries by HPI</span></span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Adapted from Murrell's VADeaths barplot approach</span></span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar=</span><span class="fu">c</span>(<span class="dv">2</span>, <span class="fl">3.1</span>, <span class="dv">2</span>, <span class="fl">2.1</span>))</span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>hpi_matrix <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(hpi_scores[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>], </span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>                       life_expectancy[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]<span class="sc">/</span><span class="dv">2</span>,</span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>                       gdp[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]<span class="sc">/</span><span class="dv">2000</span>,</span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>                       population[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]<span class="sc">/</span><span class="dv">200</span>), </span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>                     <span class="at">nrow=</span><span class="dv">4</span>, <span class="at">byrow=</span><span class="cn">TRUE</span>)</span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>midpts <span class="ot">&lt;-</span> <span class="fu">barplot</span>(hpi_matrix, </span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>                  <span class="at">col=</span><span class="fu">c</span>(<span class="st">"wheat"</span>, <span class="st">"tan"</span>, <span class="st">"burlywood"</span>, <span class="st">"rosybrown"</span>),</span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>                  <span class="at">names=</span><span class="fu">rep</span>(<span class="st">""</span>, <span class="dv">5</span>),</span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>                  <span class="at">main=</span><span class="st">"Top 5 Countries - Multiple Metrics"</span>)</span>
-<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a><span class="fu">mtext</span>(countries[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>], <span class="at">at=</span>midpts, <span class="at">side=</span><span class="dv">1</span>, <span class="at">line=</span><span class="fl">0.5</span>, <span class="at">cex=</span><span class="fl">0.6</span>)</span>
-<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="fu">rep</span>(midpts, <span class="at">each=</span><span class="dv">4</span>), </span>
-<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>     <span class="fu">apply</span>(hpi_matrix, <span class="dv">2</span>, cumsum) <span class="sc">-</span> hpi_matrix<span class="sc">/</span><span class="dv">2</span>,</span>
-<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>     <span class="fu">round</span>(hpi_matrix, <span class="dv">1</span>), </span>
-<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>     <span class="at">col=</span><span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"black"</span>, <span class="st">"white"</span>), <span class="at">times=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>)), </span>
-<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex=</span><span class="fl">0.7</span>)</span>
-<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar=</span><span class="fu">c</span>(<span class="fl">5.1</span>, <span class="fl">4.1</span>, <span class="fl">4.1</span>, <span class="fl">2.1</span>))</span>
-<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Boxplot: Comparing HPI, Life Expectancy, and GDP</span></span>
-<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a><span class="co"># Using boxplot() with multiple variables</span></span>
-<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar=</span><span class="fu">c</span>(<span class="dv">3</span>, <span class="fl">4.1</span>, <span class="dv">2</span>, <span class="dv">0</span>))</span>
-<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(<span class="fu">list</span>(<span class="at">HPI=</span>hpi_scores, </span>
-<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>             <span class="at">LifeExp=</span>life_expectancy,</span>
-<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>             <span class="at">GDP=</span>gdp<span class="sc">/</span><span class="dv">1000</span>),</span>
-<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>        <span class="at">col=</span><span class="fu">c</span>(<span class="st">"lightblue"</span>, <span class="st">"lightcoral"</span>, <span class="st">"lightgreen"</span>),</span>
-<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>        <span class="at">main=</span><span class="st">"Comparison of Key Variables"</span>,</span>
-<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab=</span><span class="st">"Values (scaled)"</span>,</span>
-<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a>        <span class="at">names=</span><span class="fu">c</span>(<span class="st">"HPI"</span>, <span class="st">"Life Exp"</span>, <span class="st">"GDP/1000"</span>))</span>
-<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a><span class="fu">mtext</span>(<span class="st">"Variables"</span>, <span class="at">side=</span><span class="dv">1</span>, <span class="at">line=</span><span class="dv">2</span>, <span class="at">cex=</span><span class="fl">0.8</span>)</span>
-<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar=</span><span class="fu">c</span>(<span class="fl">5.1</span>, <span class="fl">4.1</span>, <span class="fl">4.1</span>, <span class="fl">2.1</span>))</span>
-<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a><span class="co"># 5. 3D Surface Plot</span></span>
-<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a><span class="co"># Using persp() similar to Murrell's sinc function example</span></span>
-<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fu">min</span>(hpi_scores, <span class="at">na.rm=</span><span class="cn">TRUE</span>), <span class="fu">max</span>(hpi_scores, <span class="at">na.rm=</span><span class="cn">TRUE</span>), <span class="at">length=</span><span class="dv">20</span>)</span>
-<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fu">min</span>(life_expectancy, <span class="at">na.rm=</span><span class="cn">TRUE</span>), <span class="fu">max</span>(life_expectancy, <span class="at">na.rm=</span><span class="cn">TRUE</span>), <span class="at">length=</span><span class="dv">20</span>)</span>
-<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">outer</span>(x, y, <span class="cf">function</span>(x,y) (x <span class="sc">+</span> y)<span class="sc">/</span><span class="dv">2</span>)</span>
-<span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar=</span><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>))</span>
-<span id="cb3-58"><a href="#cb3-58" aria-hidden="true" tabindex="-1"></a><span class="fu">persp</span>(x, y, z, <span class="at">theta=</span><span class="dv">30</span>, <span class="at">phi=</span><span class="dv">20</span>, <span class="at">col=</span><span class="st">"lightblue"</span>, </span>
-<span id="cb3-59"><a href="#cb3-59" aria-hidden="true" tabindex="-1"></a>      <span class="at">shade=</span><span class="fl">0.75</span>, <span class="at">border=</span><span class="cn">NA</span>, </span>
-<span id="cb3-60"><a href="#cb3-60" aria-hidden="true" tabindex="-1"></a>      <span class="at">xlab=</span><span class="st">"HPI"</span>, <span class="at">ylab=</span><span class="st">"Life Exp"</span>, <span class="at">zlab=</span><span class="st">"Combined"</span>,</span>
-<span id="cb3-61"><a href="#cb3-61" aria-hidden="true" tabindex="-1"></a>      <span class="at">main=</span><span class="st">"3D Surface: HPI + Life Expectancy"</span>)</span>
-<span id="cb3-62"><a href="#cb3-62" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar=</span><span class="fu">c</span>(<span class="fl">5.1</span>, <span class="fl">4.1</span>, <span class="fl">4.1</span>, <span class="fl">2.1</span>))</span>
-<span id="cb3-63"><a href="#cb3-63" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-64"><a href="#cb3-64" aria-hidden="true" tabindex="-1"></a><span class="co"># 6. Pie Chart: Top 5 HPI Countries</span></span>
-<span id="cb3-65"><a href="#cb3-65" aria-hidden="true" tabindex="-1"></a><span class="co"># Using pie() and names() as demonstrated in Murrell's pie sales example</span></span>
-<span id="cb3-66"><a href="#cb3-66" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>))</span>
-<span id="cb3-67"><a href="#cb3-67" aria-hidden="true" tabindex="-1"></a><span class="fu">pie</span>(hpi_scores[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>], <span class="at">labels=</span>countries[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>],</span>
-<span id="cb3-68"><a href="#cb3-68" aria-hidden="true" tabindex="-1"></a>    <span class="at">col=</span><span class="fu">rainbow</span>(<span class="dv">5</span>), <span class="at">main=</span><span class="st">"Top 5 Countries by HPI Score"</span>,</span>
-<span id="cb3-69"><a href="#cb3-69" aria-hidden="true" tabindex="-1"></a>    <span class="at">cex=</span><span class="fl">0.8</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Scatterplot with regression line</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(hpi_scores, life_expectancy, <span class="at">pch=</span><span class="dv">16</span>, <span class="at">col=</span><span class="st">"blue"</span>,</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">"HPI Score"</span>, <span class="at">ylab=</span><span class="st">"Life Expectancy (years)"</span>,</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="st">"HPI vs Life Expectancy"</span>, <span class="at">cex=</span><span class="fl">1.2</span>)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(life_expectancy <span class="sc">~</span> hpi_scores), <span class="at">col=</span><span class="st">"red"</span>, <span class="at">lwd=</span><span class="dv">2</span>)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Histogram with density curve</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(hpi_scores, <span class="at">col=</span><span class="st">"lightblue"</span>, <span class="at">border=</span><span class="st">"white"</span>,</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="st">"Distribution of HPI Scores"</span>, <span class="at">xlab=</span><span class="st">"HPI Score"</span>, </span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>     <span class="at">freq=</span><span class="cn">FALSE</span>, <span class="at">breaks=</span><span class="dv">10</span>)</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">density</span>(hpi_scores, <span class="at">na.rm=</span><span class="cn">TRUE</span>), <span class="at">col=</span><span class="st">"red"</span>, <span class="at">lwd=</span><span class="dv">3</span>)</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Barplot (adapted from VADeaths example)</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar=</span><span class="fu">c</span>(<span class="dv">2</span>, <span class="fl">3.1</span>, <span class="dv">2</span>, <span class="fl">2.1</span>))</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>hpi_matrix <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(hpi_scores[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>], </span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>                       life_expectancy[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]<span class="sc">/</span><span class="dv">2</span>,</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>                       gdp[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]<span class="sc">/</span><span class="dv">2000</span>,</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>                       population[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]<span class="sc">/</span><span class="dv">200</span>), </span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>                     <span class="at">nrow=</span><span class="dv">4</span>, <span class="at">byrow=</span><span class="cn">TRUE</span>)</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>midpts <span class="ot">&lt;-</span> <span class="fu">barplot</span>(hpi_matrix, </span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>                  <span class="at">col=</span><span class="fu">c</span>(<span class="st">"wheat"</span>, <span class="st">"tan"</span>, <span class="st">"burlywood"</span>, <span class="st">"rosybrown"</span>),</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>                  <span class="at">names=</span><span class="fu">rep</span>(<span class="st">""</span>, <span class="dv">5</span>),</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>                  <span class="at">main=</span><span class="st">"Top 5 Countries - Multiple Metrics"</span>)</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a><span class="fu">mtext</span>(countries[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>], <span class="at">at=</span>midpts, <span class="at">side=</span><span class="dv">1</span>, <span class="at">line=</span><span class="fl">0.5</span>, <span class="at">cex=</span><span class="fl">0.6</span>)</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="fu">rep</span>(midpts, <span class="at">each=</span><span class="dv">4</span>), </span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>     <span class="fu">apply</span>(hpi_matrix, <span class="dv">2</span>, cumsum) <span class="sc">-</span> hpi_matrix<span class="sc">/</span><span class="dv">2</span>,</span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>     <span class="fu">round</span>(hpi_matrix, <span class="dv">1</span>), </span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>     <span class="at">col=</span><span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"black"</span>, <span class="st">"white"</span>), <span class="at">times=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>)), </span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex=</span><span class="fl">0.7</span>)</span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar=</span><span class="fu">c</span>(<span class="fl">5.1</span>, <span class="fl">4.1</span>, <span class="fl">4.1</span>, <span class="fl">2.1</span>))</span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Boxplot comparison</span></span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar=</span><span class="fu">c</span>(<span class="dv">3</span>, <span class="fl">4.1</span>, <span class="dv">2</span>, <span class="dv">0</span>))</span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(<span class="fu">list</span>(<span class="at">HPI=</span>hpi_scores, </span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>             <span class="at">LifeExp=</span>life_expectancy,</span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>             <span class="at">GDP=</span>gdp<span class="sc">/</span><span class="dv">1000</span>),</span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>        <span class="at">col=</span><span class="fu">c</span>(<span class="st">"lightblue"</span>, <span class="st">"lightcoral"</span>, <span class="st">"lightgreen"</span>),</span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>        <span class="at">main=</span><span class="st">"Three Variables Comparison"</span>,</span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab=</span><span class="st">"Values (scaled)"</span>,</span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>        <span class="at">names=</span><span class="fu">c</span>(<span class="st">"HPI"</span>, <span class="st">"Life Exp"</span>, <span class="st">"GDP/1000"</span>))</span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a><span class="fu">mtext</span>(<span class="st">"Variables"</span>, <span class="at">side=</span><span class="dv">1</span>, <span class="at">line=</span><span class="dv">2</span>, <span class="at">cex=</span><span class="fl">0.8</span>)</span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar=</span><span class="fu">c</span>(<span class="fl">5.1</span>, <span class="fl">4.1</span>, <span class="fl">4.1</span>, <span class="fl">2.1</span>))</span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a><span class="co"># 5. 3D Surface</span></span>
+<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fu">min</span>(hpi_scores, <span class="at">na.rm=</span><span class="cn">TRUE</span>), <span class="fu">max</span>(hpi_scores, <span class="at">na.rm=</span><span class="cn">TRUE</span>), <span class="at">length=</span><span class="dv">20</span>)</span>
+<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fu">min</span>(life_expectancy, <span class="at">na.rm=</span><span class="cn">TRUE</span>), <span class="fu">max</span>(life_expectancy, <span class="at">na.rm=</span><span class="cn">TRUE</span>), <span class="at">length=</span><span class="dv">20</span>)</span>
+<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">outer</span>(x, y, <span class="cf">function</span>(x,y) (x <span class="sc">+</span> y)<span class="sc">/</span><span class="dv">2</span>)</span>
+<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar=</span><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>))</span>
+<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a><span class="fu">persp</span>(x, y, z, <span class="at">theta=</span><span class="dv">30</span>, <span class="at">phi=</span><span class="dv">20</span>, <span class="at">col=</span><span class="st">"lightblue"</span>, </span>
+<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a>      <span class="at">shade=</span><span class="fl">0.75</span>, <span class="at">border=</span><span class="cn">NA</span>, </span>
+<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a>      <span class="at">xlab=</span><span class="st">"HPI"</span>, <span class="at">ylab=</span><span class="st">"Life Exp"</span>, <span class="at">zlab=</span><span class="st">"Combined"</span>,</span>
+<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a>      <span class="at">main=</span><span class="st">"3D Surface"</span>)</span>
+<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar=</span><span class="fu">c</span>(<span class="fl">5.1</span>, <span class="fl">4.1</span>, <span class="fl">4.1</span>, <span class="fl">2.1</span>))</span>
+<span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-58"><a href="#cb3-58" aria-hidden="true" tabindex="-1"></a><span class="co"># 6. Pie Chart</span></span>
+<span id="cb3-59"><a href="#cb3-59" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb3-60"><a href="#cb3-60" aria-hidden="true" tabindex="-1"></a><span class="fu">pie</span>(hpi_scores[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>], <span class="at">labels=</span>countries[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>],</span>
+<span id="cb3-61"><a href="#cb3-61" aria-hidden="true" tabindex="-1"></a>    <span class="at">col=</span><span class="fu">rainbow</span>(<span class="dv">5</span>), <span class="at">main=</span><span class="st">"Top 5 Countries by HPI"</span>,</span>
+<span id="cb3-62"><a href="#cb3-62" aria-hidden="true" tabindex="-1"></a>    <span class="at">cex=</span><span class="fl">0.8</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -321,73 +290,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </details>
 </div>
 </section>
-<section id="key-functions-demonstrated" class="level1">
-<h1>Key Functions Demonstrated</h1>
-<section id="par" class="level2">
-<h2 class="anchored" data-anchor-id="par">par()</h2>
-<p>Controls graphical parameters like layout (<code>mfrow</code>), margins (<code>mar</code>), background color (<code>bg</code>), and text size (<code>cex</code>). Critical for multi-panel layouts and must be reset after changes.</p>
-</section>
-<section id="plot-points-and-lines" class="level2">
-<h2 class="anchored" data-anchor-id="plot-points-and-lines">plot(), points(), and lines()</h2>
-<ul>
-<li><code>plot()</code> creates the base coordinate system</li>
-<li><code>points()</code> adds data points with customizable shapes (<code>pch</code>), sizes (<code>cex</code>), and colors</li>
-<li><code>lines()</code> connects points or adds trend lines with adjustable width (<code>lwd</code>) and color</li>
-</ul>
-</section>
-<section id="axis-and-box" class="level2">
-<h2 class="anchored" data-anchor-id="axis-and-box">axis() and box()</h2>
-<ul>
-<li><code>axis()</code> creates custom axes on any plot side (1=bottom, 2=left, 3=top, 4=right)</li>
-<li><code>box()</code> adds borders with different styles via the <code>bty</code> parameter</li>
-</ul>
-</section>
-<section id="text-and-mtext" class="level2">
-<h2 class="anchored" data-anchor-id="text-and-mtext">text() and mtext()</h2>
-<ul>
-<li><code>text()</code> places labels at specific (x,y) coordinates within the plot area</li>
-<li><code>mtext()</code> adds text in margins, useful for axis labels with the <code>side</code> and <code>line</code> parameters</li>
-</ul>
-</section>
-<section id="hist" class="level2">
-<h2 class="anchored" data-anchor-id="hist">hist()</h2>
-<p>Generates histograms with customizable bins (<code>breaks</code>), colors (<code>col</code>), and can display either frequency (<code>freq=TRUE</code>) or density (<code>freq=FALSE</code>).</p>
-</section>
-<section id="boxplot" class="level2">
-<h2 class="anchored" data-anchor-id="boxplot">boxplot()</h2>
-<p>Compares distributions across multiple variables or groups, showing median, quartiles, and outliers in a compact format.</p>
-</section>
-<section id="persp" class="level2">
-<h2 class="anchored" data-anchor-id="persp">persp()</h2>
-<p>Creates 3D perspective surface plots with viewing angles controlled by <code>theta</code> (azimuthal direction) and <code>phi</code> (colatitude).</p>
-</section>
-<section id="pie-and-names" class="level2">
-<h2 class="anchored" data-anchor-id="pie-and-names">pie() and names()</h2>
-<ul>
-<li><code>pie()</code> creates pie charts showing proportional relationships</li>
-<li><code>names()</code> assigns labels to vector elements for clear identification</li>
-</ul>
-</section>
-</section>
-<section id="analysis-and-insights" class="level1">
-<h1>Analysis and Insights</h1>
-<section id="hpi-and-life-expectancy-relationship" class="level2">
-<h2 class="anchored" data-anchor-id="hpi-and-life-expectancy-relationship">HPI and Life Expectancy Relationship</h2>
-<p>The scatterplot reveals a positive correlation between HPI scores and life expectancy, though with considerable variation. Countries can achieve similar HPI scores through different combinations of life expectancy, wellbeing, and ecological footprint.</p>
-</section>
-<section id="distribution-patterns" class="level2">
-<h2 class="anchored" data-anchor-id="distribution-patterns">Distribution Patterns</h2>
-<p>The histogram shows that most countries cluster in the 30-50 HPI range, with relatively few achieving scores above 60. This suggests that balancing human wellbeing with environmental sustainability remains challenging for most nations.</p>
-</section>
-<section id="variable-comparison" class="level2">
-<h2 class="anchored" data-anchor-id="variable-comparison">Variable Comparison</h2>
-<p>The boxplot demonstrates that GDP per capita has much higher variability across countries than either HPI or life expectancy. This suggests that economic wealth alone doesn’t determine happiness or health outcomes - a key insight of the Happy Planet Index framework.</p>
-</section>
+<section id="key-functions" class="level1">
+<h1>Key Functions</h1>
+<p><strong>par()</strong> - Controls layout, margins, and colors</p>
+<p><strong>plot(), points(), lines()</strong> - Creates plots and adds points/lines</p>
+<p><strong>axis(), box()</strong> - Adds custom axes and borders</p>
+<p><strong>text(), mtext()</strong> - Adds labels in plot or margins</p>
+<p><strong>hist()</strong> - Makes histograms</p>
+<p><strong>boxplot()</strong> - Compares distributions</p>
+<p><strong>persp()</strong> - Creates 3D plots</p>
+<p><strong>pie()</strong> - Makes pie charts</p>
 </section>
 <section id="conclusion" class="level1">
 <h1>Conclusion</h1>
-<p>Working with Murrell’s low-level graphics functions provided precise control over every visual element, from axis placement to color schemes. While modern packages like ggplot2 offer convenience, understanding these base R functions reveals the fundamental building blocks of statistical graphics and enables highly customized visualizations when needed.</p>
-<p>The Happy Planet Index data shows that sustainable wellbeing is achievable at various economic levels, but most countries still struggle to balance environmental impact with quality of life outcomes.</p>
+<p>The scatterplot shows HPI and life expectancy are positively related. Most countries have HPI scores between 30-50. GDP varies more than HPI or life expectancy across countries.</p>
 
 
 </section>

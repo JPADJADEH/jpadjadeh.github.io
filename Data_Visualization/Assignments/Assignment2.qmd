@@ -13,16 +13,13 @@ execute:
 
 # Assignment Overview
 
-This assignment explores Paul Murrell's R graphics functions using the Happy Planet Index dataset from [http://happyplanetindex.org](http://happyplanetindex.org). After working through Murrell's basic examples in murrell01.R, I applied these low-level graphics functions to create custom visualizations of HPI data.
+This assignment uses Paul Murrell's R graphics functions with the Happy Planet Index dataset from [http://happyplanetindex.org](http://happyplanetindex.org).
 
-## Key Learnings from Murrell's Examples
+After working through murrell01.R, I learned that:
 
-Working through murrell01.R line-by-line revealed how R's base graphics system builds complex plots incrementally:
-
-- The `axis()` function's first parameter specifies which side of the plot (1=bottom, 2=left, 3=top, 4=right)
-- The `cex` parameter controls point and text size - larger values create more emphasis
-- `par()` settings like `mar` (margins) and `mfrow` (layout grid) must be carefully managed and reset
-- Multiple low-level functions (`lines()`, `points()`, `text()`, `mtext()`) can layer onto a base plot for precise control
+- `axis()` first parameter sets which side (1=bottom, 2=left, 3=top, 4=right)
+- `cex` controls text and point size
+- `par()` settings for margins and layout need to be reset after changes
 
 # Data Import
 
@@ -44,9 +41,7 @@ population <- hpi_data$`Population (thousands)`
 head(hpi_data[, c("Country", "HPI", "Life Expectancy (years)", "GDP per capita ($)")], 10)
 ```
 
-# Visualizations Using Murrell's Techniques
-
-Using the plotting functions demonstrated in Murrell's examples, I created six different visualizations of the Happy Planet Index data.
+# Plotting Functions with HPI Data
 
 ```{r hpi-plots}
 #| fig-width: 12
@@ -55,23 +50,19 @@ Using the plotting functions demonstrated in Murrell's examples, I created six d
 # Set layout (3 rows, 2 columns)
 par(mfrow=c(3, 2), bg="white")
 
-# 1. Scatterplot: HPI vs Life Expectancy
-# Using plot(), points(), and abline() as in Murrell's climate example
+# 1. Scatterplot with regression line
 plot(hpi_scores, life_expectancy, pch=16, col="blue",
      xlab="HPI Score", ylab="Life Expectancy (years)",
      main="HPI vs Life Expectancy", cex=1.2)
 abline(lm(life_expectancy ~ hpi_scores), col="red", lwd=2)
-text(35, 80, "Positive correlation", cex=0.9, col="darkred")
 
-# 2. Histogram: Distribution of HPI Scores
-# Using hist() and lines() for density overlay
+# 2. Histogram with density curve
 hist(hpi_scores, col="lightblue", border="white",
      main="Distribution of HPI Scores", xlab="HPI Score", 
      freq=FALSE, breaks=10)
 lines(density(hpi_scores, na.rm=TRUE), col="red", lwd=3)
 
-# 3. Barplot: Top 5 Countries by HPI
-# Adapted from Murrell's VADeaths barplot approach
+# 3. Barplot (adapted from VADeaths example)
 par(mar=c(2, 3.1, 2, 2.1))
 hpi_matrix <- matrix(c(hpi_scores[1:5], 
                        life_expectancy[1:5]/2,
@@ -90,21 +81,19 @@ text(rep(midpts, each=4),
      cex=0.7)
 par(mar=c(5.1, 4.1, 4.1, 2.1))
 
-# 4. Boxplot: Comparing HPI, Life Expectancy, and GDP
-# Using boxplot() with multiple variables
+# 4. Boxplot comparison
 par(mar=c(3, 4.1, 2, 0))
 boxplot(list(HPI=hpi_scores, 
              LifeExp=life_expectancy,
              GDP=gdp/1000),
         col=c("lightblue", "lightcoral", "lightgreen"),
-        main="Comparison of Key Variables",
+        main="Three Variables Comparison",
         ylab="Values (scaled)",
         names=c("HPI", "Life Exp", "GDP/1000"))
 mtext("Variables", side=1, line=2, cex=0.8)
 par(mar=c(5.1, 4.1, 4.1, 2.1))
 
-# 5. 3D Surface Plot
-# Using persp() similar to Murrell's sinc function example
+# 5. 3D Surface
 x <- seq(min(hpi_scores, na.rm=TRUE), max(hpi_scores, na.rm=TRUE), length=20)
 y <- seq(min(life_expectancy, na.rm=TRUE), max(life_expectancy, na.rm=TRUE), length=20)
 z <- outer(x, y, function(x,y) (x + y)/2)
@@ -112,14 +101,13 @@ par(mar=c(1, 1, 2, 1))
 persp(x, y, z, theta=30, phi=20, col="lightblue", 
       shade=0.75, border=NA, 
       xlab="HPI", ylab="Life Exp", zlab="Combined",
-      main="3D Surface: HPI + Life Expectancy")
+      main="3D Surface")
 par(mar=c(5.1, 4.1, 4.1, 2.1))
 
-# 6. Pie Chart: Top 5 HPI Countries
-# Using pie() and names() as demonstrated in Murrell's pie sales example
+# 6. Pie Chart
 par(mar=c(0, 2, 2, 2))
 pie(hpi_scores[1:5], labels=countries[1:5],
-    col=rainbow(5), main="Top 5 Countries by HPI Score",
+    col=rainbow(5), main="Top 5 Countries by HPI",
     cex=0.8)
 par(mar=c(5.1, 4.1, 4.1, 2.1))
 
@@ -127,50 +115,24 @@ par(mar=c(5.1, 4.1, 4.1, 2.1))
 par(mfrow=c(1, 1))
 ```
 
-# Key Functions Demonstrated
+# Key Functions
 
-## par()
-Controls graphical parameters like layout (`mfrow`), margins (`mar`), background color (`bg`), and text size (`cex`). Critical for multi-panel layouts and must be reset after changes.
+**par()** - Controls layout, margins, and colors
 
-## plot(), points(), and lines()
-- `plot()` creates the base coordinate system
-- `points()` adds data points with customizable shapes (`pch`), sizes (`cex`), and colors
-- `lines()` connects points or adds trend lines with adjustable width (`lwd`) and color
+**plot(), points(), lines()** - Creates plots and adds points/lines
 
-## axis() and box()
-- `axis()` creates custom axes on any plot side (1=bottom, 2=left, 3=top, 4=right)
-- `box()` adds borders with different styles via the `bty` parameter
+**axis(), box()** - Adds custom axes and borders
 
-## text() and mtext()
-- `text()` places labels at specific (x,y) coordinates within the plot area
-- `mtext()` adds text in margins, useful for axis labels with the `side` and `line` parameters
+**text(), mtext()** - Adds labels in plot or margins
 
-## hist()
-Generates histograms with customizable bins (`breaks`), colors (`col`), and can display either frequency (`freq=TRUE`) or density (`freq=FALSE`).
+**hist()** - Makes histograms
 
-## boxplot()
-Compares distributions across multiple variables or groups, showing median, quartiles, and outliers in a compact format.
+**boxplot()** - Compares distributions
 
-## persp()
-Creates 3D perspective surface plots with viewing angles controlled by `theta` (azimuthal direction) and `phi` (colatitude).
+**persp()** - Creates 3D plots
 
-## pie() and names()
-- `pie()` creates pie charts showing proportional relationships
-- `names()` assigns labels to vector elements for clear identification
-
-# Analysis and Insights
-
-## HPI and Life Expectancy Relationship
-The scatterplot reveals a positive correlation between HPI scores and life expectancy, though with considerable variation. Countries can achieve similar HPI scores through different combinations of life expectancy, wellbeing, and ecological footprint.
-
-## Distribution Patterns
-The histogram shows that most countries cluster in the 30-50 HPI range, with relatively few achieving scores above 60. This suggests that balancing human wellbeing with environmental sustainability remains challenging for most nations.
-
-## Variable Comparison
-The boxplot demonstrates that GDP per capita has much higher variability across countries than either HPI or life expectancy. This suggests that economic wealth alone doesn't determine happiness or health outcomes - a key insight of the Happy Planet Index framework.
+**pie()** - Makes pie charts
 
 # Conclusion
 
-Working with Murrell's low-level graphics functions provided precise control over every visual element, from axis placement to color schemes. While modern packages like ggplot2 offer convenience, understanding these base R functions reveals the fundamental building blocks of statistical graphics and enables highly customized visualizations when needed.
-
-The Happy Planet Index data shows that sustainable wellbeing is achievable at various economic levels, but most countries still struggle to balance environmental impact with quality of life outcomes.
+The scatterplot shows HPI and life expectancy are positively related. Most countries have HPI scores between 30-50. GDP varies more than HPI or life expectancy across countries.
