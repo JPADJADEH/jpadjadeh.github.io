@@ -100,9 +100,9 @@
   {
     "objectID": "Data_Visualization/Assignments/Assignment2.html",
     "href": "Data_Visualization/Assignments/Assignment2.html",
-    "title": "Assignment 2: Paul Murrell’s R Graphics Functions",
+    "title": "Assignment 2: R Graphics with Happy Planet Index",
     "section": "",
-    "text": "This assignment explores Paul Murrell’s basic R graphics functions through two parts: first running his examples with my own modifications, then applying the knowledge to analyze Happy Planet Index data."
+    "text": "Assignment Overview\nThis assignment uses Paul Murrell’s R graphics functions with the Happy Planet Index dataset from http://happyplanetindex.org.\nAfter working through murrell01.R, I learned that:\n\naxis() first parameter sets which side (1=bottom, 2=left, 3=top, 4=right)\ncex controls text and point size\npar() settings for margins and layout need to be reset after changes\n\n\n\nData Import\n\n\nCode\n# Load required library\nlibrary(readxl)\n\n# Read HPI data from Excel file\nhpi_data &lt;- read_excel(\"HPI.xlsx\")\n\n# Extract variables for analysis\ncountries &lt;- hpi_data$Country\nhpi_scores &lt;- hpi_data$HPI\nlife_expectancy &lt;- hpi_data$`Life Expectancy (years)`\ngdp &lt;- hpi_data$`GDP per capita ($)`\npopulation &lt;- hpi_data$`Population (thousands)`\n\n# Display first few rows\nhead(hpi_data[, c(\"Country\", \"HPI\", \"Life Expectancy (years)\", \"GDP per capita ($)\")], 10)\n\n\n# A tibble: 10 × 4\n   Country       HPI `Life Expectancy (years)` `GDP per capita ($)`\n   &lt;chr&gt;       &lt;dbl&gt;                     &lt;dbl&gt;                &lt;dbl&gt;\n 1 Vanuatu      57.9                      70.4                2800.\n 2 Sweden       55.9                      83.0               53772.\n 3 El Salvador  54.7                      70.7                9192.\n 4 Costa Rica   54.1                      77.0               21190.\n 5 Nicaragua    53.6                      73.8                5692.\n 6 Denmark      53.0                      81.4               57963.\n 7 Spain        53.0                      83.0               37933.\n 8 Panama       52.0                      76.2               30417.\n 9 France       52.0                      82.5               44993.\n10 Chile        51.3                      78.9               25413.\n\n\n\n\nPlotting Functions with HPI Data\n\n\nCode\n# Set layout (3 rows, 2 columns)\npar(mfrow=c(3, 2), bg=\"white\")\n\n# 1. Scatterplot with regression line\nplot(hpi_scores, life_expectancy, pch=16, col=\"blue\",\n     xlab=\"HPI Score\", ylab=\"Life Expectancy (years)\",\n     main=\"HPI vs Life Expectancy\", cex=1.2)\nabline(lm(life_expectancy ~ hpi_scores), col=\"red\", lwd=2)\n\n# 2. Histogram with density curve\nhist(hpi_scores, col=\"lightblue\", border=\"white\",\n     main=\"Distribution of HPI Scores\", xlab=\"HPI Score\", \n     freq=FALSE, breaks=10)\nlines(density(hpi_scores, na.rm=TRUE), col=\"red\", lwd=3)\n\n# 3. Barplot (adapted from VADeaths example)\npar(mar=c(2, 3.1, 2, 2.1))\nhpi_matrix &lt;- matrix(c(hpi_scores[1:5], \n                       life_expectancy[1:5]/2,\n                       gdp[1:5]/2000,\n                       population[1:5]/200), \n                     nrow=4, byrow=TRUE)\nmidpts &lt;- barplot(hpi_matrix, \n                  col=c(\"wheat\", \"tan\", \"burlywood\", \"rosybrown\"),\n                  names=rep(\"\", 5),\n                  main=\"Top 5 Countries - Multiple Metrics\")\nmtext(countries[1:5], at=midpts, side=1, line=0.5, cex=0.6)\ntext(rep(midpts, each=4), \n     apply(hpi_matrix, 2, cumsum) - hpi_matrix/2,\n     round(hpi_matrix, 1), \n     col=rep(c(\"black\", \"white\"), times=c(2,2)), \n     cex=0.7)\npar(mar=c(5.1, 4.1, 4.1, 2.1))\n\n# 4. Boxplot comparison\npar(mar=c(3, 4.1, 2, 0))\nboxplot(list(HPI=hpi_scores, \n             LifeExp=life_expectancy,\n             GDP=gdp/1000),\n        col=c(\"lightblue\", \"lightcoral\", \"lightgreen\"),\n        main=\"Three Variables Comparison\",\n        ylab=\"Values (scaled)\",\n        names=c(\"HPI\", \"Life Exp\", \"GDP/1000\"))\nmtext(\"Variables\", side=1, line=2, cex=0.8)\npar(mar=c(5.1, 4.1, 4.1, 2.1))\n\n# 5. 3D Surface\nx &lt;- seq(min(hpi_scores, na.rm=TRUE), max(hpi_scores, na.rm=TRUE), length=20)\ny &lt;- seq(min(life_expectancy, na.rm=TRUE), max(life_expectancy, na.rm=TRUE), length=20)\nz &lt;- outer(x, y, function(x,y) (x + y)/2)\npar(mar=c(1, 1, 2, 1))\npersp(x, y, z, theta=30, phi=20, col=\"lightblue\", \n      shade=0.75, border=NA, \n      xlab=\"HPI\", ylab=\"Life Exp\", zlab=\"Combined\",\n      main=\"3D Surface\")\npar(mar=c(5.1, 4.1, 4.1, 2.1))\n\n# 6. Pie Chart\npar(mar=c(0, 2, 2, 2))\npie(hpi_scores[1:5], labels=countries[1:5],\n    col=rainbow(5), main=\"Top 5 Countries by HPI\",\n    cex=0.8)\n\n\n\n\n\n\n\n\n\nCode\npar(mar=c(5.1, 4.1, 4.1, 2.1))\n\n# Reset layout\npar(mfrow=c(1, 1))\n\n\n\n\nKey Functions\npar() - Controls layout, margins, and colors\nplot(), points(), lines() - Creates plots and adds points/lines\naxis(), box() - Adds custom axes and borders\ntext(), mtext() - Adds labels in plot or margins\nhist() - Makes histograms\nboxplot() - Compares distributions\npersp() - Creates 3D plots\npie() - Makes pie charts\n\n\nConclusion\nThe scatterplot shows HPI and life expectancy are positively related. Most countries have HPI scores between 30-50. GDP varies more than HPI or life expectancy across countries."
   },
   {
     "objectID": "Data_Visualization/Assignments/Assignment2.html#assignment-overview",
@@ -530,5 +530,173 @@
     "title": "Video Review: Edward Tufte’s Keynote on The Future of Data Analysis",
     "section": "My Takeaways",
     "text": "My Takeaways\nWatching the talk made me reflect on my own approach to data work. It reminded me that visualization is not just a final “polish” step, but part of the analysis itself. I learned that careful annotation and context can make the difference between a chart that persuades responsibly and one that misleads. While the keynote was more conceptual than technical, I found that refreshing—it pushed me to think critically about how I design and interpret visuals.\nOverall, Tufte’s keynote left me with a deeper appreciation for visualization as a form of argument. For anyone working with data, his message is a powerful reminder that clarity, integrity, and respect for complexity should guide every chart we make."
+  },
+  {
+    "objectID": "Data_Visualization/Assignments/Assignment2.html#par",
+    "href": "Data_Visualization/Assignments/Assignment2.html#par",
+    "title": "Assignment 2: R Graphics with Happy Planet Index",
+    "section": "par()",
+    "text": "par()\nControls graphical parameters like layout (mfrow), margins (mar), background color (bg), and text size (cex). Critical for multi-panel layouts and must be reset after changes."
+  },
+  {
+    "objectID": "Data_Visualization/Assignments/Assignment2.html#lines",
+    "href": "Data_Visualization/Assignments/Assignment2.html#lines",
+    "title": "Assignment 2: R Graphics with Happy Planet Index",
+    "section": "lines()",
+    "text": "lines()\nAdds line segments to existing plots, useful for connecting data points or adding trend lines."
+  },
+  {
+    "objectID": "Data_Visualization/Assignments/Assignment2.html#points",
+    "href": "Data_Visualization/Assignments/Assignment2.html#points",
+    "title": "Assignment 2: R Graphics with Happy Planet Index",
+    "section": "points()",
+    "text": "points()\nAdds customizable data points to plots with control over shape (pch), size (cex), and color."
+  },
+  {
+    "objectID": "Data_Visualization/Assignments/Assignment2.html#axis",
+    "href": "Data_Visualization/Assignments/Assignment2.html#axis",
+    "title": "Assignment 2: R Graphics with Happy Planet Index",
+    "section": "axis()",
+    "text": "axis()\nCreates custom axes on any side of the plot (1=bottom, 2=left, 3=top, 4=right)."
+  },
+  {
+    "objectID": "Data_Visualization/Assignments/Assignment2.html#box",
+    "href": "Data_Visualization/Assignments/Assignment2.html#box",
+    "title": "Assignment 2: R Graphics with Happy Planet Index",
+    "section": "box()",
+    "text": "box()\nAdds borders and frames around plots."
+  },
+  {
+    "objectID": "Data_Visualization/Assignments/Assignment2.html#text-and-mtext",
+    "href": "Data_Visualization/Assignments/Assignment2.html#text-and-mtext",
+    "title": "Assignment 2: R Graphics with Happy Planet Index",
+    "section": "text() and mtext()",
+    "text": "text() and mtext()\n\ntext() places labels at specific (x,y) coordinates within the plot area\nmtext() adds text in margins, useful for axis labels with the side and line parameters"
+  },
+  {
+    "objectID": "Data_Visualization/Assignments/Assignment2.html#hist",
+    "href": "Data_Visualization/Assignments/Assignment2.html#hist",
+    "title": "Assignment 2: R Graphics with Happy Planet Index",
+    "section": "hist()",
+    "text": "hist()\nGenerates histograms with customizable bins (breaks), colors (col), and can display either frequency (freq=TRUE) or density (freq=FALSE)."
+  },
+  {
+    "objectID": "Data_Visualization/Assignments/Assignment2.html#boxplot",
+    "href": "Data_Visualization/Assignments/Assignment2.html#boxplot",
+    "title": "Assignment 2: R Graphics with Happy Planet Index",
+    "section": "boxplot()",
+    "text": "boxplot()\nCompares distributions across multiple variables or groups, showing median, quartiles, and outliers in a compact format."
+  },
+  {
+    "objectID": "Data_Visualization/Assignments/Assignment2.html#persp",
+    "href": "Data_Visualization/Assignments/Assignment2.html#persp",
+    "title": "Assignment 2: R Graphics with Happy Planet Index",
+    "section": "persp()",
+    "text": "persp()\nCreates 3D perspective surface plots with viewing angles controlled by theta (azimuthal direction) and phi (colatitude)."
+  },
+  {
+    "objectID": "Data_Visualization/Assignments/Assignment2.html#pie",
+    "href": "Data_Visualization/Assignments/Assignment2.html#pie",
+    "title": "Assignment 2: R Graphics with Happy Planet Index",
+    "section": "pie()",
+    "text": "pie()\nShows proportional relationships between categories."
+  },
+  {
+    "objectID": "Data_Visualization/Assignments/Assignment2.html#key-learnings-from-murrells-examples",
+    "href": "Data_Visualization/Assignments/Assignment2.html#key-learnings-from-murrells-examples",
+    "title": "Assignment 2: R Graphics with Happy Planet Index",
+    "section": "",
+    "text": "Working through murrell01.R line-by-line revealed how R’s base graphics system builds complex plots incrementally:\n\nThe axis() function’s first parameter specifies which side of the plot (1=bottom, 2=left, 3=top, 4=right)\nThe cex parameter controls point and text size - larger values create more emphasis\npar() settings like mar (margins) and mfrow (layout grid) must be carefully managed and reset\nMultiple low-level functions (lines(), points(), text(), mtext()) can layer onto a base plot for precise control"
+  },
+  {
+    "objectID": "Data_Visualization/Assignments/Assignment2.html#plot-points-and-lines",
+    "href": "Data_Visualization/Assignments/Assignment2.html#plot-points-and-lines",
+    "title": "Assignment 2: R Graphics with Happy Planet Index",
+    "section": "plot(), points(), and lines()",
+    "text": "plot(), points(), and lines()\n\nplot() creates the base coordinate system\npoints() adds data points with customizable shapes (pch), sizes (cex), and colors\nlines() connects points or adds trend lines with adjustable width (lwd) and color"
+  },
+  {
+    "objectID": "Data_Visualization/Assignments/Assignment2.html#axis-and-box",
+    "href": "Data_Visualization/Assignments/Assignment2.html#axis-and-box",
+    "title": "Assignment 2: R Graphics with Happy Planet Index",
+    "section": "axis() and box()",
+    "text": "axis() and box()\n\naxis() creates custom axes on any plot side (1=bottom, 2=left, 3=top, 4=right)\nbox() adds borders with different styles via the bty parameter"
+  },
+  {
+    "objectID": "Data_Visualization/Assignments/Assignment2.html#pie-and-names",
+    "href": "Data_Visualization/Assignments/Assignment2.html#pie-and-names",
+    "title": "Assignment 2: R Graphics with Happy Planet Index",
+    "section": "pie() and names()",
+    "text": "pie() and names()\n\npie() creates pie charts showing proportional relationships\nnames() assigns labels to vector elements for clear identification"
+  },
+  {
+    "objectID": "Data_Visualization/Assignments/Assignment2.html#hpi-and-life-expectancy-relationship",
+    "href": "Data_Visualization/Assignments/Assignment2.html#hpi-and-life-expectancy-relationship",
+    "title": "Assignment 2: R Graphics with Happy Planet Index",
+    "section": "HPI and Life Expectancy Relationship",
+    "text": "HPI and Life Expectancy Relationship\nThe scatterplot reveals a positive correlation between HPI scores and life expectancy, though with considerable variation. Countries can achieve similar HPI scores through different combinations of life expectancy, wellbeing, and ecological footprint."
+  },
+  {
+    "objectID": "Data_Visualization/Assignments/Assignment2.html#distribution-patterns",
+    "href": "Data_Visualization/Assignments/Assignment2.html#distribution-patterns",
+    "title": "Assignment 2: R Graphics with Happy Planet Index",
+    "section": "Distribution Patterns",
+    "text": "Distribution Patterns\nThe histogram shows that most countries cluster in the 30-50 HPI range, with relatively few achieving scores above 60. This suggests that balancing human wellbeing with environmental sustainability remains challenging for most nations."
+  },
+  {
+    "objectID": "Data_Visualization/Assignments/Assignment2.html#variable-comparison",
+    "href": "Data_Visualization/Assignments/Assignment2.html#variable-comparison",
+    "title": "Assignment 2: R Graphics with Happy Planet Index",
+    "section": "Variable Comparison",
+    "text": "Variable Comparison\nThe boxplot demonstrates that GDP per capita has much higher variability across countries than either HPI or life expectancy. This suggests that economic wealth alone doesn’t determine happiness or health outcomes - a key insight of the Happy Planet Index framework."
+  },
+  {
+    "objectID": "Data_Collection/Reviews/Review2.html",
+    "href": "Data_Collection/Reviews/Review2.html",
+    "title": "Podcast Review 2: Judea Pearl on Causal Reasoning",
+    "section": "",
+    "text": "Title: Causal Reasoning, Counterfactuals, Bayesian Networks, and the Path to AGI\nHost: Lex Fridman\nGuest: Judea Pearl\nDate: December 11, 2019"
+  },
+  {
+    "objectID": "Data_Collection/Reviews/Review2.html#podcast-information",
+    "href": "Data_Collection/Reviews/Review2.html#podcast-information",
+    "title": "Podcast Review 2: Judea Pearl on Causal Reasoning",
+    "section": "",
+    "text": "Title: Causal Reasoning, Counterfactuals, Bayesian Networks, and the Path to AGI\nHost: Lex Fridman\nGuest: Judea Pearl\nDate: December 11, 2019"
+  },
+  {
+    "objectID": "Data_Collection/Reviews/Review2.html#overview",
+    "href": "Data_Collection/Reviews/Review2.html#overview",
+    "title": "Podcast Review 2: Judea Pearl on Causal Reasoning",
+    "section": "Overview",
+    "text": "Overview\nIn this episode, computer scientist Judea Pearl discusses how true intelligence requires understanding cause and effect, not just finding patterns in data. Pearl, a professor at UCLA and winner of the Turing Award, is known for creating Bayesian Networks and developing the science of causal reasoning. He argues that current artificial intelligence (AI) systems depend too much on correlation and pattern recognition, while real understanding comes from reasoning about why things happen."
+  },
+  {
+    "objectID": "Data_Collection/Reviews/Review2.html#correlation-and-causation",
+    "href": "Data_Collection/Reviews/Review2.html#correlation-and-causation",
+    "title": "Podcast Review 2: Judea Pearl on Causal Reasoning",
+    "section": "1. Correlation and Causation",
+    "text": "1. Correlation and Causation\nPearl explains that correlation means two things move together, but it does not tell us why. For example, ice cream sales and drowning deaths both rise in summer, but ice cream does not cause drowning. They are both caused by hot weather.\nHe contrasts this with causation, which shows how one variable directly influences another. Causation is directional—it answers questions like “What happens if we change X?” or “What would have happened if we had done Y instead?”\nPearl says, “You can’t claim to understand a phenomenon if you can’t answer what would happen if things were different.”\nHe also presents his “Ladder of Causation,” which has three levels:\n\nAssociation – Seeing that events occur together\nIntervention – Doing something to change an event\nCounterfactuals – Imagining what would have happened differently\n\nAccording to Pearl, most AI today remains on the first level."
+  },
+  {
+    "objectID": "Data_Collection/Reviews/Review2.html#what-are-bayesian-networks",
+    "href": "Data_Collection/Reviews/Review2.html#what-are-bayesian-networks",
+    "title": "Podcast Review 2: Judea Pearl on Causal Reasoning",
+    "section": "2. What Are Bayesian Networks?",
+    "text": "2. What Are Bayesian Networks?\nBayesian Networks are diagrams that represent how different factors are connected and how likely one event is given another. Each node in the network is a variable, and arrows show possible causal links between them.\nPearl explains that these networks allow computers to handle uncertainty and reason like humans. For instance, a network could model how smoking leads to lung cancer, which causes shortness of breath. If we know a person has shortness of breath, the network can update the probability that they have lung cancer.\nIn Pearl’s words: “Bayesian networks let us reason under uncertainty the way humans do, by combining what we know, what we observe, and what we can infer.”"
+  },
+  {
+    "objectID": "Data_Collection/Reviews/Review2.html#counterfactual-thinking-and-ai",
+    "href": "Data_Collection/Reviews/Review2.html#counterfactual-thinking-and-ai",
+    "title": "Podcast Review 2: Judea Pearl on Causal Reasoning",
+    "section": "3. Counterfactual Thinking and AI",
+    "text": "3. Counterfactual Thinking and AI\nPearl argues that humans constantly use counterfactual reasoning, asking “What if?”, which allows us to learn from past experiences and make moral or logical judgments. He believes that for machines to reach Artificial General Intelligence (AGI), they must also be able to reason about alternate realities.\nHe criticizes current deep learning systems for being “powerful curve-fitting machines” that recognize patterns but lack understanding of cause and effect. Without causal reasoning, AI cannot truly explain or adapt to new situations."
+  },
+  {
+    "objectID": "Data_Collection/Reviews/Review2.html#conclusion",
+    "href": "Data_Collection/Reviews/Review2.html#conclusion",
+    "title": "Podcast Review 2: Judea Pearl on Causal Reasoning",
+    "section": "Conclusion",
+    "text": "Conclusion\nJudea Pearl’s message is clear: data alone is not enough. To achieve human-like understanding, AI must learn to think causally, to ask why and not only what. His work on Bayesian Networks and the Ladder of Causation provides a framework for that next step.\nAs Pearl summarizes, “The hallmark of intelligence is the ability to imagine what would have happened if things were different.”\nThis conversation reinforced the importance of moving beyond pattern recognition in data science. Understanding causation is essential for making reliable predictions and informed decisions in research and policy."
   }
 ]

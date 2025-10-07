@@ -1,0 +1,57 @@
+---
+title: "Podcast Review 2: Judea Pearl on Causal Reasoning"
+author: "Your Name"
+format: 
+  html:
+    toc: true
+    toc-location: left
+---
+
+## Podcast Information
+
+**Title:** Causal Reasoning, Counterfactuals, Bayesian Networks, and the Path to AGI\
+**Host:** Lex Fridman\
+**Guest:** Judea Pearl\
+**Date:** December 11, 2019
+
+## Overview
+
+In this episode, computer scientist Judea Pearl discusses how true intelligence requires understanding cause and effect, not just finding patterns in data. Pearl, a professor at UCLA and winner of the Turing Award, is known for creating Bayesian Networks and developing the science of causal reasoning. He argues that current artificial intelligence (AI) systems depend too much on correlation and pattern recognition, while real understanding comes from reasoning about why things happen.
+
+## 1. Correlation and Causation
+
+Pearl explains that correlation means two things move together, but it does not tell us why. For example, ice cream sales and drowning deaths both rise in summer, but ice cream does not cause drowning. They are both caused by hot weather.
+
+He contrasts this with causation, which shows how one variable directly influences another. Causation is directional—it answers questions like "What happens if we change X?" or "What would have happened if we had done Y instead?"
+
+Pearl says, "You can't claim to understand a phenomenon if you can't answer what would happen if things were different."
+
+He also presents his **"Ladder of Causation,"** which has three levels:
+
+1.  **Association** – Seeing that events occur together
+2.  **Intervention** – Doing something to change an event
+3.  **Counterfactuals** – Imagining what would have happened differently
+
+According to Pearl, most AI today remains on the first level.
+
+## 2. What Are Bayesian Networks?
+
+Bayesian Networks are diagrams that represent how different factors are connected and how likely one event is given another. Each node in the network is a variable, and arrows show possible causal links between them.
+
+Pearl explains that these networks allow computers to handle uncertainty and reason like humans. For instance, a network could model how smoking leads to lung cancer, which causes shortness of breath. If we know a person has shortness of breath, the network can update the probability that they have lung cancer.
+
+In Pearl's words: "Bayesian networks let us reason under uncertainty the way humans do, by combining what we know, what we observe, and what we can infer."
+
+## 3. Counterfactual Thinking and AI
+
+Pearl argues that humans constantly use counterfactual reasoning, asking "What if?", which allows us to learn from past experiences and make moral or logical judgments. He believes that for machines to reach Artificial General Intelligence (AGI), they must also be able to reason about alternate realities.
+
+He criticizes current deep learning systems for being "powerful curve-fitting machines" that recognize patterns but lack understanding of cause and effect. Without causal reasoning, AI cannot truly explain or adapt to new situations.
+
+## Conclusion
+
+Judea Pearl's message is clear: data alone is not enough. To achieve human-like understanding, AI must learn to think causally, to ask why and not only what. His work on Bayesian Networks and the Ladder of Causation provides a framework for that next step.
+
+As Pearl summarizes, "The hallmark of intelligence is the ability to imagine what would have happened if things were different."
+
+This conversation reinforced the importance of moving beyond pattern recognition in data science. Understanding causation is essential for making reliable predictions and informed decisions in research and policy.
