@@ -1,6 +1,6 @@
 ---
 title: "Podcast Review 2: Judea Pearl on Causal Reasoning"
-author: "Your Name"
+author: "John-Paul Adjadeh"
 format: 
   html:
     toc: true
