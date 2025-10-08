@@ -1,7 +1,6 @@
 ---
 title: "Assignment 3 - Data Visualization"
-author: "Your Name"
-date: "`r Sys.Date()`"
+author: "John-Paul Adjadeh"
 format: html
 editor: visual
 ---
