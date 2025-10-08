@@ -1,0 +1,217 @@
+---
+title: "Assignment 3 - Data Visualization"
+author: "Your Name"
+date: "`r Sys.Date()`"
+format: html
+editor: visual
+---
+
+## Question 1: Murrell01.R - Barplot
+
+I chose the barplot from murrell01.R and modified it with custom colors and added a title.
+
+```{r}
+# Barplot with custom colors
+par(mar=c(2, 3.1, 3, 2.1))  
+
+# Using custom colors instead of gray
+midpts <- barplot(VADeaths, 
+                  col=c("#E63946", "#F1FAEE", "#A8DADC", "#457B9D", "#1D3557"),
+                  names=rep("", 4),
+                  main="Virginia Death Rates (1940)")
+
+# Add column labels
+mtext(sub(" ", "\n", colnames(VADeaths)),
+      at=midpts, side=1, line=0.5, cex=0.5)
+
+# Add values inside bars
+text(rep(midpts, each=5), 
+     apply(VADeaths, 2, cumsum) - VADeaths/2,
+     VADeaths, 
+     col=rep(c("white", "black"), times=3:2), 
+     cex=0.8)
+
+par(mar=c(5.1, 4.1, 4.1, 2.1))
+```
+
+The barplot shows death rates by age group and demographic category. I changed the colors to make it more colorful and added a main title.
+
+## Question 2: Anscombe01.R
+
+### Part A: Compare the regression models
+
+```{r}
+data(anscombe)
+
+# Create four regression models
+lm1 <- lm(y1 ~ x1, data=anscombe)
+lm2 <- lm(y2 ~ x2, data=anscombe)
+lm3 <- lm(y3 ~ x3, data=anscombe)
+lm4 <- lm(y4 ~ x4, data=anscombe)
+
+# Compare the models
+summary(lm1)
+summary(lm2)
+summary(lm3)
+summary(lm4)
+```
+
+All four models have almost the same statistics (same slope around 0.5, same R-squared around 0.67), but when we plot them they look very different!
+
+### Part B: Create plots with different customizations
+
+```{r}
+# Plot all four with different colors and symbols
+par(mfrow = c(2, 2), mar = c(4, 4, 2, 1))
+
+# Plot 1: purple points, green line
+plot(anscombe$x1, anscombe$y1,
+     main = "Dataset 1",
+     xlab = "x1", ylab = "y1",
+     pch = 19,              
+     col = "#9B59B6",       
+     cex = 1.5)
+abline(lm1, col = "#27AE60", lwd = 2, lty = 2)
+
+# Plot 2: orange squares, red line
+plot(anscombe$x2, anscombe$y2,
+     main = "Dataset 2",
+     xlab = "x2", ylab = "y2",
+     pch = 15,              
+     col = "#E67E22",       
+     cex = 1.3)
+abline(lm2, col = "#E74C3C", lwd = 2)
+
+# Plot 3: blue triangles, navy line
+plot(anscombe$x3, anscombe$y3,
+     main = "Dataset 3",
+     xlab = "x3", ylab = "y3",
+     pch = 17,              
+     col = "#3498DB",       
+     cex = 1.4)
+abline(lm3, col = "#1A5490", lwd = 2, lty = 3)
+
+# Plot 4: teal diamonds, orange line
+plot(anscombe$x4, anscombe$y4,
+     main = "Dataset 4",
+     xlab = "x4", ylab = "y4",
+     pch = 18,              
+     col = "#16A085",       
+     cex = 1.5)
+abline(lm4, col = "#D35400", lwd = 2, lty = 4)
+
+mtext("Anscombe's Quartet", outer = TRUE, line = -1, cex = 1.3)
+
+par(mfrow = c(1, 1), mar = c(5.1, 4.1, 4.1, 2.1))
+```
+
+I used different colors for each dataset, different point types (circles, squares, triangles, diamonds), and different line types (dashed, solid, dotted).
+
+## Question 3: Fine-tuning Without Other Packages
+
+### Part A: Serif font
+
+```{r}
+par(family = "serif")
+plot(pressure$temperature, pressure$pressure,
+     main = "Vapor Pressure with Serif Font",
+     xlab = "Temperature", 
+     ylab = "Pressure",
+     pch = 16,
+     col = "darkblue")
+par(family = "sans")
+```
+
+### Part B: Non-default colors
+
+```{r}
+plot(anscombe$x1, anscombe$y1,
+     main = "Anscombe Dataset 1 - Custom Colors",
+     xlab = "x1", 
+     ylab = "y1",
+     pch = 19,
+     col = "#9B59B6",
+     cex = 1.5)
+abline(lm(y1 ~ x1, data=anscombe), 
+       col = "#27AE60",
+       lwd = 2)
+```
+
+I used hex color codes for purple points and green line.
+
+### Part C: Custom plotting character
+
+```{r}
+plot(anscombe$x2, anscombe$y2,
+     main = "Anscombe Dataset 2 - Custom Symbols",
+     xlab = "x2", 
+     ylab = "y2",
+     pch = 17,
+     col = "orange",
+     cex = 1.5)
+abline(lm(y2 ~ x2, data=anscombe), 
+       col = "red", 
+       lwd = 2)
+```
+
+I used triangles (pch = 17) as the plotting character.
+
+## Question 4: Using ggplot2
+
+```{r}
+library(tidyverse)
+
+data(anscombe)
+
+# Reshape data for ggplot
+anscombe_tidy <- anscombe %>%
+  pivot_longer(everything(),
+               names_to = c(".value", "set"),
+               names_pattern = "(.)(.)")
+
+# Create the plots
+ggplot(anscombe_tidy, aes(x = x, y = y)) +
+  geom_point(color = "red", size = 3) +
+  geom_smooth(method = "lm", se = FALSE, color = "blue") +
+  facet_wrap(~set, labeller = label_both) +
+  theme_bw() +
+  labs(title = "Anscombe's Quartet with ggplot2")
+```
+
+The ggplot2 version looks cleaner and creates all four plots at once using facet_wrap.
+
+## Question 5: COVID Europe Scatterplot (Team Project)
+
+```{r}
+# Download COVID data
+owidall = read.csv("https://github.com/owid/covid-19-data/blob/master/public/data/owid-covid-data.csv?raw=true")
+
+# Remove OWID aggregates
+owidall = owidall[!grepl("^OWID", owidall$iso_code), ]
+
+# Subset Europe
+owideu = subset(owidall, continent=="Europe")
+
+# Convert date
+owideu$date = as.Date(owideu$date)
+
+# Create scatterplot
+plot(owideu$date, owideu$new_deaths,
+     pch = 16,
+     col = rgb(1, 0, 0.5, 0.3),
+     cex = 0.5,
+     xlab = "Date",
+     ylab = "COVID Deaths in Europe (Daily)",
+     main = "COVID-19 Deaths in Europe Over Time",
+     ylim = c(0, 6000))
+
+# Add country labels
+text(as.Date("2020-04-15"), 6000, "Germany", cex = 0.7, pos = 4)
+text(as.Date("2020-04-05"), 5200, "Spain", cex = 0.7, pos = 2)
+text(as.Date("2020-03-01"), 5000, "Spain", cex = 0.7, pos = 4)
+text(as.Date("2021-11-15"), 5200, "Ukraine", cex = 0.7, pos = 2)
+text(as.Date("2022-03-01"), 1500, "Germany", cex = 0.7, pos = 2)
+text(as.Date("2023-08-01"), 100, "Italy", cex = 0.7, pos = 4)
+```
+
+The scatterplot shows COVID-19 deaths over time in Europe. I used pink transparent points and labeled the major peaks with country names.
