@@ -1,0 +1,35 @@
+---
+title: "Review 3: McKinsey's 'The Week in Charts' and 'The Year in Charts (2024)'"
+author: "JP ADJADEH"
+format: html
+editor: visual
+---
+
+## Overview
+
+I reviewed McKinsey's Week in Charts and 2024 Year in Charts series. Both use clean and modern visuals. I really like the use of blue colors. The different shades of blue look calm and professional, not too loud, and easy on the eyes.
+
+## The Week in Charts
+
+In the Week in Charts, the color theme is very consistent, which makes all the visuals look connected. However, in some charts, such as the Nationwide Housing Crisis map, the light and dark blues are very close together, making it difficult to distinguish which places have higher or lower numbers. Some other charts, like Robots on the Rise and Europe's Tech Start-Up Superstars, look creative but are hard to understand at first. The message is not clear right away.
+
+## The 2024 Year in Charts
+
+In the 2024 Year in Charts, I like the creativity. The circle packing chart shows the market size of each software category with different-sized bubbles. This is a smart design because it shows both size and color in one visual rather than the traditional pie chart, which must be avoided in data visualization. It looks new and interesting while still giving useful information.
+
+## What Can Be Better Innovated
+
+1.  **Color contrast**: Keep the same blue theme, but make the shades easier to tell apart, especially in maps and area charts.
+
+2.  **Simpler labels**: Some charts use too much style and not enough explanation. A few short notes or tooltips would help people understand faster.
+
+Overall, both McKinsey series show how design and data can work together to tell a story. Their use of space, font, and color makes the visuals look neat and professional. But stronger color contrast and simpler labels can make the charts even better for everyday readers.
+
+## The Four Pillars of Data Visualization
+
+1.  **Has clear purpose** (why this visualization)
+2.  **Includes only the relevant content** (what are you visualizing)
+3.  **Uses appropriate structure** (how are you visualizing it)
+4.  **Has useful formatting** (everything else)
+
+These four pillars help us understand what makes a good visualization. McKinsey's charts generally follow these principles, especially in purpose and formatting. However, some charts could improve in structure by being simpler and clearer for readers who are not experts.
