@@ -1,0 +1,18 @@
+---
+title: "Review 2: Big Data Analytics Pitfall and the Parable of Google Flu"
+author: "JP ADJADEH"
+format: html
+editor: visual
+---
+
+## Big Data Analytics Pitfall and the Parable of Google Flu
+
+Big data sounds powerful because it comes from millions of people, but it can also be very wrong if not handled well. The story of Google Flu is a good example. Google tried to use search data to predict flu outbreaks. At first, it looked smart because it matched the flu reports from hospitals. But later, it failed badly. It started giving wrong numbers, sometimes two times higher than the real flu cases.
+
+The problem was not the data size, but how it was used. Google used many search terms and built a big model without carefully checking if those searches really meant people were sick. For example, people might search "flu symptoms" just because they heard about flu on the news, not because they have it. This shows that more data does not always mean better data. Sometimes, too much data can hide the truth instead of showing it.
+
+## Overfitting and Overparameterization
+
+Overfitting means a model learns too much from the data it sees and fails when it sees new data. It "fits" every small detail, even noise or mistakes. In the Google Flu project, the model used too many variables (search terms), so it became too complex. This is called overparameterization — when there are too many parameters in the model for the amount of real information available. It looked perfect for old data but could not predict new cases correctly.
+
+The lesson is that we should be careful with big data. We must test models often, use smaller and more meaningful variables, and combine data science with human understanding. Big data is useful, but it still needs good theory, good cleaning, and clear logic. Otherwise, we fall into the same trap as Google Flu — trusting numbers that look smart but are not right.
