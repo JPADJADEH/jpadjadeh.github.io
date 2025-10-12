@@ -1,0 +1,37 @@
+---
+title: "Video Review: Edward Tufte's Keynote on The Future of Data Analysis"
+author: "Your Name"
+format: 
+  html:
+    toc: true
+    toc-location: left
+---
+
+## Video Information
+
+**Title:** The Future of Data Analysis\
+**Speaker:** Dr. Edward Tufte\
+**Event:** Microsoft Machine Learning & Data Science Summit, 2016\
+**Link:** [Watch on YouTube](https://www.youtube.com/watch?v=rHUDJ8RyseQ)
+
+## Overview
+
+This is my review after watching Edward Tufte's keynote "The Future of Data Analysis" from the Microsoft Machine Learning & Data Science Summit (2016). Tufte is known for his strong views on how data should be presented, and this talk reinforced why his principles are still so influential. What stood out to me was how he framed visualization not as decoration but as a form of reasoning and evidence. His examples—from Swiss mountain maps to football highlights—made the argument vivid: when we show data, we should aim to reveal complexity and structure, not strip it away.
+
+## Key Compelling Points
+
+**Richness matters:** He emphasized that data are inherently complex and multivariate, and we lose insight when we oversimplify.
+
+**Evidence over aesthetics:** Tufte was clear that visuals should argue and inform, not just look attractive.
+
+**Pitfalls to avoid:** He warned about overfitting, spurious patterns, and charts that mislead more than they reveal.
+
+**Annotation and context:** Good graphics should provide scales, baselines, and clear labels so the audience can truly understand the evidence.
+
+**Visualization as discourse:** I appreciated his reminder that every design choice communicates something and carries ethical responsibility.
+
+## My Takeaways
+
+Watching the talk made me reflect on my own approach to data work. It reminded me that visualization is not just a final "polish" step, but part of the analysis itself. I learned that careful annotation and context can make the difference between a chart that persuades responsibly and one that misleads. While the keynote was more conceptual than technical, I found that refreshing—it pushed me to think critically about how I design and interpret visuals.
+
+Overall, Tufte's keynote left me with a deeper appreciation for visualization as a form of argument. For anyone working with data, his message is a powerful reminder that clarity, integrity, and respect for complexity should guide every chart we make.

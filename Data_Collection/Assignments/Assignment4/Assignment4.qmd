@@ -1,0 +1,104 @@
+---
+title: "Assignment 4: Web Scraping"
+author: "Your Name"
+format: 
+  html:
+    code-fold: true
+    code-summary: "Show code"
+    toc: true
+    toc-location: left
+execute:
+  warning: false
+  message: false
+---
+
+# Scraping Foreign Exchange Reserve Data
+
+I scraped foreign exchange reserve data from Wikipedia using the `rvest` package. Using browser inspection tools, I identified the correct XPath for the table containing individual country data. The Wikipedia table structure had changed since the original exercise code was written, requiring adjustment from `/div/table[1]` to `/div[1]/table[1]` to target the specific table with country-level reserves.
+
+```{r setup}
+#| echo: true
+
+library(tidyverse)
+library(rvest)
+library(stringr)
+
+url <- 'https://en.wikipedia.org/wiki/List_of_countries_by_foreign-exchange_reserves'
+wikiforreserve <- read_html(url)
+
+foreignreserve <- wikiforreserve %>%
+  html_nodes(xpath='//*[@id="mw-content-text"]/div[1]/table[1]') %>%
+  html_table()
+
+fores = foreignreserve[[1]]
+
+# Rename all 8 columns appropriately
+names(fores) <- c("Country", "Continent", "Forexres_gold", "Forexres", "Change_gold", "Change", "Date", "Ref")
+
+head(fores$Country, n=10)
+```
+
+## a. Scraping Other Tables
+
+To scrape different tables, I changed the table index in the XPath. For the second table, I used `table[2]` instead of `table[1]`:
+
+```{r scrape-other}
+#| echo: true
+#| eval: false
+
+foreignreserve2 <- wikiforreserve %>%
+  html_nodes(xpath='//*[@id="mw-content-text"]/div[1]/table[2]') %>%
+  html_table()
+```
+
+## b. Data Cleaning
+
+### i. Date Variable
+
+I removed reference notes from the Date column using string splitting:
+
+```{r clean-date}
+#| echo: true
+
+# Remove first 2 header rows
+newfores = fores[-c(1, 2), ]
+
+# Select only needed columns
+newfores <- newfores %>%
+  select(Country, Continent, Forexres, Change, Date)
+
+# Clean the Date variable
+newfores$newdate = str_split_fixed(newfores$Date, "\\[", n = 2)[, 1]
+newfores$newdate = trimws(newfores$newdate)
+
+head(newfores[, c("Date", "newdate")], 5)
+```
+
+### ii. Final Cleaned Data
+
+```{r display-cleaned}
+#| echo: true
+
+head(newfores, n=10)
+```
+
+```{r save}
+#| echo: true
+#| output: false
+
+write.csv(newfores, "foreign_reserves_cleaned.csv", row.names = FALSE)
+```
+
+## c. Web Data Collection Plan
+
+For research projects requiring web data, I developed this approach:
+
+**Source Selection:** I first checked if an official API exists, as this is more reliable than scraping. When APIs aren't available, I reviewed the website's Terms of Service and robots.txt to confirm scraping is permitted.
+
+**Data Collection:** I used XPath selectors to target specific elements and implemented error handling for network issues or page changes. I added delays between requests to avoid overloading servers.
+
+**Data Validation:** Raw scraped data needed cleaning and validation. I cross-referenced Wikipedia data with original sources (IMF, central banks) cited in the references to verify accuracy.
+
+**Ethics and Maintenance:** I documented all sources and collection methods for transparency. Regular monitoring is necessary since websites change frequently, requiring code updates.
+
+For this assignment, Wikipedia was appropriate because it aggregates public data from official sources. The same methodology applies to other economic indicators, making it scalable for comparative international research.

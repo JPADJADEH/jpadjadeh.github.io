@@ -1,0 +1,233 @@
+---
+title: "Assignment 1: Data Visualization"
+author: "JP ADJADEH"
+format: html
+---
+
+## 1. Analyzing Anscombe's Plots
+
+Anscombe's Quartet teaches us that data can look the same in numbers but tell very different stories when you make a graph. All four datasets have the same averages, correlations, and regression lines, but the plots show one is a straight line, another is curved, and others are shaped by outliers. 
+
+**The problem:** If we only look at numbers, we may miss these hidden patterns and make wrong conclusions. 
+
+**The solution:** Always graph the data before and after running models. Simple plots like scatterplots can reveal issues like outliers, non-linear trends, or unusual points.
+
+### Loading and Exploring the Data
+
+```{r}
+#| label: load-data
+#| include: false
+
+# Load Anscombe's data
+data(anscombe)
+summary(anscombe)
+```
+
+### Building Linear Models
+
+```{r}
+#| label: build-models
+#| include: false
+
+# Create four model objects
+lm1 <- lm(y1 ~ x1, data=anscombe)
+lm2 <- lm(y2 ~ x2, data=anscombe)
+lm3 <- lm(y3 ~ x3, data=anscombe)
+lm4 <- lm(y4 ~ x4, data=anscombe)
+
+# Compare model coefficients
+ff <- y ~ x
+mods <- setNames(as.list(1:4), paste0("lm", 1:4))
+
+for(i in 1:4) {
+  ff[2:3] <- lapply(paste0(c("y","x"), i), as.name)
+  mods[[i]] <- lmi <- lm(ff, data = anscombe)
+}
+
+# Show coefficients are identical
+sapply(mods, coef)
+```
+
+### Visualizing the Four Datasets
+
+```{r}
+#| label: anscombe-plots
+#| fig-width: 10
+#| fig-height: 8
+#| fig-cap: "Anscombe's Quartet: Four datasets with identical summary statistics but very different patterns"
+
+# Set up plotting layout
+op <- par(mfrow = c(2, 2), mar = 0.1+c(4,4,1,1), oma = c(0, 0, 2, 0))
+
+# Plot all four datasets with regression lines
+for(i in 1:4) {
+  ff[2:3] <- lapply(paste0(c("y","x"), i), as.name)
+  plot(ff, data = anscombe, col = "red", pch = 21, bg = "orange", cex = 1.2,
+       xlim = c(3, 19), ylim = c(3, 13),
+       main = paste("Dataset", i))
+  abline(mods[[i]], col = "blue", lwd = 2)
+}
+mtext("Anscombe's 4 Regression Data Sets", outer = TRUE, cex = 1.5)
+par(op)
+```
+
+### Key Insights
+
+The visualization reveals four very different relationships:
+
+- **Dataset 1:** Perfect linear relationship
+- **Dataset 2:** Clear non-linear (curved) relationship  
+- **Dataset 3:** Linear relationship with one outlier
+- **Dataset 4:** No relationship except for one influential point
+
+Despite these dramatic differences, all four datasets have:
+- Same mean for x and y
+- Same correlation coefficient
+- Same regression line
+- Same R-squared value
+
+This demonstrates why **visualization is essential** for understanding data patterns that summary statistics alone cannot reveal.
+
+## 2. Fall Tree Color Change
+
+This section demonstrates generative art using L-systems to create plant-like structures. I experimented with the color scheme in the original Fall script to explore different autumn themes.
+
+### Setup Required Packages
+
+```{r}
+#| label: fall-setup
+#| include: false
+#| message: false
+
+# Install and load required packages
+if (!require(gsubfn)) install.packages("gsubfn")
+if (!require(tidyverse)) install.packages("tidyverse")
+
+library(gsubfn)
+library(tidyverse)
+```
+
+### Generating the Fall Plant Art
+
+```{r}
+#| label: fall-art
+#| fig-width: 8
+#| fig-height: 8
+#| fig-cap: "Fall tree generated using L-systems with modified color scheme"
+
+# Define elements in plant art
+axiom <- "X"
+rules <- list("X"="F-[[X]+X]+F[+FX]-X", "F"="FF")
+angle <- 22.5
+depth <- 6
+
+# Generate the L-system string
+for (i in 1:depth) axiom <- gsubfn(".", rules, axiom)
+
+# Extract actions
+actions <- str_extract_all(axiom, "\\d*\\+|\\d*\\-|F|L|R|\\[|\\]|\\|") %>% unlist
+
+# Initialize data structures
+status <- data.frame(x=numeric(0), y=numeric(0), alfa=numeric(0))
+points <- data.frame(x1 = 0, y1 = 0, x2 = NA, y2 = NA, alfa=90, depth=1)
+
+# Generate drawing data
+for (action in actions) {
+  if (action=="F") {
+    x <- points[1, "x1"] + cos(points[1, "alfa"]*(pi/180))
+    y <- points[1, "y1"] + sin(points[1, "alfa"]*(pi/180))
+    points[1,"x2"] <- x
+    points[1,"y2"] <- y
+    data.frame(x1 = x, y1 = y, x2 = NA, y2 = NA,
+               alfa=points[1, "alfa"],
+               depth=points[1,"depth"]) %>% rbind(points) -> points
+  }
+  if (action %in% c("+", "-")){
+    alfa <- points[1, "alfa"]
+    points[1, "alfa"] <- eval(parse(text=paste0("alfa",action, angle)))
+  }
+  if(action=="["){
+    data.frame(x=points[1, "x1"], y=points[1, "y1"], alfa=points[1, "alfa"]) %>%
+      rbind(status) -> status
+    points[1, "depth"] <- points[1, "depth"]+1
+  }
+  if(action=="]"){
+    depth <- points[1, "depth"]
+    points[-1,] -> points
+    data.frame(x1=status[1, "x"], y1=status[1, "y"], x2=NA, y2=NA,
+               alfa=status[1, "alfa"],
+               depth=depth-1) %>%
+      rbind(points) -> points
+    status[-1,] -> status
+  }
+}
+
+# Create the plot with my chosen fall color
+ggplot() +
+  geom_segment(aes(x = x1, y = y1, xend = x2, yend = y2),
+               lineend = "round",
+               color="darkred", # My color choice after experimenting with different options
+               data=na.omit(points)) +
+  coord_fixed(ratio = 1) +
+  theme_void() +
+  labs(title = "Fall Tree - L-System Generated Art",
+       subtitle = "Color modified from original burlywood3 to darkred")
+```
+
+### My Color Experimentation Process
+
+I experimented with several fall color options before settling on `darkred`. The original script used `color="burlywood3"` which creates a tan/brown appearance. During my experimentation, I tested:
+
+- `"orange"` - Bright autumn orange
+- `"goldenrod"` - Golden yellow fall color  
+- `"saddlebrown"` - Rich brown
+- `"firebrick"` - Deep red
+- `"chocolate"` - Warm brown
+
+After testing these options, I chose `"darkred"` because it best captures the deep, rich colors of autumn foliage and creates a striking visual contrast against the white background. The L-system algorithm uses mathematical rules to recursively generate tree-like structures, creating organic, plant-like patterns through iterative growth.
+
+## 3. Critique of Plot Design (Nathan Yau Principles)
+
+The plot below demonstrates several visualization design issues that violate key principles emphasized by Nathan Yau about creating clear, effective data visualizations.
+
+![Problematic visualization with multiple design issues](plot_critique.png)
+
+### Analysis of Design Problems
+
+This plot tries to show too many things at once—different contrasts, shapes, colors, and line styles—making it cluttered and hard to read. As Nathan Yau emphasizes, **a good visualization should highlight the story clearly**, but here the message is buried under visual noise.
+
+#### Specific Issues Identified:
+
+**1. Visual Overload**
+- Too many different contrasts, shapes, colors, and line styles
+- Multiple visual elements competing for attention
+- No clear hierarchy to guide the reader's eye
+
+**2. Crowded Layout**
+- Long inline labels crowd the chart space
+- Poor use of white space
+- Difficult to distinguish between different data categories
+
+**3. Weak Reference Points**
+- The zero line (a key reference point) is not emphasized enough
+- Important benchmarks are visually de-emphasized
+- Baseline comparisons are difficult to make
+
+#### Recommended Design Improvements:
+
+Based on Nathan Yau's visualization principles, a cleaner design would:
+
+- **Reduce comparisons per plot** - Simplify to focus on the most important message
+- **Use consistent symbols** - Establish a clear visual language throughout
+- **Move labels to a legend** - Free up chart space and reduce visual clutter
+- **Highlight the reference line** - Make the zero line or other key benchmarks more prominent
+- **Establish visual hierarchy** - Use size, color, and positioning strategically
+
+### Design Principles Applied:
+
+1. **Clarity over complexity** - Simplify to emphasize the key message
+2. **Consistent visual language** - Use uniform symbols and styling
+3. **Strategic emphasis** - Highlight important reference points
+4. **Effective use of space** - Reduce clutter through better organization
+
+These improvements would make the main story about winners, losers, and economic perceptions much easier to see and understand, following Nathan Yau's guidance that effective visualization should always prioritize the reader's comprehension over visual complexity.
