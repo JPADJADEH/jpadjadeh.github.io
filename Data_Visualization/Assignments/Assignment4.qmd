@@ -1,0 +1,150 @@
+---
+title: "Assignment 4: Chart Hackathon"
+author: "JP ADJADEH"
+format: 
+  html:
+    code-fold: true
+    code-tools: true
+editor: visual
+---
+
+## Introduction
+
+This assignment demonstrates four different chart types using ggplot2, based on the Chart Thought Starter framework. Each chart showcases a different visualization technique for presenting data effectively.
+
+------------------------------------------------------------------------
+
+## Chart 1: Variable Width Column Chart
+
+This chart shows how both width and height can represent different variables, creating a two-dimensional comparison.
+
+```{r}
+library(ggplot2)
+library(tidyr)
+
+data1 <- data.frame(
+  Category = c("A", "B", "C", "D"),
+  Value = c(45, 70, 85, 60),
+  Width = c(15, 25, 18, 22)
+)
+
+data1$xmin <- c(0, cumsum(data1$Width[-length(data1$Width)]))
+data1$xmax <- data1$xmin + data1$Width
+
+ggplot(data1) +
+  geom_rect(aes(xmin = xmin, xmax = xmax, ymin = 0, ymax = Value, fill = Category),
+            color = "black", linewidth = 0.8) +
+  scale_fill_manual(values = c("A" = "#003f5c", "B" = "#2f4b7c", 
+                               "C" = "#665191", "D" = "#a05195")) +
+  labs(title = "Chart 1: Variable Width Column Chart", 
+       subtitle = "Two Variables per Item (width + height)",
+       x = "", y = "Value") +
+  theme_minimal() +
+  theme(panel.grid.major.x = element_blank(),
+        axis.text.x = element_blank(),
+        legend.position = "none")
+```
+
+------------------------------------------------------------------------
+
+## Chart 2: Table with Embedded Charts
+
+A grid layout with small bar charts embedded in specific cells, useful for showing multiple data series in a compact space.
+
+```{r}
+grid_data <- expand.grid(Col = 1:4, Row = 1:3)
+
+chart_data <- data.frame(
+  Cell_ID = 1:5,
+  Col = c(1, 2, 3, 3, 4),
+  Row = c(1, 2, 3, 3, 3),
+  Bar1 = c(0.15, 0.12, 0.18, 0.14, 0.16),
+  Bar2 = c(0.2, 0.18, 0.13, 0.11, 0.19),
+  Bar3 = c(0.17, 0.14, 0.2, 0.18, 0.21)
+)
+
+chart_long <- chart_data %>%
+  pivot_longer(cols = starts_with("Bar"), 
+               names_to = "Bar", 
+               values_to = "Height")
+
+chart_long$BarNum <- as.numeric(gsub("Bar", "", chart_long$Bar))
+chart_long$xmin <- chart_long$Col - 0.35 + (chart_long$BarNum - 1) * 0.12
+chart_long$xmax <- chart_long$xmin + 0.08
+chart_long$ymin <- chart_long$Row - 0.35
+chart_long$ymax <- chart_long$ymin + chart_long$Height
+
+ggplot() +
+  geom_tile(data = grid_data, aes(x = Col, y = Row), 
+            fill = "white", color = "black", linewidth = 1) +
+  geom_rect(data = chart_long,
+            aes(xmin = xmin, xmax = xmax, ymin = ymin, ymax = ymax,
+                fill = as.factor(BarNum)),
+            color = "black", linewidth = 0.2) +
+  scale_fill_manual(values = c("1" = "#003f5c", "2" = "#2f4b7c", "3" = "#58508d")) +
+  scale_y_reverse() +
+  coord_fixed(ratio = 1) +
+  labs(title = "Chart 2: Table with Embedded Charts", x = "", y = "") +
+  theme_void() +
+  theme(plot.title = element_text(hjust = 0.5, size = 14, face = "bold"),
+        legend.position = "none")
+```
+
+------------------------------------------------------------------------
+
+## Chart 3: Bar Chart Comparison
+
+Side-by-side horizontal bar charts comparing two groups across multiple items.
+
+```{r}
+items <- paste("Item", 1:10)
+data3 <- data.frame(
+  Item = rep(items, 2),
+  Value = c(25, 35, 48, 30, 52, 40, 28, 45, 38, 32,
+            42, 38, 55, 28, 40, 50, 35, 48, 42, 45),
+  Group = rep(c("Group A", "Group B"), each = 10)
+)
+
+ggplot(data3, aes(x = Value, y = Item, fill = Group)) +
+  geom_col(color = "black", linewidth = 0.3) +
+  scale_fill_manual(values = c("Group A" = "#003f5c", "Group B" = "#58508d")) +
+  facet_wrap(~Group, ncol = 2) +
+  labs(title = "Chart 3: Bar Chart Comparison", subtitle = "Many Items",
+       x = "Value", y = "") +
+  theme_minimal() +
+  theme(legend.position = "none",
+        strip.text = element_text(face = "bold", size = 11),
+        panel.grid.major.y = element_blank(),
+        panel.spacing = unit(0, "lines"))
+```
+
+------------------------------------------------------------------------
+
+## Chart 4: Column Chart
+
+Grouped column chart showing comparison between two series across categories.
+
+```{r}
+data4 <- data.frame(
+  Category = rep(c("Cat A", "Cat B", "Cat C"), each = 2),
+  Group = rep(c("Series 1", "Series 2"), 3),
+  Value = c(50, 55, 68, 45, 75, 60)
+)
+
+ggplot(data4, aes(x = Category, y = Value, fill = Group)) +
+  geom_col(position = position_dodge(width = 0.8), 
+           color = "black", linewidth = 0.5, width = 0.7) +
+  scale_fill_manual(values = c("Series 1" = "#003f5c", "Series 2" = "#58508d")) +
+  labs(title = "Chart 4: Column Chart", subtitle = "Few Items - Grouped comparison",
+       x = "", y = "Value") +
+  theme_minimal() +
+  theme(legend.position = "bottom",
+        legend.title = element_blank(),
+        panel.grid.major.x = element_blank())
+```
+
+------------------------------------------------------------------------
+
+## Notes
+
+I created all data frames and wrote the initial plotting code for each chart. Claude (Anthropic AI) assisted with debugging dimension issues in Chart 2 where bars were extending outside grid cells, and helped adjust the `geom_rect` width and scale parameters to keep elements properly positioned.
