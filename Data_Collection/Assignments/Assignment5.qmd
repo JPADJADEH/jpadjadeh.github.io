@@ -1,0 +1,41 @@
+---
+title: "Assignment 5: Government Data API"
+author: "JP Adjadeh"
+format: html
+editor: visual
+---
+
+## Introduction
+
+I downloaded ten recent documents from the Foreign Relations Committee using the govinfo.gov API through the `govtdata01.R` script and analyzed the data collection challenges.
+
+## Difficulties Encountered
+
+**1. Parameter Usage**
+
+I initially overlooked the script's parameter feature (e.g., `1:10`) that controls download quantity and manually stopped the process to avoid excess downloads.
+
+**2. File Identification**
+
+Downloaded PDFs used generic naming (`govfiles_1.pdf`) making it hard to identify documents without opening them.
+
+**3. Processing Speed**
+
+Built-in delays (1-3 seconds between downloads) slowed the process, though necessary to avoid server issues.
+
+## Data Usability
+
+**Moderately Usable**
+
+The PDFs contain complete legislative text but require extraction for analysis. No automatic metadata capture means document details must be extracted manually from each file.
+
+## Improvements
+
+1.  **Better file naming** - Extract titles/bill numbers for descriptive filenames
+2.  **Create metadata CSV** - Automatically capture document ID, title, date, and sponsor during download
+3.  **Text extraction** - Convert PDFs to searchable text for bulk analysis
+4.  **Progress tracking** - Show download status and completion estimates
+
+## Conclusion
+
+The scraping process successfully downloaded required documents. Main challenge was my initial failure to use the built-in controls. Data is usable but would benefit from automatic metadata extraction and better file organization for easier analysis.
