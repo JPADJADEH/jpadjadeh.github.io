@@ -1,0 +1,149 @@
+---
+title: "Assignment 6: Text Analytics using Quanteda"
+author: "JP ADJADEH"
+format: 
+  html:
+    code-fold: true
+    code-tools: true
+editor: visual
+---
+
+## Part A: Biden-Xi Summit Twitter Analysis
+
+```{r setup, include=FALSE}
+library(quanteda)
+library(quanteda.textmodels)
+library(quanteda.textplots)
+library(quanteda.textstats)
+library(readr)
+library(ggplot2)
+```
+
+```{r load-data}
+summit <- read_csv("https://raw.githubusercontent.com/datageneration/datamethods/master/textanalytics/summit_11162021.csv")
+sum_twt <- summit$text
+```
+
+### Hashtag Network
+
+```{r hashtag-network}
+tweet_dfm <- tokens(sum_twt, remove_punct = TRUE) %>% dfm()
+tag_dfm <- dfm_select(tweet_dfm, pattern = "#*")
+toptag <- names(topfeatures(tag_dfm, 50))
+tag_fcm <- fcm(tag_dfm)
+topgat_fcm <- fcm_select(tag_fcm, pattern = toptag)
+textplot_network(topgat_fcm, min_freq = 50, edge_alpha = 0.8, edge_size = 1)
+```
+
+**Top 10 Hashtags**: #china, #biden, #xijinping, #joebiden, #america, #americans, #coronavirus, #fentanyl, #xi, #us
+
+**Key Findings**: The network shows two main conversation clusters - diplomatic relations between leaders (Biden-Xi-China) and human rights concerns (Uyghurs, Tibet). Strong connection between #biden and #china with 443 co-occurrences.
+
+### User Network
+
+```{r user-network}
+user_dfm <- dfm_select(tweet_dfm, pattern = "@*")
+topuser <- names(topfeatures(user_dfm, 50))
+user_fcm <- fcm(user_dfm)
+user_fcm <- fcm_select(user_fcm, pattern = topuser)
+textplot_network(user_fcm, min_freq = 20, edge_color = "firebrick", edge_alpha = 0.8, edge_size = 1)
+```
+
+**Top Users**: @potus, @politico, @joebiden, @jendeben, @eneskanter, @nba, @washwizards, @foxbusiness, @nytimes
+
+**Key Findings**: News media dominates the discussion. Unexpected NBA presence relates to China business and human rights issues.
+
+------------------------------------------------------------------------
+
+## Part B: Presidential Inaugural Speeches
+
+### Word Cloud Comparison
+
+```{r wordcloud-comparison}
+corpus_subset(data_corpus_inaugural, 
+              President %in% c("Trump", "Obama", "Bush")) %>%
+  tokens(remove_punct = TRUE) %>%
+  tokens_remove(stopwords("english")) %>%
+  dfm() %>%
+  dfm_group(groups = President) %>%
+  dfm_trim(min_termfreq = 5, verbose = FALSE) %>%
+  textplot_wordcloud(comparison = TRUE)
+```
+
+**Similarities**: Core themes consistent across presidents - "government," "people," "nation," "country," "america," focusing on unity and national purpose.
+
+**Differences**: - Trump emphasized "american," "america," "country" - Obama focused on "us," "can," "must," "people" - Bush highlighted "freedom," "liberty"
+
+### Trump vs Obama Keyness
+
+```{r keyness-analysis}
+pres_corpus <- corpus_subset(data_corpus_inaugural, 
+                             President %in% c("Obama", "Trump"))
+pres_dfm <- tokens(pres_corpus, remove_punct = TRUE) %>%
+  tokens_remove(stopwords("english")) %>%
+  tokens_group(groups = President) %>%
+  dfm()
+
+result_keyness <- textstat_keyness(pres_dfm, target = "Trump")
+textplot_keyness(result_keyness, show_reference = FALSE)
+```
+
+**Trump's distinctive words**: "thank," "back," "bring," "country," "american"\
+**Obama's distinctive words**: "generation," "journey," "common," "time," "work"
+
+### Relative Frequency by President
+
+```{r relative-frequency}
+dfm_weight_pres <- data_corpus_inaugural %>%
+  corpus_subset(Year > 2000) %>%
+  tokens(remove_punct = TRUE) %>%
+  tokens_remove(stopwords("english")) %>%
+  dfm() %>%
+  dfm_weight(scheme = "prop")
+
+freq_weight <- textstat_frequency(dfm_weight_pres, n = 10, 
+                                  groups = dfm_weight_pres$President)
+
+ggplot(data = freq_weight, aes(x = nrow(freq_weight):1, y = frequency)) +
+  geom_point() +
+  facet_wrap(~ group, scales = "free") +
+  coord_flip() +
+  scale_x_continuous(breaks = nrow(freq_weight):1,
+                     labels = freq_weight$feature) +
+  labs(x = NULL, y = "Relative frequency")
+```
+
+------------------------------------------------------------------------
+
+## What is Wordfish?
+
+**Wordfish** is a text scaling model that positions political texts on a single ideological dimension based on word usage patterns.
+
+**How it works**: - Uses Poisson distribution to model word frequencies - Estimates document positions without pre-labeling - Places texts on a latent policy scale
+
+**Applications**: Measuring political ideology, comparing party positions, scaling legislative debates
+
+### Wordfish Example (Irish Budget Speeches)
+
+```{r wordfish-example}
+data(data_corpus_irishbudget2010, package = "quanteda.textmodels")
+wf <- textmodel_wordfish(dfm(tokens(data_corpus_irishbudget2010)), dir = c(6, 5))
+
+textplot_scale1d(wf, margin = "features", 
+                 highlighted = c("government", "global", "children", 
+                                 "bank", "economy", "citizenship",
+                                 "productivity", "deficit"), 
+                 highlighted_color = "red")
+```
+
+```{r wordfish-positions}
+textplot_scale1d(wf, groups = data_corpus_irishbudget2010$party)
+```
+
+The plots show political positions estimated from budget speeches, with parties clustered by ideology.
+
+------------------------------------------------------------------------
+
+## Conclusion
+
+Text analytics reveals distinct conversation patterns in the Biden-Xi summit discussion (diplomatic vs human rights focus) and shows how presidential language has evolved while maintaining core American themes. Wordfish and scaling models enable quantitative measurement of political positions from text data.
