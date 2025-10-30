@@ -1,0 +1,8 @@
+---
+title: "In-class Competition 3.0"
+date: "October 2025"
+---
+
+This interactive dashboard displays Charts 9 and 18 using Shiny with R. The scatter plot shows the relationship between study hours and GPA, while the bubble chart displays three dimensions of student performance data with interactive filtering and real-time statistics.
+
+[View the Live Dashboard](https://jpadjadeh.shinyapps.io/Competition/)

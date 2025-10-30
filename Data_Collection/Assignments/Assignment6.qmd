@@ -117,7 +117,7 @@ ggplot(data = freq_weight, aes(x = nrow(freq_weight):1, y = frequency)) +
 
 ## What is Wordfish?
 
-**Wordfish** is a text scaling model that positions political texts on a single ideological dimension based on word usage patterns.
+**Wordfish** is a Poisson scaling model that estimates one-dimension document positions using maximum likelihood (Slapin and Proksch, 2008). Both the estimated position of words and the positions of the documents can be plotted. In other words, it is a text scaling model that positions political texts on a single ideological dimension based on word usage patterns.
 
 **How it works**: - Uses Poisson distribution to model word frequencies - Estimates document positions without pre-labeling - Places texts on a latent policy scale
 
