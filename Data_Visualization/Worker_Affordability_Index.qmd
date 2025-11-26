@@ -1,0 +1,60 @@
+---
+title: "Worker Affordability Index"
+subtitle: "Interactive Dashboard for Economic Analysis"
+date: today
+format: html
+---
+
+## Overview
+
+The Worker Affordability Index is an interactive Shiny application that analyzes economic conditions across U.S. states. It combines three key economic indicators—minimum wage, unemployment rate, and cost of living—into a comprehensive affordability score.
+
+## Live Dashboard
+
+[**Open Worker Affordability Index Dashboard**](https://jpadjadeh.shinyapps.io/worker-affordability-index/)
+
+## Features
+
+### Dashboard 1: Economic Indicators
+
+Explore individual economic metrics by state: - **Minimum Wage Map** - Current state minimum wage rates with rankings - **Unemployment Rate Map** - Job market conditions across states - **Cost of Living Index** - Regional affordability variations
+
+### Dashboard 2: Overall Affordability
+
+Composite score combining all three metrics into a 0-300 affordability scale, showing which states rank highest for worker economic well-being.
+
+### Dashboard 3: Rankings
+
+Flexible ranking system to view top or bottom performing states across: - Minimum wage levels - Job availability (unemployment) - Cost of living affordability - Overall affordability score
+
+### Dashboard 4: Analytics
+
+Detailed analysis tools including: - Federal economic trends (1975-2025) - Relationships between variables - State wage rankings - Regional comparisons - Affordability heatmaps
+
+## Data
+
+The application uses current 2025 state-level data for: - Minimum wage rates - Unemployment rates (Bureau of Labor Statistics) - Cost of living indices
+
+All visualizations are built with ggplot2 and interactive Plotly charts for exploration.
+
+## Technical Stack
+
+-   **Framework:** Shiny (R)
+-   **Visualization:** ggplot2, Plotly
+-   **Geographic Data:** tigris, sf
+-   **Deployment:** ShinyApps.io
+
+## How to Use
+
+1.  Click the button above to open the live dashboard
+2.  Navigate between dashboards using the tabs at the top
+3.  Interact with maps and charts to explore state-level comparisons
+4.  Use dropdown menus and sliders to filter and customize views
+
+## Key Insights
+
+The app reveals patterns in worker affordability: - States with high minimum wages don't always rank highest in affordability (cost of living varies significantly) - Regional differences show distinct economic profiles - Job market strength correlates with cost of living in some regions
+
+------------------------------------------------------------------------
+
+*This project is part of EPPS 6356: Data Visualization coursework.*
