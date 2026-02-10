@@ -1,0 +1,24 @@
+---
+title: "Reflection: AI, Originality, and AGI"
+author: "JP ADJADEH"
+format: html
+editor: visual
+---
+
+## AI and Originality
+
+I've been thinking about this a lot lately, especially since I use AI tools pretty regularly now. Can AI actually be original? Honestly, I don't think so — at least not in the way we mean when we talk about human creativity. These models pull from billions of words that people already wrote. They're really good at mashing things together and making it sound polished, but they're not sitting there having a lightbulb moment.
+
+When I use Claude or ChatGPT to help me draft something or debug code, I notice it gives me a solid starting point. But I always end up reworking things because the output feels... generic. It doesn't know my perspective or what I actually want to say. That part still comes from me. I think that's the key — AI handles the mechanical stuff well, but the actual ideas, the "why does this matter" part, that's on us.
+
+In school especially, I see people treating AI like a shortcut, and I get it. But if you just copy-paste what it gives you, you're not really learning anything. The originality has to come from engaging with the material yourself. AI just helps you get there faster.
+
+## What is AGI and how does it affect scientific research?
+
+AGI stands for Artificial General Intelligence. It's basically the idea of building an AI that can think and learn across any domain, the same way a person can. Right now, we don't have that. What we have are tools that excel at narrow tasks — writing text, classifying images, playing chess — but can't transfer that ability to something completely different without retraining.
+
+If someone actually builds AGI, it would change scientific research dramatically. Imagine an AI that can read every paper ever published, spot patterns nobody noticed, and design experiments on its own. Drug discovery, climate modeling, genomics — all of it would speed up massively.
+
+But I also think about the downsides. If an AI runs an experiment and finds something, who owns that discovery? The programmer? The institution? The AI itself? And there's a trust problem too — if the AI's reasoning process is a black box, how do we verify its findings? Science works because we can check each other's work. That breaks down if nobody fully understands how the AI reached its conclusion.
+
+There's also something more personal about it. A lot of breakthroughs happen because a researcher had a weird hunch or connected two unrelated things from their own experience. I'm not sure AGI can replicate that kind of messy, human intuition. It might accelerate the process, but I think the spark still needs to come from people.
