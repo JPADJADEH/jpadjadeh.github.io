@@ -1,6 +1,6 @@
 ---
 title: "EPPS 6323: Lab02 R programming basics II"
-author: "My name"
+author: "JP ADJADEH"
 format: html
 editor: visual
 ---
