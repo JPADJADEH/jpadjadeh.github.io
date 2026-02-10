@@ -1,0 +1,124 @@
+---
+title: "EPPS 6323: Assignment 1 - Exploratory Data Analysis with TEDS 2016"
+author: "JP ADJADEH"
+format: html
+editor: visual
+---
+
+## Loading the TEDS 2016 Dataset
+
+Using the `haven` package to pull the Stata (.dta) file directly from GitHub.
+
+```{r}
+library(haven)
+TEDS_2016 <- haven::read_dta("https://github.com/datageneration/home/blob/master/DataProgramming/data/TEDS_2016.dta?raw=true")
+```
+
+## Quick look at the data
+
+```{r}
+dim(TEDS_2016)
+names(TEDS_2016)
+head(TEDS_2016)
+str(TEDS_2016)
+summary(TEDS_2016)
+```
+
+## What problems come up with this dataset?
+
+A few things I noticed right away:
+
+```{r}
+colSums(is.na(TEDS_2016))
+sapply(TEDS_2016, class)
+```
+
+The main issues are:
+
+-   Several variables have missing values (`NA`s) scattered throughout
+-   Some variables are stored as haven-labelled types instead of regular R factors or numeric, which can cause issues with certain functions
+-   Values like 98 or 99 might be used as codes for "no response" or "don't know" rather than actual data points, so those need to be handled carefully
+
+## Dealing with missing values
+
+There are a couple of ways to go about this:
+
+```{r}
+# Can drop all rows with any NAs -- but this loses a lot of data
+TEDS_clean <- na.omit(TEDS_2016)
+nrow(TEDS_2016)
+nrow(TEDS_clean)
+```
+
+Dropping everything with `na.omit()` cuts the dataset down pretty significantly. A better approach is to just handle NAs on a case-by-case basis using `na.rm = TRUE` or `use = "complete.obs"` so we keep as much data as possible.
+
+```{r}
+mean(TEDS_2016$age, na.rm = TRUE)
+```
+
+## Exploring Tondu and its relationship with other variables
+
+Tondu captures people's stance on the unification-independence spectrum. Let's see how it relates to gender, party affiliation, identity, and some other variables.
+
+```{r}
+# Convert to numeric first
+TEDS_2016$Tondu <- as.numeric(TEDS_2016$Tondu)
+
+# Cross-tabs
+table(TEDS_2016$Tondu, TEDS_2016$female)
+table(TEDS_2016$Tondu, TEDS_2016$DPP)
+table(TEDS_2016$Tondu, TEDS_2016$Taiwanese)
+```
+
+For categorical variables like these, chi-square tests make sense to check if there's a statistically significant relationship:
+
+```{r}
+chisq.test(table(TEDS_2016$Tondu, TEDS_2016$female))
+chisq.test(table(TEDS_2016$Tondu, TEDS_2016$DPP))
+chisq.test(table(TEDS_2016$Tondu, TEDS_2016$Taiwanese))
+chisq.test(table(TEDS_2016$Tondu, TEDS_2016$Econ_worse))
+```
+
+For numeric variables like age, income, and education, correlation works:
+
+```{r}
+cor(TEDS_2016$Tondu, TEDS_2016$age, use = "complete.obs")
+cor(TEDS_2016$Tondu, TEDS_2016$income, use = "complete.obs")
+cor(TEDS_2016$Tondu, TEDS_2016$edu, use = "complete.obs")
+```
+
+## Analyzing the votetsai variable
+
+Since `votetsai` is a binary outcome (voted for Tsai Ing-wen or not), logistic regression is the right call here.
+
+```{r}
+table(TEDS_2016$votetsai)
+
+model <- glm(votetsai ~ female + DPP + age + income + edu + Taiwanese + Econ_worse + Tondu, 
+             data = TEDS_2016, family = binomial)
+summary(model)
+```
+
+The coefficients tell us which factors had a significant effect on the likelihood of voting for Tsai. Positive coefficients mean higher probability of voting for her.
+
+## Tondu frequency table and bar chart
+
+Labeling the Tondu values so the output actually makes sense:
+
+```{r}
+TEDS_2016$Tondu <- factor(TEDS_2016$Tondu,
+  labels = c("Unification now", "Status quo, unif. in future", 
+             "Status quo, decide later", "Status quo forever", 
+             "Status quo, indep. in future", "Independence now", "No response"))
+
+table(TEDS_2016$Tondu)
+```
+
+```{r}
+barplot(table(TEDS_2016$Tondu), 
+        main = "Where People Stand on Unification vs Independence",
+        xlab = "Position", ylab = "Count",
+        col = "steelblue", las = 2, cex.names = 0.6)
+```
+
+Most respondents cluster around the status quo options, which tracks with what you'd expect from Taiwan's political landscape. The extremes (unification now / independence now) have fewer supporters.
