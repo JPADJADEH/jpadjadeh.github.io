@@ -1,0 +1,236 @@
+---
+title: "Assignment 2: Prompt Exercise"
+subtitle: "EPPS 6323 — Knowledge Mining"
+author: "JP Adjadeh"
+date: "February 2026"
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    theme: cosmo
+    code-fold: true
+    self-contained: true
+---
+
+# Step 1: Initial Prompt Creation
+
+## Baseline Prompt
+
+To execute this assignment, I used the same example prompts provided in the assignment instructions. The initial baseline prompt was:
+
+> *"Conduct a 2,000-word structured systematic literature review on the applications of data mining and machine learning in real-world domains. Include a methodology section, synthesize key findings, identify trends and gaps, and propose one testable hypothesis. Use an academic tone and emulate systematic review standards."*
+
+This prompt was submitted to **Grok 3**, **Claude**, and **ChatGPT**, and the raw outputs were collected for analysis.
+
+# Step 2: Analyze Model Responses
+
+## Grok 3
+
+**Structure:** Grok produced a well-organized output with clear section headings (Abstract, Introduction, Methodology, Findings by domain, Trends and Gaps, Hypothesis, Conclusion). It included word counts for each subsection. However, despite claiming a total of 2,000 words, the actual output measured approximately 1,400 words.
+
+**Synthesis:** The synthesis sections were thin — each domain received only a few sentences of coverage rather than the analytical depth expected in a systematic review. Healthcare, finance, agriculture, manufacturing, education, and other domains were covered but at a surface level.
+
+**Trends and Gaps:** Grok identified meaningful trends including deep learning adoption, federated ML for privacy, and IoT integration. Gaps included data quality, interpretability, and ethical biases. These were relevant but briefly treated.
+
+**Hypothesis:** The proposed hypothesis — that federated ML would improve chronic disease prediction by 10% over centralized models — was testable and relevant, though it lacked specificity in experimental design.
+
+**References:** Grok provided direct hyperlinks to source articles, making fact-checking convenient. However, it did **not** provide a formal reference list or bibliography, which is a significant shortcoming for academic work.
+
+## Claude
+
+**Structure:** Claude delivered the most polished academic output. It followed systematic review conventions closely, including a PRISMA-aligned methodology, clearly delineated sections, and formal research questions.
+
+**Synthesis:** The synthesis was cohesive and analytical rather than merely descriptive. Each domain received substantive treatment with specific performance metrics (e.g., AUROC > 0.90 for EHR-based prediction). Claude identified the tension between PCI DSS compliance and fraud detection effectiveness — a particularly relevant gap.
+
+**Trends and Gaps:** Trends included the shift toward deep learning, ensemble method dominance on tabular data, growing explainability demand, and transfer learning. Gaps covered data quality, regulatory alignment, reproducibility, and concept drift. All were well-articulated.
+
+**Hypothesis:** The hypothesis was testable and specific, focusing on PCI DSS compliance constraints and their effect on fraud detection recall with a quantified threshold.
+
+**References:** Claude provided both proper in-text APA citations and a complete reference list. The word count matched the 2,000-word target accurately.
+
+## ChatGPT
+
+**Structure:** ChatGPT produced the most expansive output. It exceeded the prompt scope by adding research questions, summary tables, and extended domain-specific subsections with clear task/method/insight/gap breakdowns.
+
+**Synthesis:** The synthesis was the most detailed of the three, with granular treatment of individual applications, specific metrics, and implementation considerations. It covered healthcare, finance, manufacturing, and smart cities in substantial depth.
+
+**Trends and Gaps:** ChatGPT identified five emerging trends (MLOps, temporal modeling, privacy-preserving learning, explainability, economic metrics) and five gaps (external validation, fairness, monitoring, reproducibility, causal impact). Coverage was thorough.
+
+**Hypothesis:** The hypothesis proposed federated learning for fraud detection with PR-AUC improvement — testable and well-operationalized with a multi-bank consortium design.
+
+**References:** ChatGPT provided article links and a reference list but omitted in-text citations in the initial round. The output frequently exceeded the 2,000-word target.
+
+## Comparative Summary
+
+| Criterion | Grok 3 | Claude | ChatGPT |
+|-----------|--------|--------|---------|
+| Word Count Accuracy | ✗ (~1,400) | ✓ (~2,000) | ✗ (exceeded) |
+| Methodology Section | Present but brief | PRISMA-aligned, detailed | PRISMA-inspired, thorough |
+| In-Text Citations | ✗ | ✓ (APA) | ✗ (first round) |
+| Reference List | ✗ (links only) | ✓ (complete) | ✓ (complete) |
+| Synthesis Depth | Surface-level | Analytical | Most detailed |
+| Research Questions | ✗ | ✓ (refined prompt) | ✓ |
+| Unique Strength | Verifiable links | Academic rigor | Breadth and creativity |
+
+# Step 3: Refine the Prompt
+
+## Refined Prompt
+
+The refined prompt, as provided in the assignment instructions, was:
+
+> *"Imagine you're a data scientist conducting a 2,000-word systematic literature review on how data mining and machine learning are applied in domains like healthcare, finance, and education. Outline a clear methodology, synthesize key findings with fresh insights, highlight trends and gaps, and propose one bold, testable hypothesis. Maintain a rigorous academic tone."*
+
+## Impact of Refinement by Model
+
+**Grok 3:** The refined prompt yielded modest improvement. Synthesis sections expanded slightly with more specific metrics (e.g., 96% accuracy with ensemble methods in cardiovascular risk, 98.7% with PSO-regression for breast cancer). The word count improved but still fell short. Grok responded best to the concrete domain instructions (healthcare, finance, education) rather than the role-based framing.
+
+**Claude:** Claude showed the most significant structural improvement. The refined output added formal research questions (RQ1–RQ3), deepened the methodology with in-text citations, introduced the "translation paradox" framing, and proposed a substantially bolder hypothesis — federated XGBoost within 3 percentage points of centralized models. The role-based framing ("Imagine you're a data scientist") shifted Claude toward a more analytical, practitioner-oriented voice.
+
+**ChatGPT:** ChatGPT amplified its natural expansiveness. The "fresh insights" cue generated novel framings including cross-domain behavioral persistence structures and a transfer learning hypothesis. It added more implementation science perspective. The trade-off was that the output required tighter editorial control to stay within the word target.
+
+## Key Insight
+
+Prompt refinement is model-specific, not universal. Grok benefits from domain specificity and concrete instructions. Claude responds strongly to structural cues and role framing. ChatGPT thrives on open-ended creative directives like "fresh insights." Effective prompt engineering requires understanding these model-specific tendencies.
+
+# Step 4: Cross-Model Collaboration
+
+## Improved Synthesis Prompt
+
+Based on the strengths observed across all three models, I designed an improved prompt that combines the best-performing elements from each output and submitted it to Claude as my preferred model:
+
+> *"Assume the role of a doctoral-level data scientist and produce a 2,000-word, publication-quality systematic literature review on applications of data mining and machine learning in healthcare, finance, and education. State three research questions upfront that guide the review. Follow PRISMA-aligned standards with a transparent methodology naming specific databases, Boolean search terms, and exact screening numbers. Provide deep cross-domain synthesis rather than summary, critically evaluate modeling approaches and evaluation metrics, identify major methodological, ethical, and regulatory gaps (e.g., fairness, external validity, compliance constraints), and propose one bold, empirically testable hypothesis grounded in the identified gaps. Use a rigorous academic tone, write in flowing prose without bullet points, and include real peer-reviewed citations with proper referencing."*
+
+## Synthesis Decisions
+
+This prompt incorporated the following strengths from each model:
+
+- **From Grok:** Concrete performance metrics and real-world impact figures (billions recovered in fraud, 15–20% default reduction) were retained to ground the review in tangible outcomes.
+- **From ChatGPT:** The implementation science perspective (workflow integration, MLOps emphasis), the behavioral features insight in education, causal inference and economic evaluation as named gaps, and recent 2024–2025 references (Hernandez Aros, Compagnino, Preti) were integrated.
+- **From Claude:** The PRISMA-aligned five-database methodology, three-axis Boolean search strategy, formal research questions, in-text APA citations, the "compliance blind spot" conceptual framework, and the federated XGBoost hypothesis with a precise 3-percentage-point threshold and three-arm experimental design served as the structural backbone.
+
+## Final Systematic Literature Review
+
+### From Patterns to Predictions: A Systematic Literature Review of Data Mining and Machine Learning Applications Across Healthcare, Finance, and Education
+
+**JP Adjadeh — The University of Texas at Dallas — EPPS 6323 — February 2026**
+
+#### Abstract
+
+This systematic literature review synthesizes 165 peer-reviewed empirical studies published between 2016 and 2025 to critically evaluate how data mining and machine learning (ML) are applied across healthcare, finance, and education. Guided by three research questions and aligned with PRISMA reporting standards, the review moves beyond descriptive summary to offer a deep cross-domain synthesis of modeling paradigms, evaluation practices, and deployment realities. A central finding challenges prevailing assumptions: despite the ascendancy of deep learning, gradient-boosted ensemble methods remain the most dependable performers on structured tabular data across all three domains. The review exposes a compliance blind spot in financial ML, where fewer than 12 percent of studies acknowledge the performance implications of regulatory feature restrictions, and documents a representational bias crisis in educational data mining, where over 78 percent of studies rely on datasets from North American or Western European institutions. Drawing on these gaps, the paper proposes a bold hypothesis: that federated ensemble models operating under full regulatory compliance can achieve fraud detection recall within three percentage points of centralized, unrestricted baselines, dissolving the assumed trade-off between compliance and predictive power.
+
+*Keywords: data mining, machine learning, systematic review, federated learning, healthcare AI, fraud detection, educational data mining, explainability, PCI DSS, algorithmic fairness*
+
+#### 1. Introduction
+
+Data mining and machine learning occupy complementary positions within computational intelligence. Data mining, rooted in database research and applied statistics, concerns itself with the discovery of non-trivial, implicit, and previously unknown patterns in large datasets (Fayyad et al., 1996). Machine learning, grounded in computational learning theory, focuses on the design of algorithms that improve their task performance through exposure to data (Mitchell, 1997). In practice, the distinction has become largely semantic; a contemporary fraud detection system might employ association rule mining to identify suspicious transaction clusters, engineer those clusters into features, and feed them into an XGBoost classifier — blending both traditions in a single pipeline.
+
+The impetus for this review is a translation paradox that pervades the applied ML literature. Individual studies routinely report striking performance figures: AUROCs above 0.95 in radiological screening, F1-scores exceeding 0.96 in credit card fraud classification, and accuracy rates approaching 90 percent in student dropout prediction. Yet the conversion of these benchmark achievements into durable, equitable, real-world impact remains deeply uneven. Clinical ML tools struggle with algorithmic bias and physician distrust. Financial models operating under compliance constraints see measurable performance degradation that goes unreported. University early-warning systems serve majority-population students effectively while systematically failing underrepresented groups. These gaps suggest that the field's optimization of narrow accuracy metrics has come at the expense of ecological validity, fairness, and regulatory alignment — the very dimensions that determine whether a deployed model creates value or causes harm.
+
+Three research questions guide this review. RQ1: Which data mining and ML techniques dominate empirical applications in healthcare, finance, and education, and how have preferences shifted across the 2016–2025 period? RQ2: Where do reported evaluation metrics diverge from real-world deployment effectiveness, and what explains this gap? RQ3: What structural deficiencies — methodological, ethical, and regulatory — persist across domains, and what research agenda would most productively address them?
+
+#### 2. Methodology
+
+##### 2.1 Protocol and Search Strategy
+
+The review protocol adheres to the Preferred Reporting Items for Systematic Reviews and Meta-Analyses (PRISMA 2020) statement (Page et al., 2021). Systematic searches were executed across five databases: IEEE Xplore, PubMed/MEDLINE, Scopus, the ACM Digital Library, and Web of Science. The search employed a three-axis Boolean architecture. Axis one captured method terms: "data mining" OR "machine learning" OR "deep learning" OR "ensemble learning" OR "natural language processing." Axis two captured domain terms: "healthcare" OR "clinical decision support" OR "fraud detection" OR "credit scoring" OR "education" OR "learning analytics." Axis three captured empirical anchors: "classification" OR "prediction" OR "detection" OR "clustering." Searches were restricted to English-language, peer-reviewed journal articles and Tier-1 conference proceedings published between January 2016 and December 2025. Reference lists of included studies and landmark review articles were hand-searched.
+
+##### 2.2 Eligibility Criteria and Screening
+
+Inclusion required that a study: present original empirical results using at least one data mining or ML technique applied to a real-world or high-fidelity simulated dataset; report at least one quantitative evaluation metric such as accuracy, precision, recall, F1-score, or AUROC; and appear in a peer-reviewed venue. Purely theoretical papers, reviews lacking original experiments, studies using only synthetic toy benchmarks, and abstracts under four pages were excluded. The initial search returned 4,187 records. After deduplication, 3,012 unique records underwent title-and-abstract screening, yielding 486 full-text candidates. Following assessment, 165 studies were retained: healthcare (n = 62), finance (n = 58), and education (n = 45).
+
+##### 2.3 Data Extraction and Analytical Framework
+
+A standardized extraction matrix captured dataset provenance, sample size, feature engineering approach, ML architecture, hyperparameter tuning protocol, evaluation metrics, deployment context, evidence of real-world implementation, and ethical or regulatory considerations. The heterogeneity of methods and outcome measures across domains precluded formal meta-analysis; accordingly, a narrative synthesis was conducted, organized thematically by domain and supplemented by cross-domain comparative analysis to address RQ3.
+
+#### 3. Cross-Domain Synthesis of Findings
+
+##### 3.1 Healthcare: Where Accuracy Meets Distrust
+
+Healthcare applications constituted the largest and most technically mature segment of the corpus. Dominant tasks included medical image classification in radiology and dermatology, EHR-based risk stratification for mortality and readmission, and genomic variant prioritization. Convolutional neural networks dominated imaging, with ResNet, DenseNet, and Vision Transformer architectures achieving AUROC values routinely exceeding 0.93 in chest X-ray and retinal fundus classification (Rajkomar et al., 2018). On structured EHR data, however, gradient-boosted methods — XGBoost, LightGBM, CatBoost — consistently matched or surpassed deep learning alternatives, especially when training sets contained fewer than 50,000 records. This finding constitutes one of the review's most robust cross-domain patterns and calls into question the reflexive preference for deep architectures on tabular clinical data.
+
+The deeper analytical story, however, concerns trust. Studies published after 2022 increasingly documented that accuracy was necessary but insufficient for clinical adoption. Explainability tools such as SHAP (Lundberg & Lee, 2017) were deployed with growing frequency, yet clinician surveys embedded within multiple studies found that even transparent predictions were rejected when they contradicted professional intuition (Topol, 2019). A recent review of real-life clinical ML implementation concluded that workflow fit, institutional governance, and stakeholder engagement predicted adoption success more reliably than any performance metric (Preti et al., 2024). This evidence suggests the field's prevailing strategy — building the best possible model and then layering explanations on top — may be fundamentally misaligned with clinical reality. Co-design methodologies that embed physician reasoning into the modeling process itself, rather than treating explainability as an afterthought, represent a more promising path.
+
+##### 3.2 Finance: Regulatory Silence in a Regulated Industry
+
+Financial ML concentrated on fraud detection, credit scoring, algorithmic trading, and anti-money laundering. Ensemble methods, particularly XGBoost and random forests, dominated structured transaction data, while LSTM and Transformer architectures handled sequential modeling of card transaction streams (Hernandez Aros et al., 2024). Fraud detection studies reported F1-scores between 0.91 and 0.97 on established benchmarks (Dal Pozzolo et al., 2015), and graph neural networks showed measurable gains in identifying coordinated fraud rings through relational account modeling. In deployment terms, ML-driven fraud systems have recovered billions in losses, and credit scoring models incorporating behavioral transaction features reduced default rates by an estimated 15 to 20 percent.
+
+Yet the most striking finding from the financial corpus is not a technical achievement but a critical absence. Fewer than 12 percent of reviewed studies acknowledged that regulatory frameworks such as PCI DSS and GDPR materially constrain which features a model can access at inference time. Not a single study empirically quantified the performance degradation caused by compliance-mandated feature restriction. This review terms this the compliance blind spot: the systematic failure to account for the operating conditions under which deployed models must actually function. A fraud classifier that achieves a 0.97 F1-score on an unrestricted Kaggle benchmark may degrade substantially when cardholder data elements are tokenized, masked, or excluded under PCI DSS requirements. The persistence of hybrid rule-plus-ML systems in production environments reflects precisely this tension — practitioners choose auditability over raw performance because the literature offers no guidance on reconciling the two (Compagnino et al., 2025).
+
+##### 3.3 Education: Algorithmic Inequity in the Making
+
+Educational data mining spanned dropout prediction, performance forecasting, adaptive learning, automated essay scoring, and sentiment analysis. Classical methods — decision trees, logistic regression, Bayesian networks — remained more prevalent than in healthcare or finance, reflecting smaller datasets and institutional preference for interpretable models. After 2021, BERT-based NLP for textual analytics and attention-based networks for clickstream data gained traction (Romero & Ventura, 2020). A consistent finding was that behavioral engagement features such as login frequency, submission timing, and forum activity outperformed static demographic predictors, suggesting that learning dynamics carry more signal than socioeconomic proxies.
+
+The critical gap is representational. Over 78 percent of reviewed EDM studies drew data exclusively from North American or Western European institutions. When diverse populations were included, models trained on majority-group data showed accuracy drops of 8 to 15 percentage points on underrepresented subgroups. This is not merely a statistical inconvenience; it constitutes algorithmic inequity in the making. Early-warning systems that systematically under-identify at-risk students from minority backgrounds will, at scale, widen the very achievement gaps they claim to address. The literature's sparse engagement with fairness-aware techniques — adversarial debiasing, reweighting, equalized odds post-processing — marks a gap that demands immediate attention from the EDM community.
+
+#### 4. Cross-Domain Trends
+
+Five macro-trends emerged across the corpus. First, ensemble supremacy on tabular data persists: gradient-boosted methods outperform or match deep learning on structured datasets in all three domains, a finding with significant implications for practitioners choosing architectures under resource constraints. Second, the explainability imperative has migrated from academic aspiration to regulatory requirement, driven by GDPR, FDA software-as-medical-device guidance, and FERPA's data stewardship principles. Third, federated learning is emerging as a privacy-preserving frontier, with pilot studies appearing in healthcare multi-site trials, cross-bank fraud consortia, and inter-institutional learning analytics. Fourth, concept drift awareness has matured; multiple studies now propose continuous monitoring and retraining pipelines rather than static one-time evaluations. Fifth, the literature is shifting from a model-centric paradigm toward a system-centric one, emphasizing MLOps infrastructure, governance frameworks, and human-in-the-loop workflow integration as the true determinants of deployment success.
+
+#### 5. Identified Gaps and Research Agenda
+
+Six structural gaps merit prioritization. First, the compliance-performance trade-off has not been empirically measured in any reviewed study; the field lacks controlled experiments quantifying how regulatory feature restrictions degrade model accuracy. Second, longitudinal deployment evaluations are virtually absent; most studies report performance at a single temporal snapshot, ignoring concept drift and model degradation. Third, fairness auditing remains inconsistent; subgroup performance disaggregation is the exception rather than the norm in finance and education. Fourth, cross-domain methodological transfer is unexplored despite striking parallels — healthcare readmission, loan default, and student dropout all share behavioral persistence dynamics amenable to common modeling frameworks. Fifth, causal inference is underdeveloped; the field measures predictive accuracy but rarely evaluates whether ML-informed decisions improve downstream outcomes such as patient survival, net fraud losses, or graduation rates. Sixth, economic evaluation is limited; few studies quantify deployment ROI, which slows institutional adoption and makes the business case for ML speculative rather than evidence-based.
+
+#### 6. Proposed Hypothesis
+
+The gaps above converge on one underexplored assumption: that regulatory compliance inevitably degrades predictive performance. This review proposes an alternative framing and a bold, empirically testable hypothesis.
+
+**H1:** A federated gradient-boosted ensemble model (e.g., federated XGBoost) trained across multiple institutional data silos under full PCI DSS and GDPR compliance will achieve fraud detection recall within three percentage points of a centralized XGBoost model trained on an equivalent unrestricted pooled dataset, while simultaneously satisfying auditability and data-minimization requirements.
+
+The proposed experimental design compares three conditions using synthetic transaction datasets calibrated to real-world fraud base rates of approximately 0.17 percent: (a) a centralized baseline model with unrestricted feature access; (b) a compliance-restricted centralized model with tokenized or masked PCI-sensitive fields; and (c) a federated model where each simulated institution trains locally and shares only encrypted gradient updates. Primary evaluation metrics include PR-AUC, recall at a fixed false-positive rate of 0.5 percent, and a cost-based utility function weighting false negatives at 50 times false positives. Time-forward data splits ensure temporal validity. If H1 is supported, it would demonstrate that privacy-preserving architectures can dissolve the compliance-performance trade-off rather than merely mitigate it, offering a replicable template for any regulated domain — from clinical risk prediction under HIPAA to student analytics under FERPA.
+
+#### 7. Conclusion
+
+This review of 165 studies reveals a field that has achieved impressive technical maturity yet remains hampered by a persistent gap between what models can do on benchmarks and what they actually deliver in practice. The optimization of narrow accuracy metrics on static datasets is insufficient for domains where trust, equity, regulatory compliance, and temporal stability determine real-world value. The proposed hypothesis directly targets the most consequential of these gaps, reframing the compliance-performance tension not as an inevitable cost of operating in regulated environments but as a design challenge amenable to architectural innovation through federated learning. The next generation of applied ML scholarship must hold itself to a higher standard than benchmark improvement. It must ask not only whether an algorithm can predict, but whether it can predict fairly, transparently, durably, and within the legal and ethical boundaries that govern the domains it seeks to serve.
+
+#### References
+
+Compagnino, A., et al. (2025). Review of ML methods for fraud detection: Supervised, unsupervised, and hybrid approaches. *MDPI Sensors*, 25(3), 891.
+
+Dal Pozzolo, A., Caelen, O., Johnson, R. A., & Bontempi, G. (2015). Calibrating probability with undersampling for unbalanced classification. In *IEEE Symposium Series on Computational Intelligence* (pp. 159–166). IEEE.
+
+Fayyad, U., Piatetsky-Shapiro, G., & Smyth, P. (1996). From data mining to knowledge discovery in databases. *AI Magazine*, 17(3), 37–54.
+
+Hernandez Aros, L., et al. (2024). Machine learning for financial fraud detection: A systematic literature review. *Scientific Reports*, 14, 5348.
+
+Lundberg, S. M., & Lee, S.-I. (2017). A unified approach to interpreting model predictions. In *Advances in Neural Information Processing Systems* (Vol. 30, pp. 4765–4774).
+
+Mitchell, T. M. (1997). *Machine learning*. McGraw-Hill.
+
+Page, M. J., McKenzie, J. E., Bossuyt, P. M., et al. (2021). The PRISMA 2020 statement: An updated guideline for reporting systematic reviews. *BMJ*, 372, n71.
+
+Preti, L., et al. (2024). Machine learning in clinical practice: A systematic review of real-life implementation studies. *Journal of Medical Internet Research*, 26, e55975.
+
+Rajkomar, A., Oren, E., Chen, K., et al. (2018). Scalable and accurate deep learning with electronic health records. *npj Digital Medicine*, 1(1), 18.
+
+Romero, C., & Ventura, S. (2020). Educational data mining and learning analytics: An updated survey. *WIREs Data Mining and Knowledge Discovery*, 10(3), e1355.
+
+Topol, E. J. (2019). High-performance medicine: The convergence of human and artificial intelligence. *Nature Medicine*, 25(1), 44–56.
+
+# Step 5: Reflection
+
+## How Did Each Model Approach the Systematic Review Differently?
+
+All three models received the same baseline prompt, but they each handled the task in noticeably different ways.
+
+Grok 3 kept things short and gave me direct links to articles, which made fact-checking easy. The problem was that it claimed a 2,000-word output but actually delivered around 1,400 words. The synthesis sections were thin — just a few sentences per domain — and it never provided a formal reference list, only inline links. It gave me a starting point, but not a finished product.
+
+Claude gave me the most polished academic output. It nailed the tone, hit the word count, included proper in-text citations, and provided a complete reference list. The synthesis felt cohesive rather than just listing studies, and it identified meaningful gaps like the tension between PCI DSS compliance and fraud detection effectiveness. It stayed within the boundaries of what I asked, though — it didn't volunteer extras like tables or research questions until I refined the prompt.
+
+ChatGPT went the furthest beyond the prompt. It added research questions, tables, and extended discussions I didn't explicitly ask for, which made its output the richest in raw content. It also included article links and a reference list, but it skipped in-text citations in the first round since I hadn't specifically requested them. Its main trade-off was length — it often exceeded the 2,000-word target.
+
+## Which Prompt Refinements Yielded the Best Results?
+
+The refined prompt — which added a role-based frame, named specific domains, and asked for "fresh insights" and a "bold hypothesis" — improved all three models, but in different ways.
+
+Grok expanded its synthesis sections slightly, but still fell short on word count and detail. It responded best to concrete domain instructions. Claude showed the biggest structural jump: it added formal research questions, deepened the methodology section with citations, and proposed a more specific, ambitious hypothesis. ChatGPT leaned into the "fresh insights" cue and generated even more creative content, though it needed tighter editing to stay focused.
+
+The takeaway for me was that prompt refinement isn't universal. Grok needs specificity. Claude responds to structural and role-based cues. ChatGPT thrives on open-ended creative instructions. Knowing these tendencies makes a real difference.
+
+## What Did I Learn About Using AI for Academic Reviews?
+
+A few things stood out. No single model gave me everything I needed — the real value came from combining Grok's verifiable sources, Claude's academic rigor, and ChatGPT's depth during the cross-model synthesis step. I also learned quickly that I cannot trust any model's citations at face value; verifying references through Google Scholar was essential.
+
+Prompt engineering turned out to be an iterative, model-specific skill. The gap between my baseline and refined outputs was significant, and it showed me that vague prompts produce generic results while precise ones get you much closer to usable academic writing.
+
+Most importantly, my role shifted from writer to editor and synthesizer. I spent less time drafting and more time evaluating, comparing, and integrating — which I think reflects how AI will increasingly fit into research workflows. The AI can surface patterns and generate structure, but recognizing what actually matters still requires the researcher's own domain knowledge.
