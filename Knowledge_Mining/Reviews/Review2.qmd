@@ -1,0 +1,32 @@
+---
+title: "EPPS 6323: Review 2 - Getting Started with AI in My Project"
+author: "JP ADJADEH"
+format: html
+editor: visual
+---
+
+## Starting Point: Why AI for This Project?
+
+After going through the two articles on mining scientific papers, one thing clicked for me — papers aren't just things you read and cite. They're data. And when you treat them as data, you can do a lot more with them than just summarize what the authors said.
+
+So for my own project, the first real step was figuring out where AI actually adds value. Not just throwing a tool at the problem because it's trendy, but asking where manual effort becomes a bottleneck. For me, that's organizing literature, pulling out recurring themes from abstracts, and spotting patterns across dozens of papers that I'd probably miss reading one at a time. AI doesn't replace that reading — it just lets me do it at a scale that would take forever otherwise.
+
+## The Two Models I'm Working With
+
+I've been going back and forth between ChatGPT and Claude AI. They're both large language models, but they feel different in practice.
+
+**ChatGPT** is what I reach for when I need to think through something quickly. If I'm stuck on how to phrase a research question, or I need a concept broken down in a way that actually makes sense, that's where I go. It's good for testing whether I'm understanding something correctly — I'll explain an idea to it and see if the response confirms or corrects my thinking. It also helps me reorganize ideas when my notes are all over the place.
+
+**Claude AI** is what I use when I need to sit with a longer document and really dig into it. It handles extended text better in my experience, so I use it for analyzing full articles, comparing arguments side by side, and generating structured summaries that I can build on later. When I need to look at three or four papers and figure out where they agree and where they don't, Claude handles that well.
+
+## How Each One Fits Into My Workflow
+
+I think of ChatGPT as my brainstorming tool. It sits in the early stages of my process — developing ideas, connecting themes from readings to my own project, tightening up discussion questions, and cleaning up rough drafts. When my writing feels clunky or unclear, I run it through ChatGPT to see where the logic breaks down.
+
+Claude AI comes in later, during the analysis and synthesis phase. That's where I need to compare multiple sources, track recurring themes across the knowledge mining literature, and think through how computational methods are changing traditional bibliometric approaches. It's less about generating new ideas and more about going deeper into what's already there.
+
+## What the Articles Taught Me
+
+The big takeaway from both articles is that AI gets really powerful when it goes beyond just summarizing things. The real value shows up when you start extracting relationships and patterns from large volumes of scientific text — stuff that no individual researcher could realistically do by hand.
+
+In my project, both ChatGPT and Claude function as research assistants. They help me think more critically and process information faster. But at the end of the day, I'm the one deciding what matters, what to include, and how to interpret the results. The tools speed things up, but the judgment call is still mine.
