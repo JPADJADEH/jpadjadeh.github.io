@@ -1,0 +1,38 @@
+---
+title: "EPPS 6323: Review 3 - Knowledge vs Information and AI Failures"
+author: "JP ADJADEH"
+format: html
+editor: visual
+---
+
+## How Do Humans Find Knowledge? And How Is It Different from Information?
+
+I think the simplest way I can put it is: information is what you collect, knowledge is what you build. They're not the same thing, even though people use the words interchangeably all the time.
+
+Information is raw. It's a number in a dataset, a sentence in an article, a statistic on a government website. The unemployment rate in Texas is 4.2%. That's information. But understanding why it shifted, what policy changes contributed, and what it means for the labor market going forward — that's knowledge. Knowledge requires me to take that information, connect it with other things I've read or experienced, and make sense of it.
+
+Humans find knowledge in a pretty messy way honestly. We read, we talk to people, we try things and fail, and slowly we start seeing patterns. I'll read one paper and think I understand a topic, then read three more and realize the first one only told part of the story. Knowledge builds up through that process of layering and revising. Nobody just downloads knowledge the way you download a file.
+
+That's actually the key difference when I think about it in the context of this class. A database holds information. A search engine retrieves information. But neither of them knows anything. Knowledge happens when a person engages with that information — questions it, connects it to something else, and draws a conclusion that wasn't explicitly stated anywhere.
+
+## AI Discrepancies and Failures
+
+I've been using AI tools enough at this point to notice where they consistently get things wrong. And there are patterns.
+
+**Making things up.** This is the big one. AI will generate facts, citations, even entire research papers that sound completely legitimate but don't exist. I've had ChatGPT give me a reference with a real-sounding journal name, a believable author, and a fake DOI. It wasn't trying to deceive me — it just doesn't know the difference between generating plausible text and stating actual facts. If I hadn't checked, that fake citation would've ended up in my paper.
+
+**Treating everything the same.** AI doesn't adjust its confidence level based on how well it actually knows something. Ask it a basic math question and it answers with the same tone as when you ask it about a niche policy debate where the evidence is mixed. It doesn't flag uncertainty the way a person would. A professor would say "the literature is divided on this." AI just picks a side and presents it like settled fact.
+
+**Working with outdated information.** Models have a training cutoff, which means they answer questions about recent events using old data. I've asked about current policies and gotten answers that were accurate six months ago but not anymore. The problem is it doesn't tell you the information might be stale — it just gives you the answer.
+
+**Reinforcing bias.** The training data shapes the output. If certain perspectives or demographics are overrepresented in what the model learned from, the responses reflect that. I've noticed this in subtle ways — how it frames certain topics, whose viewpoint it defaults to, what it treats as the "standard" assumption. It's not intentional bias, but it's still bias.
+
+**Never admitting it doesn't know.** This one bothers me the most. AI almost never says "I'm not sure" or "I don't have enough information to answer that." It always produces something, even when it shouldn't. And because the language is always confident and polished, it's easy to trust output that doesn't deserve that trust.
+
+## The Pattern Underneath All of This
+
+When I step back and look at these failures together, they all point to the same root issue: AI processes information but doesn't understand it. It can't fact-check itself. It can't question its own assumptions. It doesn't know what it doesn't know.
+
+That's not a small limitation — that's the whole ballgame. Because knowledge isn't just about having the right information. It's about knowing when your information is incomplete, when your conclusion might be wrong, and when you need to go find more evidence before committing to an answer. Humans do that naturally (well, the good ones do). AI doesn't do it at all.
+
+That's why I keep coming back to the same conclusion in this class: AI is a powerful tool for handling information at scale, but the knowledge still has to come from us. The moment I stop checking what it gives me is the moment I start putting garbage in my work without realizing it.
