@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 520" width="850" height="520">
+  <style>
+    text { font-family: Georgia, serif; }
+  </style>
+
+  <!-- Background -->
+  <rect width="850" height="520" fill="#F8F9FA"/>
+
+  <!-- Title -->
+  <text x="425" y="35" text-anchor="middle" font-size="20" font-weight="bold" fill="#1E2761">Causal Diagram: What Predicts AI Bill Enactment?</text>
+
+  <!-- MAIN OUTCOME: Bill Enacted (center right) -->
+  <rect x="570" y="210" width="200" height="60" rx="8" fill="#2C5F2D" stroke="#1a3d1b" stroke-width="2"/>
+  <text x="670" y="245" text-anchor="middle" font-size="16" font-weight="bold" fill="#FFFFFF">Bill Enacted</text>
+
+  <!-- CAUSE 1: Bill Characteristics (top left) -->
+  <rect x="80" y="80" width="200" height="55" rx="8" fill="#1E2761" stroke="#0f1538" stroke-width="2"/>
+  <text x="180" y="100" text-anchor="middle" font-size="13" font-weight="bold" fill="#FFFFFF">Bill Characteristics</text>
+  <text x="180" y="118" text-anchor="middle" font-size="11" fill="#CADCFC">(length, topic, AI definition)</text>
+
+  <!-- CAUSE 2: Legislative Context (middle left) -->
+  <rect x="80" y="210" width="200" height="55" rx="8" fill="#1E2761" stroke="#0f1538" stroke-width="2"/>
+  <text x="180" y="230" text-anchor="middle" font-size="13" font-weight="bold" fill="#FFFFFF">Legislative Context</text>
+  <text x="180" y="248" text-anchor="middle" font-size="11" fill="#CADCFC">(chamber, partisanship)</text>
+
+  <!-- CAUSE 3: State Economic Conditions (bottom left) -->
+  <rect x="80" y="340" width="200" height="55" rx="8" fill="#1E2761" stroke="#0f1538" stroke-width="2"/>
+  <text x="180" y="360" text-anchor="middle" font-size="13" font-weight="bold" fill="#FFFFFF">State Economic Conditions</text>
+  <text x="180" y="378" text-anchor="middle" font-size="11" fill="#CADCFC">(tech jobs, unemployment, income)</text>
+
+  <!-- CONFOUNDERS (top right) -->
+  <rect x="570" y="70" width="200" height="70" rx="8" fill="#990011" stroke="#6b000c" stroke-width="2"/>
+  <text x="670" y="93" text-anchor="middle" font-size="13" font-weight="bold" fill="#FFFFFF">Confounders</text>
+  <text x="670" y="110" text-anchor="middle" font-size="11" fill="#FCF6F5">Political climate, public</text>
+  <text x="670" y="125" text-anchor="middle" font-size="11" fill="#FCF6F5">opinion, federal signals</text>
+
+  <!-- Arrows: Causes to Outcome -->
+  <!-- Bill Characteristics -> Bill Enacted -->
+  <line x1="280" y1="107" x2="570" y2="230" stroke="#1E2761" stroke-width="2.5" marker-end="url(#arrowBlue)"/>
+
+  <!-- Legislative Context -> Bill Enacted -->
+  <line x1="280" y1="237" x2="570" y2="240" stroke="#1E2761" stroke-width="2.5" marker-end="url(#arrowBlue)"/>
+
+  <!-- State Economic -> Bill Enacted -->
+  <line x1="280" y1="367" x2="570" y2="255" stroke="#1E2761" stroke-width="2.5" marker-end="url(#arrowBlue)"/>
+
+  <!-- Confounder arrows (dashed) -->
+  <!-- Confounder -> Legislative Context -->
+  <line x1="570" y1="110" x2="280" y2="225" stroke="#990011" stroke-width="2" stroke-dasharray="8,4" marker-end="url(#arrowRed)"/>
+
+  <!-- Confounder -> Bill Enacted -->
+  <line x1="670" y1="140" x2="670" y2="210" stroke="#990011" stroke-width="2" stroke-dasharray="8,4" marker-end="url(#arrowRed)"/>
+
+  <!-- Confounder -> Bill Characteristics -->
+  <line x1="570" y1="90" x2="280" y2="100" stroke="#990011" stroke-width="2" stroke-dasharray="8,4" marker-end="url(#arrowRed)"/>
+
+  <!-- State Economic -> Legislative Context (bidirectional influence) -->
+  <line x1="180" y1="340" x2="180" y2="265" stroke="#555" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arrowGray)"/>
+
+  <!-- Arrow markers -->
+  <defs>
+    <marker id="arrowBlue" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#1E2761"/>
+    </marker>
+    <marker id="arrowRed" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#990011"/>
+    </marker>
+    <marker id="arrowGray" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#555"/>
+    </marker>
+  </defs>
+
+  <!-- Legend -->
+  <rect x="80" y="440" width="690" height="60" rx="6" fill="#FFFFFF" stroke="#DDD" stroke-width="1"/>
+  <line x1="110" y1="470" x2="160" y2="470" stroke="#1E2761" stroke-width="2.5"/>
+  <text x="170" y="475" font-size="12" fill="#333">Direct causal path</text>
+  <line x1="330" y1="470" x2="380" y2="470" stroke="#990011" stroke-width="2" stroke-dasharray="8,4"/>
+  <text x="390" y="475" font-size="12" fill="#333">Confounding path</text>
+  <line x1="560" y1="470" x2="610" y2="470" stroke="#555" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <text x="620" y="475" font-size="12" fill="#333">Indirect influence</text>
+
+</svg>
