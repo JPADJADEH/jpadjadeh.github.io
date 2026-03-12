@@ -1,0 +1,57 @@
+---
+title: "EPPS 6323: Assignment 3 - Regression Plots and Prediction"
+author: "JP ADJADEH"
+format: html
+editor: visual
+execute:
+  warning: false
+  message: false
+---
+
+## Load data
+
+```{r}
+library(haven)
+TEDS_2016 <- read_stata("https://github.com/datageneration/home/blob/master/DataProgramming/data/TEDS_2016.dta?raw=true")
+```
+
+## Create the regplot function
+
+```{r}
+regplot = function(x, y) {
+  fit = lm(y ~ x)
+  plot(x, y)
+  abline(fit, col = "red")
+}
+```
+
+## Regplot: Age vs votetsai
+
+```{r}
+regplot(TEDS_2016$age, TEDS_2016$votetsai)
+```
+
+## Regplot: Education vs votetsai
+
+```{r}
+regplot(TEDS_2016$edu, TEDS_2016$votetsai)
+```
+
+## Regplot: Income vs votetsai
+
+```{r}
+regplot(TEDS_2016$income, TEDS_2016$votetsai)
+```
+
+## What is the problem?
+
+The dependent variable `votetsai` is binary — it only takes values 0 or 1. Linear regression assumes a continuous outcome, so fitting a straight line through binary data doesn't make sense. The regression line can predict values below 0 or above 1, which aren't valid probabilities. With only two categories in the DV, OLS regression isn't the right tool here.
+
+## What can be done to improve prediction?
+
+Since the outcome is binary, logistic regression is the better choice. It models the probability of voting for Tsai as a value between 0 and 1 using a logit link function.
+
+```{r}
+model <- glm(votetsai ~ age + edu + income, data = TEDS_2016, family = binomial)
+summary(model)
+```
