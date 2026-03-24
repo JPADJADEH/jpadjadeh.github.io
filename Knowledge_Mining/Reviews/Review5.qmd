@@ -1,0 +1,33 @@
+---
+title: "EPPS 6323: Review 5 - Text Mining, NLP, and AI in Research"
+author: "JP ADJADEH"
+format: html
+editor: visual
+execute:
+  warning: false
+  message: false
+---
+
+## Text Mining vs. Close Reading
+
+My dataset has 1,262 AI bills. I can't read all of them and track patterns manually. Text mining lets me run topic modeling across every bill summary, find term frequency differences between Republican and Democrat-authored bills, and spot which policy concepts cluster together — all at a scale that close reading can't touch.
+
+The blind spots are real though. Text mining misses context — sarcasm, legal nuance, and what a bill deliberately avoids saying all get lost. A bag-of-words model treats "artificial intelligence" the same whether it appears in a definition or a prohibition. It finds patterns in what's there, not what's missing.
+
+## How NLP and LLMs Help My Project
+
+NER extracts entities (agencies, technologies, regulatory bodies) from 1,262 bill texts in minutes instead of weeks. LLMs helped me generate the `author_partisanship` column by parsing party affiliations from author names. I also used Claude to identify which bills include formal AI definitions — now a key variable in my analysis. For longer bills (some are 20,000+ words), LLM summarization saves significant time.
+
+## Limitations and Solutions
+
+**Hallucination** — LLMs sometimes invent plausible but wrong information. I manually verified a sample of extracted definitions. **Context loss** — legal phrases like "shall not apply" get misread by generic models. Domain-specific preprocessing helps. **Bias** — models reflect their training data. Cross-checking with multiple tools reduces this. **Reproducibility** — same prompt can give different outputs. Setting temperature to 0 and saving results helps.
+
+## AI Research Guide: Where It Can Cause More Problems Than Solutions
+
+Hinton left Google over concerns that AI could cause serious harm. Those concerns hit research directly:
+
+-   **Ethically:** AI-generated text in papers without disclosure blurs authorship. Over-reliance leads to homogenized thinking across researchers using the same models.
+-   **Technically:** Knowledge cutoffs mean outdated info gets presented as fact. NLP results shift based on preprocessing choices. Performance drops on legal/domain-specific text without fine-tuning.
+-   **Academically:** LLMs fabricate citations. Speed replaces depth when AI becomes a shortcut. The gap widens between researchers using AI as a tool versus a crutch.
+
+AI in research needs guardrails. The researcher stays in the driver's seat — or the tool replaces the thinking it was supposed to support.
