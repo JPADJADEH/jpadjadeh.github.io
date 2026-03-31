@@ -1,0 +1,39 @@
+---
+title: "EPPS 6323: Review 6 - LLM Strengths, Failures, and the Future of AI in Research"
+author: "JP ADJADEH"
+format: html
+editor: visual
+execute:
+  warning: false
+  message: false
+---
+
+## What LLMs Do Well and Where They Fail
+
+LLMs are good at drafting text, summarizing long documents, writing and debugging code, and helping me think through ideas faster than I could on my own. In my AI bill project, I used Claude to parse 1,262 author fields and generate a partisanship column in minutes — a task that would've taken hours manually. For literature reviews, brainstorming research questions, and restructuring messy writing, LLMs save real time.
+
+Where they fall apart is when accuracy matters and you're not checking. The failure mode I've run into most is **hallucination**. Early in my project, I asked an LLM to suggest citations for the relationship between economic conditions and policy adoption. It gave me three references — real-sounding journal names, plausible authors, convincing titles. Two of them didn't exist. The formatting was perfect, the content was fabricated.
+
+What makes hallucination dangerous isn't that the model gets things wrong — it's that it gets things wrong with total confidence. There's no hesitation, no "I'm not sure about this." The output reads exactly the same whether the information is real or invented. If I hadn't gone to Google Scholar to verify, those fake citations would've ended up in my paper.
+
+The root cause is straightforward: LLMs generate text based on probability, not knowledge. They predict what a plausible-sounding citation looks like, not what actually exists in the literature. Until models can ground their outputs in verified sources — something RAG is trying to solve — hallucination will remain a fundamental limitation. The practical lesson is simple: never trust an LLM citation without checking it yourself.
+
+## How Generative AI Will Reshape Political Science and Public Policy Research
+
+**What will change most:**
+
+Literature reviews are already changing. Instead of spending weeks reading and organizing papers manually, researchers can use LLMs to summarize bodies of literature, identify gaps, and surface connections across hundreds of sources. That process used to take a month — now it takes days with human verification.
+
+Data processing will accelerate too. Text mining of legislative documents, coding open-ended survey responses, extracting variables from unstructured text — these are tasks where AI is already faster and will only get better. In my project, using NLP to extract AI definitions and classify bill authors by party saved enormous time compared to doing it by hand.
+
+Grant writing and proposal drafting will lean on AI more heavily. First drafts, budget justifications, literature summaries — the mechanical parts of proposal writing are exactly what LLMs handle well.
+
+**What should stay human-driven:**
+
+Theory building has to remain ours. AI can find patterns in data, but deciding what those patterns mean, why they matter, and how they connect to existing frameworks requires the kind of contextual judgment that LLMs don't have. When I interpret why Democratic-authored AI bills are more likely to include formal definitions, that interpretation draws on my understanding of party politics — not something a model can replicate.
+
+Research design is another area. Choosing the right method, identifying threats to validity, and making tradeoffs between feasibility and rigor all require human judgment. An LLM can explain what logistic regression does, but it can't tell me whether it's the right choice for my specific research question given the structure of my data.
+
+Ethical judgment should never be outsourced. Decisions about what populations to study, how to represent findings fairly, and when results could cause harm require moral reasoning that AI fundamentally lacks.
+
+The bottom line: AI will handle more of the labor in research. The thinking still has to come from us.
