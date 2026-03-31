@@ -1,0 +1,27 @@
+---
+title: "EPPS 6323: Review 7 - Retrieval-Augmented Generation (RAG)"
+author: "JP ADJADEH"
+format: html
+editor: visual
+execute:
+  warning: false
+  message: false
+---
+
+## What is RAG and Why Does It Matter?
+
+RAG is a setup where the model retrieves relevant documents from an external source before generating a response. Instead of answering purely from memory (which is where hallucination comes from), it pulls actual text from a knowledge base and uses that as the foundation for its answer.
+
+For research, this is a big deal. If I could point an LLM at my 1,262 AI bill documents and ask "which states define AI using the term machine learning?", a RAG system would search the actual bill texts, find the relevant passages, and answer based on what's there — not what the model thinks sounds right. That grounding in real documents makes the output verifiable. I can trace the answer back to a source, check it, and trust it in a way I can't with a standard LLM response.
+
+Grounding changes trustworthiness because it shifts the model from generating plausible text to citing actual evidence. It doesn't eliminate errors, but it makes them catchable.
+
+## Criticisms of RAG
+
+RAG isn't a silver bullet. The retrieval step can fail — if the search pulls irrelevant or low-quality documents, the model generates a confident answer grounded in the wrong information. Garbage in, garbage out still applies. Chunking is another issue: how you split documents affects what gets retrieved, and poor chunking can strip away the context that makes a passage meaningful.
+
+RAG also struggles with reasoning across multiple documents. It can retrieve relevant pieces, but synthesizing conflicting information from different sources is still something it handles poorly. And there's a latency cost — retrieval adds time, which matters at scale.
+
+## Suggestions for Improving Generation
+
+Better retrieval is the first fix — using semantic search instead of keyword matching so the system actually understands what's being asked. Re-ranking retrieved results before feeding them to the model helps filter out noise. Hybrid approaches that combine RAG with fine-tuning on domain-specific data tend to outperform either method alone. And building in source attribution — so the model explicitly cites which document each claim comes from — makes verification practical instead of optional.
