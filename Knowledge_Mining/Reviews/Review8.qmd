@@ -1,0 +1,39 @@
+---
+title: "EPPS 6323: Review 8 - Knowledge Graphs and Relational Data"
+author: "JP ADJADEH"
+format: html
+editor: visual
+execute:
+  warning: false
+  message: false
+---
+
+## What is a Knowledge Graph?
+
+A knowledge graph stores data as entities (nodes) and the relationships between them (edges). Instead of rows and columns, you get a web of connections — "California" → "authored" → "SB 1047" → "covers topic" → "AI Safety."
+
+A traditional database stores records in flat tables. You can query individual fields, but understanding how things connect requires joining multiple tables and the relationships are implicit. A vector store is different again — it converts text into numerical representations and finds similar items based on proximity in that space. Good for semantic search, but it doesn't explicitly model relationships.
+
+Knowledge graphs make relationships first-class citizens. That matters for knowledge mining because the interesting questions are usually about connections, not isolated data points. "Which states with high tech employment have Republican authors introducing AI transparency bills?" requires traversing relationships across entities. A flat dataset can answer that with enough joins and filters, but a knowledge graph represents it naturally.
+
+## Three Entities and Three Relationships from My Research
+
+From my AI bill enactment project, here's a small knowledge graph:
+
+**Entities:**
+
+1.  **Bill** (e.g., CA SB 1047)
+2.  **Author** (e.g., Wiener (D))
+3.  **State** (e.g., California)
+
+**Relationships:**
+
+1.  Author → **authored** → Bill
+2.  Bill → **introduced in** → State
+3.  State → **has economic profile** → (tech employment, unemployment rate, PHCI)
+
+## How This Helps Beyond a Flat Dataset
+
+In my CSV, if I want to know "do Democratic authors in high-tech states produce bills with formal AI definitions more often than Republicans in low-tech states?" I have to filter, merge, and cross-tab across multiple columns manually. A knowledge graph lets me traverse that path directly: Author → party → Democrat → authored → Bill → has definition → True → introduced in → State → tech employment → High.
+
+It also surfaces patterns I might not think to look for. Graph queries can find clusters of states with similar legislative patterns, identify authors who bridge multiple topic areas, or reveal that certain bill topics always co-occur with specific economic conditions. A flat dataset holds all the same information, but the structure doesn't encourage that kind of exploratory discovery.
