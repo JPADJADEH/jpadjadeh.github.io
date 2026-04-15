@@ -1,0 +1,27 @@
+---
+title: "EPPS 6323: Review 9 - AI for Science and Agentic Workflows"
+author: "JP ADJADEH"
+format: html
+editor: visual
+execute:
+  warning: false
+  message: false
+---
+
+## What Does "AI for Science" Mean?
+
+It means AI isn't just a tool you use at one step of your research — it's embedded throughout the entire process. Hypothesis generation, data collection, analysis, interpretation, writing. Instead of AI helping with one task, it participates across the full workflow.
+
+## How Agentic AI Changes Research Compared to Single Prompts
+
+A single prompt is asking a question and getting an answer. An agentic workflow is handing off a multi-step task and getting a result.
+
+This semester I've experienced the difference firsthand. When I uploaded my 1,262-bill dataset to Claude, it didn't just describe what I could do — it read the file, wrote Python code, created the `author_partisanship` column, repositioned it, labeled edge cases like DFL and NP affiliations, and returned the updated CSV. That's planning, tool use, and multi-step reasoning working together.
+
+**Planning:** Claude examined the data first, identified patterns like (R), (D), (DFL), (NP), (PNP), and figured out how to handle committees before writing any code. A single prompt would've missed the edge cases.
+
+**Tool use:** The agent executed Python directly on my data and produced a downloadable file. A single-prompt model just tells you what to do — an agent does it.
+
+**Multi-step reasoning:** My typical workflow chains multiple dependent steps: understand the prompt → draft content → create a .qmd → provide git push commands. Each step builds on the last. A single prompt handles one. An agent handles the sequence.
+
+The shift matters because research is never a single step. The closer AI gets to handling connected tasks across a full workflow, the more it frees me to focus on interpretation and judgment instead of repetitive execution.
